@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class PublicController {
+public class GroupController {
 
     @GetMapping("/groups")
     public List<Group> findAllGroups() {
