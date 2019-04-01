@@ -13,6 +13,7 @@ public class Student {
     private String email;
     private String description;
     private String status;
+    private Group group;
 
     @JsonCreator
     public Student(@JsonProperty("id") Long id, 
