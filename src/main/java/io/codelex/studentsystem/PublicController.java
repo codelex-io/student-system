@@ -11,23 +11,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class PublicController {
-    
+
     @GetMapping("/groups")
-    public List<Group> findAllGroups(){
+    public List<Group> findAllGroups() {
         return null;
     }
-    
+
     @GetMapping("/groups/{id}")
-    public Group findGroup(){
+    public Group findGroup() {
         return null;
     }
-    
+
     @GetMapping("/groups/{id}/students")
-    public List<Student> findAllStudents(){
+    public List<Student> findAllStudents() {
         return null;
     }
+
     @GetMapping("groups/{id}/students/{id}")
-    public Student findStudent(){
+    public Student findStudent() {
         return null;
     }
 }

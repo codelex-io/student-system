@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/internal-api/groups")
 public class InternalController {
-    
+
     @PutMapping("/{id}")
-    public Group addNewGroup(){
+    public Group addNewGroup() {
         return null;
     }
-    
+
     @PutMapping("/students/{id}")
-    public Student addNewStudent(){
+    public Student addNewStudent() {
         return null;
     }
 }
