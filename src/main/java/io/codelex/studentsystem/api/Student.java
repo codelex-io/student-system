@@ -15,15 +15,24 @@ public class Student {
     private String status;
     private Group group;
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
     @JsonCreator
-    public Student(@JsonProperty("id") Long id, 
-                   @JsonProperty("name") String name, 
-                   @JsonProperty("image") String image, 
-                   @JsonProperty("linkedIn") String linkedIn, 
-                   @JsonProperty("gitHub") String gitHub, 
-                   @JsonProperty("telephone") String telephone, 
-                   @JsonProperty("email") String email, 
-                   @JsonProperty("description") String description, 
+    public Student(@JsonProperty("id") Long id,
+                   @JsonProperty("name") String name,
+                   //Do we need image here? We won't keep image in our Student table.
+                   @JsonProperty("image") String image,
+                   @JsonProperty("linkedIn") String linkedIn,
+                   @JsonProperty("gitHub") String gitHub,
+                   @JsonProperty("telephone") String telephone,
+                   @JsonProperty("email") String email,
+                   @JsonProperty("description") String description,
                    @JsonProperty("status") String status) {
         this.id = id;
         this.name = name;
