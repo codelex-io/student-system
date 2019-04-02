@@ -3,3 +3,6 @@ spring:
     username: codelex
     password: codelex
     url: jdbc:postgresql://localhost:5432/student_system
+student_system:
+  store-type: database
+
