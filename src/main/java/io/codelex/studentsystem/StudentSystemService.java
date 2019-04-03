@@ -8,4 +8,7 @@ public interface StudentSystemService {
     Instructor addInstructor(AddInstructor request);
 
     void clear();
+
+    Instructor findInstructorById(long id);
 }
+

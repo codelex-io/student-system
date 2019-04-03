@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConditionalOnProperty(prefix = "student_system", name = "store-type", havingValue = "database")
-public class RepositoryStudentSystemService implements StudentSystemService {
+public class RepositoryInstructorService implements StudentSystemService {
     private final InstructorRecordRepository recordRepository;
     private final MapInstructorRecordToInstructor toInstructor = new MapInstructorRecordToInstructor();
 
-    public RepositoryStudentSystemService(InstructorRecordRepository recordRepository) {
+    public RepositoryInstructorService(InstructorRecordRepository recordRepository) {
         this.recordRepository = recordRepository;
     }
 
@@ -33,5 +33,13 @@ public class RepositoryStudentSystemService implements StudentSystemService {
     @Override
     public void clear() {
         recordRepository.deleteAll();
+    }
+
+    @Override
+    public Instructor findInstructorById(long id) {
+        return recordRepository
+                .findById(id)
+                .map(toInstructor)
+                .orElse(null);
     }
 }
