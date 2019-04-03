@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 @ConditionalOnProperty(prefix = "student_system", name = "store-type", havingValue = "in-memory")
-public class InMemoryStudentSystemService implements StudentSystemService {
+public class InMemoryInstructorService implements StudentSystemService {
     private final List<Instructor> instructors = new ArrayList<>();
     private final AtomicLong sequence = new AtomicLong(0L);
 
@@ -34,5 +34,16 @@ public class InMemoryStudentSystemService implements StudentSystemService {
     @Override
     public synchronized void clear() {
         instructors.clear();
+    }
+
+    @Override
+    public Instructor findInstructorById(long id) {
+        for (Instructor instructor : instructors
+        ) {
+            if (instructor.getId() == id) {
+                return instructor;
+            }
+        }
+        return null;
     }
 }

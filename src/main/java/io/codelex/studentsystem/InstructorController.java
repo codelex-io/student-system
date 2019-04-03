@@ -2,13 +2,10 @@ package io.codelex.studentsystem;
 
 import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.requests.AddInstructor;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/internal-api")
+@RequestMapping
 public class InstructorController {
     private final StudentSystemService service;
 
@@ -16,9 +13,14 @@ public class InstructorController {
         this.service = service;
     }
 
-    @PutMapping("/instructors")
+    @PutMapping("/internal-api/instructors")
     public Instructor addInstructor(@RequestBody AddInstructor request) {
 
         return service.addInstructor(request);
+    }
+
+    @GetMapping("/api/instructors/{id}")
+    public Instructor findInstructorByID(@PathVariable("id") long id) {
+        return service.findInstructorById(id);
     }
 }
