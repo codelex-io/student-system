@@ -3,6 +3,12 @@ spring:
     username: codelex
     password: codelex
     url: jdbc:postgresql://localhost:5432/student_system
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  liquibase:
+    change-log: classpath:/liquibase/updates.xml
+    enabled: false
 student_system:
-  store-type: database
+  store-type: in-memory
 
