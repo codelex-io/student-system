@@ -9,9 +9,9 @@ import org.mockito.stubbing.Answer;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
-class RepositoryStudentSystemServiceTest {
+class RepositoryInstructorServiceTest {
     private InstructorRecordRepository recordRepository = Mockito.mock(InstructorRecordRepository.class);
-    private RepositoryStudentSystemService service = new RepositoryStudentSystemService(recordRepository);
+    private RepositoryInstructorService service = new RepositoryInstructorService(recordRepository);
 
     @Test
     void should_add_instructor() {

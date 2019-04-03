@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InMemoryStudentSystemServiceTest {
-    private InMemoryStudentSystemService service = new InMemoryStudentSystemService();
+class InMemoryInstructorServiceTest {
+    private InMemoryInstructorService service = new InMemoryInstructorService();
 
     @BeforeEach
     void setUp() {
@@ -58,5 +58,20 @@ class InMemoryStudentSystemServiceTest {
 
         //then
         assertEquals(result1.getId() + 1, result2.getId());
+    }
+    @Test
+    void should_find_instructor_by_id(){
+        //given
+        AddInstructor request = new AddInstructor("Sandris",
+                "https://www.linkedin.com/in/sandr1s/",
+                "https://github.com/sandris-",
+                "12345678",
+                "sandris.artemjevs@codelex.io",
+                true);
+        //when
+        Instructor result = service.addInstructor(request);
+        Instructor result1 = service.findInstructorById(1);
+        //then
+        assertEquals(result1.getEmail(),result.getEmail());
     }
 }
