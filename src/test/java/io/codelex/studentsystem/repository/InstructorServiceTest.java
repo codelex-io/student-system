@@ -9,14 +9,15 @@ import org.mockito.stubbing.Answer;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
-class RepositoryInstructorServiceTest {
+class InstructorServiceTest {
     private InstructorRecordRepository recordRepository = Mockito.mock(InstructorRecordRepository.class);
-    private RepositoryInstructorService service = new RepositoryInstructorService(recordRepository);
+    private InstructorService service = new InstructorService(recordRepository);
 
     @Test
     void should_add_instructor() {
         //given
-        AddInstructor request = new AddInstructor("Sandris",
+        AddInstructor request = new AddInstructor(
+                "Sandris",
                 "https://www.linkedin.com/in/sandr1s/",
                 "https://github.com/sandris-",
                 "12345678",

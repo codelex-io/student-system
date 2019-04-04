@@ -51,4 +51,5 @@ public class Group {
     public double getProgress() {
         return progress;
     }
+
 }
