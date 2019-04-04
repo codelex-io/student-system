@@ -3,24 +3,30 @@ package io.codelex.studentsystem.repository.model;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name = "Instructors")
 @Table(name = "instructors")
 public class InstructorRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long instructorId;
+    
     @ManyToMany
-    @JoinTable(
-            name = "instructors_with_groups",
-            joinColumns = @JoinColumn(name = "instructor_id"),
-            inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private Set<GroupRecord> instructorsInGroups;
+    private Set<GroupRecord> groups;
+    
     private String name;
     private String linkedinLink;
     private String githubLink;
     private String phone;
     private String email;
     private boolean status;
+
+    public Set<GroupRecord> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<GroupRecord> groups) {
+        this.groups = groups;
+    }
 
     public Long getInstructorId() {
         return instructorId;

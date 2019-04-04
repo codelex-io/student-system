@@ -2,222 +2,211 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
-    <changeSet author="janis" id="create-table">
-        <createTable tableName="employer">
-            <column name="id" type="VARCHAR(255)">
+    <changeSet author="janis" id="1554377697744-1">
+        <createTable tableName="employers">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="employers_pkey"/>
+            </column>
+            <column name="login" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="person_email" type="VARCHAR(255)"/>
+            <column name="person_name" type="VARCHAR(255)"/>
+            <column name="person_phone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="janis" id="1554377697744-2">
+        <createTable tableName="groups">
+            <column autoIncrement="true" name="group_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="groups_pkey"/>
+            </column>
+            <column name="end_date" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="planned_end_date" type="date"/>
+            <column name="progress" type="FLOAT8">
                 <constraints nullable="false"/>
             </column>
-            <column name="employer_name" type="VARCHAR(255)">
+            <column name="start_date" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="janis" id="1554377697744-3">
+        <createTable tableName="groups_students">
+            <column name="groups_group_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="contact_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="contact_phone" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="contact_email" type="VARCHAR(255)">
+            <column name="students_student_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <createTable tableName="group">
-            <column name="id" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="group_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="start_date" type="TIMESTAMP without timezone">
-                <constraints nullable="false"/>
-            </column>
-            <column name="end_date" type="TIMESTAMP without timezone">
-                <constraints nullable="false"/>
-            </column>
-            <column name="planned_end_date" type="TIMESTAMP without timezone">
-                <constraints nullable="false"/>
-            </column>
-            <column name="progress" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="instructors_id" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="janis" id="create-table">
+    <changeSet author="janis" id="1554377697744-4">
         <createTable tableName="instructors">
-            <column name="id" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+            <column autoIncrement="true" name="instructor_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="instructors_pkey"/>
             </column>
-            <column name="instructor_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="linkedin" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="github" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="phone" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="email" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="status" type="VARCHAR(255)">
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="github_link" type="VARCHAR(255)"/>
+            <column name="linkedin_link" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="status" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="janis" id="create-table">
+    <changeSet author="janis" id="1554377697744-5">
+        <createTable tableName="instructors_groups">
+            <column name="instructors_instructor_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="groups_group_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="janis" id="1554377697744-6">
         <createTable tableName="quiz">
-            <column name="id" type="VARCHAR(255)">
+            <column autoIncrement="true" name="quiz_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="quiz_pkey"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="score" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column name="quiz_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="creation_date" type="TIMESTAMP without timezone">
-                <constraints nullable="false"/>
-            </column>
-            <column name="score" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="topic_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="topic_id" type="VARCHAR(255)">
+            <column name="state" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="janis" id="create-table">
+    <changeSet author="janis" id="1554377697744-7">
         <createTable tableName="students">
-            <column name="id" type="VARCHAR(255)">
+            <column autoIncrement="true" name="student_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="students_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="git_hub" type="VARCHAR(255)"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="linked_in" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="telephone" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="janis" id="1554377697744-8">
+        <createTable tableName="students_topics">
+            <column name="students_student_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="image" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="linkedin" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="github" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="phone" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="email" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="description" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="status" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="group_id" type="VARCHAR(255)">
+            <column name="topics_topic_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <createTable tableName="topic">
-            <column name="id" type="VARCHAR(255)">
+    <changeSet author="janis" id="1554377697744-9">
+        <createTable tableName="topics">
+            <column autoIncrement="true" name="topic_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="topics_pkey"/>
+            </column>
+            <column name="creation_date" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="state" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="janis" id="1554377697744-10">
+        <createTable tableName="topics_quizes">
+            <column name="topics_topic_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="topic_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="creation_date" type="TIMESTAMP without timezone">
-                <constraints nullable="false"/>
-            </column>
-            <column name="students_id" type="VARCHAR(255)">
+            <column name="quizes_quiz_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addPrimaryKey columnNames="id"
-                       constraintName="employer_pk"
-                       tableName="employer"/>
+    <changeSet author="janis" id="1554377697744-11">
+        <addPrimaryKey columnNames="groups_group_id, students_student_id" 
+                       constraintName="groups_students_pkey" 
+                       tableName="groups_students"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addPrimaryKey columnNames="id"
-                       constraintName="group_pk"
-                       tableName="group"/>
+    <changeSet author="janis" id="1554377697744-12">
+        <addPrimaryKey columnNames="instructors_instructor_id, groups_group_id" 
+                       constraintName="instructors_groups_pkey" 
+                       tableName="instructors_groups"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addPrimaryKey columnNames="id"
-                       constraintName="instructors_pk"
-                       tableName="instructors"/>
+    <changeSet author="janis" id="1554377697744-13">
+        <addPrimaryKey columnNames="students_student_id, topics_topic_id" 
+                       constraintName="students_topics_pkey" 
+                       tableName="students_topics"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addPrimaryKey columnNames="id"
-                       constraintName="quiz_pk"
-                       tableName="quiz"/>
+    <changeSet author="janis" id="1554377697744-14">
+        <addPrimaryKey columnNames="topics_topic_id, quizes_quiz_id" 
+                       constraintName="topics_quizes_pkey" 
+                       tableName="topics_quizes"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addPrimaryKey columnNames="id"
-                       constraintName="students_pk"
-                       tableName="students"/>
+    <changeSet author="janis" id="1554377697744-15">
+        <addUniqueConstraint columnNames="quizes_quiz_id" 
+                             constraintName="qwertty" 
+                             tableName="topics_quizes"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addPrimaryKey columnNames="id"
-                       constraintName="topic_pk"
-                       tableName="topic"/>
+    <changeSet author="janis" id="1554377697744-16">
+        <addUniqueConstraint columnNames="students_student_id" 
+                             constraintName="uk_jb7w1hvdpkdg3i2mj6am0k8cd" 
+                             tableName="groups_students"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addForeignKeyConstraint baseColumnNames="instructors_id"
-                                 baseTableName="group"
-                                 constraintName="group_instructors_id_fk"
-                                 deferrable="false"
-                                 initiallyDeferred="false"
-                                 onDelete="NO ACTION"
-                                 onUpdate="NO ACTION"
-                                 referencedColumnNames="id"
+    <changeSet author="janis" id="1554377697744-17">
+        <addForeignKeyConstraint baseColumnNames="groups_group_id" 
+                                 baseTableName="groups_students" 
+                                 constraintName="groups_group_id_groups_group_id" 
+                                 deferrable="false" 
+                                 initiallyDeferred="false" 
+                                 onDelete="NO ACTION" 
+                                 onUpdate="NO ACTION" 
+                                 referencedColumnNames="group_id" 
+                                 referencedTableName="groups"/>
+    </changeSet>
+    <changeSet author="janis" id="1554377697744-18">
+        <addForeignKeyConstraint baseColumnNames="instructors_instructor_id" 
+                                 baseTableName="instructors_groups" 
+                                 constraintName="instructor_instructor_id_instructors_instructor_id" 
+                                 deferrable="false" 
+                                 initiallyDeferred="false" 
+                                 onDelete="NO ACTION" 
+                                 onUpdate="NO ACTION" 
+                                 referencedColumnNames="instructor_id" 
                                  referencedTableName="instructors"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addForeignKeyConstraint baseColumnNames="topic_id"
-                                 baseTableName="quiz"
-                                 constraintName="quiz_topic_id_fk"
-                                 deferrable="false"
-                                 initiallyDeferred="false"
-                                 onDelete="NO ACTION"
-                                 onUpdate="NO ACTION"
-                                 referencedColumnNames="id"
-                                 referencedTableName="topic"/>
+    <changeSet author="janis" id="1554377697744-19">
+        <addForeignKeyConstraint baseColumnNames="quizes_quiz_id" 
+                                 baseTableName="topics_quizes" 
+                                 constraintName="quizes_quiz_id_quiz_quiz_id" 
+                                 deferrable="false" 
+                                 initiallyDeferred="false" 
+                                 onDelete="NO ACTION" 
+                                 onUpdate="NO ACTION" 
+                                 referencedColumnNames="quiz_id" 
+                                 referencedTableName="quiz"/>
     </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addForeignKeyConstraint baseColumnNames="group_id"
-                                 baseTableName="students"
-                                 constraintName="students_group_id_fk"
-                                 deferrable="false"
-                                 initiallyDeferred="false"
-                                 onDelete="NO ACTION"
-                                 onUpdate="NO ACTION"
-                                 referencedColumnNames="id"
-                                 referencedTableName="group"/>
-    </changeSet>
-    <changeSet author="janis" id="create-table">
-        <addForeignKeyConstraint baseColumnNames="students_id"
-                                 baseTableName="topic"
-                                 constraintName="topic_students_id_fk"
-                                 deferrable="false"
-                                 initiallyDeferred="false"
-                                 onDelete="NO ACTION"
-                                 onUpdate="NO ACTION"
-                                 referencedColumnNames="id"
+    <changeSet author="janis" id="1554377697744-20">
+        <addForeignKeyConstraint baseColumnNames="students_student_id" 
+                                 baseTableName="students_topics" 
+                                 constraintName="students_student_id_students_student_id" 
+                                 deferrable="false" 
+                                 initiallyDeferred="false" 
+                                 onDelete="NO ACTION" 
+                                 onUpdate="NO ACTION" 
+                                 referencedColumnNames="student_id" 
                                  referencedTableName="students"/>
+    </changeSet>
+    <changeSet author="janis" id="1554377697744-21">
+        <addForeignKeyConstraint baseColumnNames="topics_topic_id" 
+                                 baseTableName="students_topics" 
+                                 constraintName="topics_topic_id_topics_topic_id" 
+                                 deferrable="false" 
+                                 initiallyDeferred="false" 
+                                 onDelete="NO ACTION" 
+                                 onUpdate="NO ACTION" 
+                                 referencedColumnNames="topic_id" 
+                                 referencedTableName="topics"/>
     </changeSet>
 </databaseChangeLog>

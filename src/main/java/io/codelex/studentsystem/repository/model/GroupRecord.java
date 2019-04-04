@@ -5,21 +5,17 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Entity
+@Entity(name = "Groups")
 @Table(name = "groups")
 public class GroupRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long groupId;
-    @ManyToMany
-    private Set<InstructorRecord> groupsInstructorIsIn;
+    
     @OneToMany
-    @JoinTable(
-            name = "groups_with_students",
-            joinColumns = @JoinColumn(name = "group_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private Set<StudentRecord> studentsInGroup;
+    private Set<StudentRecord> students;
+    
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -34,20 +30,12 @@ public class GroupRecord {
         this.groupId = groupId;
     }
 
-    public Set<InstructorRecord> getGroupsInstructorIsIn() {
-        return groupsInstructorIsIn;
+    public Set<StudentRecord> getStudents() {
+        return students;
     }
 
-    public void setGroupsInstructorIsIn(Set<InstructorRecord> groupsInstructorIsIn) {
-        this.groupsInstructorIsIn = groupsInstructorIsIn;
-    }
-
-    public Set<StudentRecord> getStudentsInGroup() {
-        return studentsInGroup;
-    }
-
-    public void setStudentsInGroup(Set<StudentRecord> studentsInGroup) {
-        this.studentsInGroup = studentsInGroup;
+    public void setStudents(Set<StudentRecord> students) {
+        this.students = students;
     }
 
     public String getName() {

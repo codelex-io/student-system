@@ -4,34 +4,33 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Entity
+@Entity(name = "Topics")
 @Table(name = "topics")
 public class TopicRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long topicId;
     private String name;
     private String state;
     private LocalDate creationDate;
-    @ManyToMany
-    @JoinTable(
-            name = "topics_in_students",
-            joinColumns = @JoinColumn(name = "topic_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private Set<StudentRecord> studentWithTopic;
+    
     @OneToMany
-    @JoinTable(
-            name = "topic_in_quiz",
-            joinColumns = @JoinColumn(name = "topics_id"),
-            inverseJoinColumns = @JoinColumn(name = "quiz_id"))
-    private Set<QuizRecord> quizId;
+    private Set<QuizRecord> quizes;
 
-    public Long getId() {
-        return Id;
+    public Long getTopicId() {
+        return topicId;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public Set<QuizRecord> getQuizes() {
+        return quizes;
+    }
+
+    public void setQuizes(Set<QuizRecord> quizes) {
+        this.quizes = quizes;
+    }
+
+    public void setTopicId(Long topicId) {
+        this.topicId = topicId;
     }
 
     public String getName() {
@@ -58,11 +57,4 @@ public class TopicRecord {
         this.creationDate = creationDate;
     }
 
-    public Set<QuizRecord> getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(Set<QuizRecord> quizId) {
-        this.quizId = quizId;
-    }
 }
