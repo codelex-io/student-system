@@ -7,18 +7,17 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
+@Entity(name = "Students")
 @Table(name = "students")
 public class StudentRecord {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+    
+    private Long studentId;
+
     @ManyToMany
-    @JoinTable(
-            name = "students_with_topics",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "topic_id"))
-    private Set<TopicRecord> topicsInStudent;
+    private Set<TopicRecord> topics;
+
     private String name;
     private String image;
     private String linkedIn;
@@ -28,20 +27,20 @@ public class StudentRecord {
     private String description;
     private String status;
 
-    public Long getId() {
-        return id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
-    public Set<TopicRecord> getTopicsInStudent() {
-        return topicsInStudent;
+    public Set<TopicRecord> getTopics() {
+        return topics;
     }
 
-    public void setTopicsInStudent(Set<TopicRecord> topicsInStudent) {
-        this.topicsInStudent = topicsInStudent;
+    public void setTopics(Set<TopicRecord> topics) {
+        this.topics = topics;
     }
 
     public String getName() {

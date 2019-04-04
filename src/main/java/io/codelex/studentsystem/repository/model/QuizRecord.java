@@ -3,23 +3,23 @@ package io.codelex.studentsystem.repository.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "Quiz")
 @Table(name = "quiz")
 public class QuizRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long quizId;
     private String name;
     private boolean state;
     private LocalDate creationDate;
     private int score;
 
-    public Long getId() {
-        return id;
+    public Long getQuizId() {
+        return quizId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setQuizId(Long quizId) {
+        this.quizId = quizId;
     }
 
     public String getName() {
