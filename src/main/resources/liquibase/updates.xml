@@ -146,12 +146,12 @@
     </changeSet>
     <changeSet author="janis" id="1554377697744-15">
         <addUniqueConstraint columnNames="quizes_quiz_id" 
-                             constraintName="qwertty" 
+                             constraintName="quizes_quiz_id_topics_quizes" 
                              tableName="topics_quizes"/>
     </changeSet>
     <changeSet author="janis" id="1554377697744-16">
         <addUniqueConstraint columnNames="students_student_id" 
-                             constraintName="uk_jb7w1hvdpkdg3i2mj6am0k8cd" 
+                             constraintName="students_student_id_groups_students" 
                              tableName="groups_students"/>
     </changeSet>
     <changeSet author="janis" id="1554377697744-17">
