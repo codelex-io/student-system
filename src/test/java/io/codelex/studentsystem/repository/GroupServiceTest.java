@@ -35,6 +35,6 @@ class GroupServiceTest {
         Assertions.assertEquals(result.getPlannedEndDate(), request.getPlannedEndDate());
         Assertions.assertEquals(result.getProgress(), request.getProgress());
     }
-    
+
 }
 

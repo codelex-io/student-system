@@ -6,7 +6,7 @@ import io.codelex.studentsystem.repository.model.InstructorRecord;
 import org.springframework.stereotype.Component;
 
 @Component
-public class InstructorService{
+public class InstructorService {
     private final InstructorRecordRepository recordRepository;
     private final MapInstructorRecordToInstructor toInstructor = new MapInstructorRecordToInstructor();
 

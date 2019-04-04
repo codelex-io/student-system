@@ -5,8 +5,6 @@ import io.codelex.studentsystem.repository.model.InstructorRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class MapInstructorRecordToInstructorTest {
     private MapInstructorRecordToInstructor toInstructor = new MapInstructorRecordToInstructor();
 
