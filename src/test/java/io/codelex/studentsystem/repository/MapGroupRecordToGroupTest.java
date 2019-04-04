@@ -2,7 +2,6 @@ package io.codelex.studentsystem.repository;
 
 import io.codelex.studentsystem.api.Group;
 import io.codelex.studentsystem.repository.model.GroupRecord;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -25,10 +24,10 @@ class MapGroupRecordToGroupTest {
         //when
         Group test = toGroup.apply(groupRecord);
         //then
-        assertEquals(test.getProgress(),0.0);
-        assertEquals(test.getPlannedEndDate(),LocalDate.now().plusMonths(3));
-        assertEquals(test.getEndDate(),LocalDate.now().plusMonths(4));
-        assertEquals(test.getStartDate(),LocalDate.now());
-        assertEquals(test.getName(),"The Group");
+        assertEquals(test.getProgress(), 0.0);
+        assertEquals(test.getPlannedEndDate(), LocalDate.now().plusMonths(3));
+        assertEquals(test.getEndDate(), LocalDate.now().plusMonths(4));
+        assertEquals(test.getStartDate(), LocalDate.now());
+        assertEquals(test.getName(), "The Group");
     }
 }
