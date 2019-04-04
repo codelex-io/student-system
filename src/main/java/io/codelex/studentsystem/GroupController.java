@@ -37,11 +37,11 @@ public class GroupController {
         return null;
     }
 
-    @GetMapping("/api/groups/{groupsId}/instructors")
+    /*@GetMapping("/api/groups/{groupsId}/instructors")
     public List<Instructor> showInstructorsInGroup(@PathVariable long groupsId) {
         
         return service.findAllInstructorsByGroupsId(groupsId);
-    }
+    }*/
 
     @GetMapping("/api/groups/{groupsId}/topics")
     public List<Topic> showTopicsInGroup(@PathVariable long groupsId) {

@@ -50,9 +50,9 @@ public class GroupService{
         return null;
     }
 
-    public List<Instructor> findAllInstructorsByGroupsId(long groupsId) {
+    /*public List<Instructor> findAllInstructorsByGroupsId(long groupsId) {
         return instructorRecordRepository.findAllInstructorsByGroupId2(groupsId).stream().map(toInstructor).collect(Collectors.toList());
-    }
+    }*/
 
     public Group findGroupById(long groupsId) {
         return recordRepository.findById(groupsId).map(toGroup).orElse(null);

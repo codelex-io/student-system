@@ -8,9 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 public interface InstructorRecordRepository extends JpaRepository<InstructorRecord, Long> {
 
-    @Query("SELECT i.name FROM instructors as i" +
+    /*@Query("SELECT i.name FROM instructors as i" +
             "INNER JOIN instructors_with_groups as ig ON i.instructorId = ig.instructor_id" +
             "INNER JOIN groups as g ON g.groupId = ig.group_id WHERE g.groupId = theGroupsId")
-    List<InstructorRecord> findAllInstructorsByGroupId2(@Param("theGroupsId") long theGroupsId);
+    List<InstructorRecord> findAllInstructorsByGroupId2(@Param("theGroupsId") long theGroupsId);*/
     
 }
