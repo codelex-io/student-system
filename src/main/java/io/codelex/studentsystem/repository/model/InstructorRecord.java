@@ -11,10 +11,10 @@ public class InstructorRecord {
     private Long instructorId;
     @ManyToMany
     @JoinTable(
-            name = "groups_in",
+            name = "instructors_with_groups",
             joinColumns = @JoinColumn(name = "instructor_id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private Set<GroupRecord> groupsInstructorIsIn;
+    private Set<GroupRecord> instructorsInGroups;
     private String name;
     private String linkedinLink;
     private String githubLink;
@@ -28,14 +28,6 @@ public class InstructorRecord {
 
     public void setInstructorId(Long instructorId) {
         this.instructorId = instructorId;
-    }
-
-    public Set<GroupRecord> getGroupsInstructorIsIn() {
-        return groupsInstructorIsIn;
-    }
-
-    public void setGroupsInstructorIsIn(Set<GroupRecord> groupsInstructorIsIn) {
-        this.groupsInstructorIsIn = groupsInstructorIsIn;
     }
 
     public String getName() {

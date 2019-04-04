@@ -26,7 +26,7 @@ public class Student {
     @JsonCreator
     public Student(@JsonProperty("id") Long id,
                    @JsonProperty("name") String name,
-                   //Do we need image here? We won't keep image in our Student table.
+                   //Do we need image here? We won't keep image in our StudentRecord table.
                    @JsonProperty("image") String image,
                    @JsonProperty("linkedIn") String linkedIn,
                    @JsonProperty("gitHub") String gitHub,
