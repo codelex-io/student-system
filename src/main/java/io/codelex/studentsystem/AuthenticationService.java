@@ -11,9 +11,7 @@ import static org.springframework.security.core.context.SecurityContextHolder.ge
 class AuthenticationService {
 
     void authorise(String email, String role) {
-         var authorities = singleton(new SimpleGrantedAuthority(role));
-         var token = new UsernamePasswordAuthenticationToken(email, null, authorities);
-          getContext().setAuthentication(token);
+        getContext().setAuthentication(new UsernamePasswordAuthenticationToken(email, null, singleton(new SimpleGrantedAuthority(role))));
     }
 
     void clearAuthentication() {
