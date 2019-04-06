@@ -9,18 +9,25 @@ public class Employer {
     private String personName;
     private String personPhone;
     private String personEmail;
+    private String password;
+    private String login;
+
 
     @JsonCreator
     public Employer(@JsonProperty("id") Long id,
                     @JsonProperty("name") String name,
                     @JsonProperty("personName") String personName,
                     @JsonProperty("personPhone") String personPhone,
-                    @JsonProperty("personEmail") String personEmail) {
+                    @JsonProperty("personEmail") String personEmail,
+                    @JsonProperty("password") String password,
+                    @JsonProperty("login") String login) {
         this.id = id;
         this.name = name;
         this.personName = personName;
         this.personPhone = personPhone;
         this.personEmail = personEmail;
+        this.password = password;
+        this.login = login;
     }
 
     public String getName() {
@@ -41,5 +48,13 @@ public class Employer {
 
     public Long getId() {
         return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getLogin() {
+        return login;
     }
 }
