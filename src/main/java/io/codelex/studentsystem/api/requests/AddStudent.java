@@ -12,7 +12,6 @@ public class AddStudent {
     private String email;
     private String description;
     private String status;
-    private Group groupId;
 
     public AddStudent(@JsonProperty("name") String name,
                       @JsonProperty("image") String image,
@@ -21,8 +20,7 @@ public class AddStudent {
                       @JsonProperty("telephone") String telephone,
                       @JsonProperty("email") String email,
                       @JsonProperty("description") String description,
-                      @JsonProperty("status") String status,
-                      @JsonProperty("groupId") Group groupId) {
+                      @JsonProperty("status") String status) {
         this.name = name;
         this.image = image;
         this.linkedIn = linkedIn;
@@ -31,7 +29,6 @@ public class AddStudent {
         this.email = email;
         this.description = description;
         this.status = status;
-        this.groupId = groupId;
     }
 
     public String getName() {
@@ -66,7 +63,4 @@ public class AddStudent {
         return status;
     }
 
-    public Group getGroupId() {
-        return groupId;
-    }
 }
