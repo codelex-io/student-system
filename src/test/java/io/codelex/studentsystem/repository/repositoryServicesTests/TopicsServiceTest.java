@@ -1,8 +1,9 @@
-package io.codelex.studentsystem.repository.service;
+package io.codelex.studentsystem.repository.repositoryServicesTests;
 
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddTopic;
 import io.codelex.studentsystem.repository.recordRepository.TopicRecordRepository;
+import io.codelex.studentsystem.repository.service.TopicsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

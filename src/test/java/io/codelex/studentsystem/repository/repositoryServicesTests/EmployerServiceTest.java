@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.serviceTests;
+package io.codelex.studentsystem.repository.repositoryServicesTests;
 
 
 import io.codelex.studentsystem.api.Employer;
