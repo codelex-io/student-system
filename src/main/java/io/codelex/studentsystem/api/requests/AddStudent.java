@@ -1,7 +1,6 @@
 package io.codelex.studentsystem.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.codelex.studentsystem.api.Group;
 
 public class AddStudent {
     private String name;
