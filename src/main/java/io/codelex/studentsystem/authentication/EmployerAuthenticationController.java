@@ -14,13 +14,13 @@ class EmployerAuthenticationController {
     }
 
     @PostMapping("/sign-in")
-    public void signIn(@RequestParam("email") String email) {
-        authService.authorise(email);
+    public void signIn(@RequestParam("login") String login) {
+        authService.authorise(login);
     }
 
     @PostMapping("/register")
-    public void register(@RequestParam("email") String email) {
-        authService.authorise(email);
+    public void register(@RequestParam("login") String login) {
+        authService.authorise(login);
     }
 
     @PostMapping("/sign-out")
@@ -32,5 +32,4 @@ class EmployerAuthenticationController {
     public String account(Principal principal) {
         return principal.getName();
     }
-
 }
