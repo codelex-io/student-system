@@ -100,9 +100,9 @@
             <column name="telephone" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="janis" id="ADD_TABLE_student_topics">
-        <createTable tableName="students_topics">
-            <column name="students_student_id" type="BIGINT">
+    <changeSet author="janis" id="ADD_TABLE_group_topics">
+        <createTable tableName="groups_topics">
+            <column name="groups_group_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="topics_topic_id" type="BIGINT">
@@ -140,10 +140,10 @@
                        constraintName="instructors_groups_pkey"
                        tableName="instructors_groups"/>
     </changeSet>
-    <changeSet author="janis" id="PK_students_student_id_topics_topic_id">
-        <addPrimaryKey columnNames="students_student_id, topics_topic_id"
-                       constraintName="students_topics_pkey"
-                       tableName="students_topics"/>
+    <changeSet author="janis" id="PK_groups_groups_id_topics_topic_id">
+        <addPrimaryKey columnNames="groups_group_id, topics_topic_id"
+                       constraintName="groups_topics_pkey"
+                       tableName="groups_topics"/>
     </changeSet>
     <changeSet author="janis" id="PK_topics_topic_id_quizes_quiz_id">
         <addPrimaryKey columnNames="topics_topic_id, quizes_quiz_id"
@@ -160,7 +160,7 @@
                              constraintName="students_student_id_groups_students"
                              tableName="groups_students"/>
     </changeSet>
-    <changeSet author="janis" id="FK_constraint_groups_group_id">
+    <changeSet author="janis" id="FK_constraint_groups_student_id">
         <addForeignKeyConstraint baseColumnNames="groups_group_id"
                                  baseTableName="groups_students"
                                  constraintName="groups_group_id_groups_group_id"
@@ -181,16 +181,16 @@
                                  referencedColumnNames="quiz_id"
                                  referencedTableName="quiz"/>
     </changeSet>
-    <changeSet author="janis" id="FK_constraint_students_student_id">
-        <addForeignKeyConstraint baseColumnNames="students_student_id"
-                                 baseTableName="students_topics"
-                                 constraintName="students_student_id_students_student_id"
-                                 referencedColumnNames="student_id"
-                                 referencedTableName="students"/>
+    <changeSet author="janis" id="FK_constraint_groups_topic_id">
+        <addForeignKeyConstraint baseColumnNames="groups_group_id"
+                                 baseTableName="groups_topics"
+                                 constraintName="groups_group_id_groups_group_id"
+                                 referencedColumnNames="group_id"
+                                 referencedTableName="groups"/>
     </changeSet>
     <changeSet author="janis" id="FK_constraint_topics_topic_id">
         <addForeignKeyConstraint baseColumnNames="topics_topic_id"
-                                 baseTableName="students_topics"
+                                 baseTableName="groups_topics"
                                  constraintName="topics_topic_id_topics_topic_id"
                                  referencedColumnNames="topic_id"
                                  referencedTableName="topics"/>
