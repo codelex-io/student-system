@@ -24,7 +24,7 @@ public class InstructorController {
         return service.findInstructorById(id);
     }
 
-    @DeleteMapping("/internal-api/groups/{instructorsId}")
+    @DeleteMapping("/internal-api/instructors/{instructorsId}")
     public void deleteById(@PathVariable long instructorsId) {
         service.deleteById(instructorsId);
     }
