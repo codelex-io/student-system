@@ -1,4 +1,4 @@
-package io.codelex.studentsystem;
+package io.codelex.studentsystem.authentication;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,8 +10,13 @@ import static org.springframework.security.core.context.SecurityContextHolder.ge
 @Component
 class AuthenticationService {
 
-    void authorise(String email, String role) {
-        getContext().setAuthentication(new UsernamePasswordAuthenticationToken(email, null, singleton(new SimpleGrantedAuthority(role))));
+    void authorise(String email) {
+        getContext()
+                .setAuthentication(
+                        new UsernamePasswordAuthenticationToken(email,
+                                null,
+                                singleton(
+                                        new SimpleGrantedAuthority("ROLE_EMPLOYER"))));
     }
 
     void clearAuthentication() {

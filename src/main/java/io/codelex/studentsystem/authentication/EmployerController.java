@@ -1,4 +1,4 @@
-package io.codelex.studentsystem;
+package io.codelex.studentsystem.authentication;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +15,12 @@ class EmployerController {
 
     @PostMapping("/sign-in")
     public void signIn(@RequestParam("email") String email) {
-        authService.authorise(email, "ROLE_EMPLOYER");
+        authService.authorise(email);
     }
 
     @PostMapping("/register")
     public void register(@RequestParam("email") String email) {
-        authService.authorise(email, "ROLE_EMPLOYER");
+        authService.authorise(email);
     }
 
     @PostMapping("/sign-out")
