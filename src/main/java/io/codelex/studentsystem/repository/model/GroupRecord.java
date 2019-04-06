@@ -15,12 +15,23 @@ public class GroupRecord {
     
     @OneToMany
     private Set<StudentRecord> students;
+
+    @ManyToMany
+    private Set<TopicRecord> topics;
     
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate plannedEndDate;
     private double progress;
+
+    public Set<TopicRecord> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(Set<TopicRecord> topics) {
+        this.topics = topics;
+    }
 
     public Long getGroupId() {
         return groupId;

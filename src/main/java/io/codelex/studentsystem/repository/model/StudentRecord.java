@@ -12,12 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class StudentRecord {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    
     private Long studentId;
-
-    @ManyToMany
-    private Set<TopicRecord> topics;
-
     private String name;
     private String image;
     private String linkedIn;
@@ -33,14 +28,6 @@ public class StudentRecord {
 
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
-    }
-
-    public Set<TopicRecord> getTopics() {
-        return topics;
-    }
-
-    public void setTopics(Set<TopicRecord> topics) {
-        this.topics = topics;
     }
 
     public String getName() {
