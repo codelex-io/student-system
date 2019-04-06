@@ -20,37 +20,31 @@ public class GroupController {
 
     @GetMapping("/api/groups")
     public List<Group> showAllGroups() {
-
         return service.findAllGroups();
     }
 
     @GetMapping("/api/groups/{groupsId}")
     public Group findGroupById(@PathVariable long groupsId) {
-
         return service.findGroupById(groupsId);
     }
 
     @GetMapping("/api/groups/{groupsId}/students")
     public List<Student> showStudentsInGroup(@PathVariable long groupsId) {
-
         return null;
     }
 
     @GetMapping("/api/groups/{groupsId}/topics")
     public List<Topic> showTopicsInGroup(@PathVariable long groupsId) {
-
         return null;
     }
 
     @PutMapping("/internal-api/groups")
     public Group addGroup(@RequestBody AddGroup request) {
-
         return service.addGroup(request);
     }
 
     @DeleteMapping("/internal-api/groups/{groupsId}")
     public void deleteById(@PathVariable long groupsId) {
-
         service.deleteById(groupsId);
     }
 }

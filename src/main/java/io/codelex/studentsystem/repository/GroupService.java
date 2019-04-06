@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class GroupService {
     private final GroupRecordRepository recordRepository;
-    private MapGroupRecordToGroup toGroup = new MapGroupRecordToGroup();
+    private MapGroupRecordToGroup mapGroupRecordToGroup = new MapGroupRecordToGroup();
 
     public GroupService(GroupRecordRepository recordRepository) {
         this.recordRepository = recordRepository;
@@ -24,14 +24,14 @@ public class GroupService {
         groupRecord.setStartDate(request.getStartDate());
         groupRecord.setEndDate(request.getEndDate());
         groupRecord.setPlannedEndDate(request.getPlannedEndDate());
-        return toGroup.apply(groupRecord);
+        return mapGroupRecordToGroup.apply(groupRecord);
     }
 
 
     public List<Group> findAllGroups() {
         return recordRepository.findAll()
                 .stream()
-                .map(toGroup)
+                .map(mapGroupRecordToGroup)
                 .collect(Collectors.toList());
     }
 
@@ -40,7 +40,7 @@ public class GroupService {
     }
 
     public Group findGroupById(long groupsId) {
-        return recordRepository.findById(groupsId).map(toGroup).orElse(null);
+        return recordRepository.findById(groupsId).map(mapGroupRecordToGroup).orElse(null);
     }
 
 }

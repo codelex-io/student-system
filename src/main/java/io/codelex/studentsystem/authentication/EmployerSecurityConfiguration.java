@@ -1,4 +1,4 @@
-package io.codelex.studentsystem;
+package io.codelex.studentsystem.authentication;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
