@@ -1,6 +1,7 @@
 package io.codelex.studentsystem.repository;
 
 import io.codelex.studentsystem.api.Group;
+import io.codelex.studentsystem.repository.mapRecord.MapGroupRecordToGroup;
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import org.junit.jupiter.api.Test;
 

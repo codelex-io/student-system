@@ -2,6 +2,8 @@ package io.codelex.studentsystem.repository;
 
 import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.requests.AddInstructor;
+import io.codelex.studentsystem.repository.recordRepository.InstructorRecordRepository;
+import io.codelex.studentsystem.repository.service.InstructorService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;

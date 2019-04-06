@@ -2,6 +2,8 @@ package io.codelex.studentsystem.repository;
 
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.requests.AddStudent;
+import io.codelex.studentsystem.repository.recordRepository.StudentRecordRepository;
+import io.codelex.studentsystem.repository.service.StudentService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

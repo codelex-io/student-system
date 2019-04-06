@@ -1,7 +1,9 @@
-package io.codelex.studentsystem.repository;
+package io.codelex.studentsystem.repository.service;
 
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.requests.AddEmployer;
+import io.codelex.studentsystem.repository.recordRepository.EmployerRecordRepository;
+import io.codelex.studentsystem.repository.mapRecord.MapEmployerRecordToEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +16,7 @@ public class EmployerService {
         this.employerRepository = employerRepository;
     }
 
-    Employer addEmployer(AddEmployer request) {
+    public Employer addEmployer(AddEmployer request) {
         EmployerRecord employerRecord = new EmployerRecord();
         employerRecord.setName(request.getName());
         employerRecord.setPersonName(request.getPersonName());
@@ -29,7 +31,7 @@ public class EmployerService {
         employerRepository.deleteAll();
     }
 
-    Employer findEmployerById(long id) {
+    public Employer findEmployerById(long id) {
         return employerRepository
                 .findById(id)
                 .map(mapEmployerRecordToEmployer)

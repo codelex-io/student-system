@@ -4,7 +4,7 @@ import io.codelex.studentsystem.api.Group;
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddGroup;
-import io.codelex.studentsystem.repository.GroupService;
+import io.codelex.studentsystem.repository.service.GroupService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

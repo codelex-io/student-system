@@ -2,7 +2,7 @@ package io.codelex.studentsystem;
 
 import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.requests.AddInstructor;
-import io.codelex.studentsystem.repository.InstructorService;
+import io.codelex.studentsystem.repository.service.InstructorService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

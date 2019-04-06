@@ -1,7 +1,9 @@
-package io.codelex.studentsystem.repository;
+package io.codelex.studentsystem.repository.service;
 
 import io.codelex.studentsystem.api.Group;
 import io.codelex.studentsystem.api.requests.AddGroup;
+import io.codelex.studentsystem.repository.recordRepository.GroupRecordRepository;
+import io.codelex.studentsystem.repository.mapRecord.MapGroupRecordToGroup;
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import org.springframework.stereotype.Component;
 

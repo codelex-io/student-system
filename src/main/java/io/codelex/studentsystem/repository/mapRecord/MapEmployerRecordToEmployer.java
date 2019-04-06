@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository;
+package io.codelex.studentsystem.repository.mapRecord;
 
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
