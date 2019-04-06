@@ -5,6 +5,8 @@ import io.codelex.studentsystem.api.requests.AddStudent;
 import io.codelex.studentsystem.repository.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping
 public class StudentController {
@@ -16,13 +18,22 @@ public class StudentController {
 
     @PutMapping("/internal-api/students")
     public Student addNewStudent(@RequestBody AddStudent request) {
-        
         return service.addStudent(request);
     }
 
-    @GetMapping("/api/students/{id}")
+    @GetMapping("/internal-api/students/{id}")
     public Student findStudent(@PathVariable("id") Long id) {
-        return null;
+        return service.findStudentById(id);
+    }
+
+    @DeleteMapping("/internal-api/groups/{studentsId}")
+    public void deleteById(@PathVariable long studentsId) {
+        service.deleteById(studentsId);
+    }
+
+    @GetMapping("/internal-api/students")
+    public List<Student> showAllGroups() {
+        return service.findAllStudents();
     }
 }
     

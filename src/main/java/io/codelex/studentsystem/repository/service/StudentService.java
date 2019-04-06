@@ -29,6 +29,7 @@ public class StudentService {
         studentRecord.setName(request.getName());
         studentRecord.setStatus(request.getStatus());
         studentRecord.setTelephone(request.getTelephone());
+        studentRecord = studentRecordRepository.save(studentRecord);
         return map.apply(studentRecord);
     }
 

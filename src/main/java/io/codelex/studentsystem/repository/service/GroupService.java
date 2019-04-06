@@ -26,9 +26,9 @@ public class GroupService {
         groupRecord.setStartDate(request.getStartDate());
         groupRecord.setEndDate(request.getEndDate());
         groupRecord.setPlannedEndDate(request.getPlannedEndDate());
+        groupRecord = recordRepository.save(groupRecord);
         return mapGroupRecordToGroup.apply(groupRecord);
     }
-
 
     public List<Group> findAllGroups() {
         return recordRepository.findAll()
@@ -37,12 +37,11 @@ public class GroupService {
                 .collect(Collectors.toList());
     }
 
-    public void deleteById(long groupsId) {
-        recordRepository.deleteById(groupsId);
-    }
-
     public Group findGroupById(long groupsId) {
         return recordRepository.findById(groupsId).map(mapGroupRecordToGroup).orElse(null);
     }
 
+    public void deleteById(long groupsId) {
+        recordRepository.deleteById(groupsId);
+    }
 }

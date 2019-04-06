@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository;
+package io.codelex.studentsystem.repository.serviceTests;
 
 
 import io.codelex.studentsystem.api.Employer;
@@ -23,16 +23,16 @@ class EmployerServiceTest {
     void should_be_able_to_add_employer() {
         //given
         AddEmployer request = setEmployer();
-        //when
         Mockito.when(employerRecordRepository.save(any())).thenAnswer((Answer) invocation -> invocation.getArguments()[0]);
-        Employer result = employerService.addEmployer(request);
+        //when
+        Employer actual = employerService.addEmployer(request);
         //then
-        assertEquals(result.getName(), request.getName());
-        assertEquals(result.getPersonName(), request.getPersonName());
-        assertEquals(result.getPersonEmail(), request.getPersonEmail());
-        assertEquals(result.getPersonPhone(), request.getPersonPhone());
-        assertEquals(result.getPassword(), request.getPassword());
-        assertEquals(result.getLogin(), request.getLogin());
+        assertEquals(request.getName(), actual.getName());
+        assertEquals(request.getPersonName(), actual.getPersonName());
+        assertEquals(request.getPersonEmail(), actual.getPersonEmail());
+        assertEquals(request.getPersonPhone(), actual.getPersonPhone());
+        assertEquals(request.getPassword(), actual.getPassword());
+        assertEquals(request.getLogin(), actual.getLogin());
     }
 
     @Test
@@ -53,6 +53,7 @@ class EmployerServiceTest {
 
     @Test
     void should_find_employer_by_id() {
+        //given
         EmployerRecord record = new EmployerRecord();
         record.setPassword("22231fggg");
         record.setPersonPhone("+37127837233");
@@ -62,7 +63,9 @@ class EmployerServiceTest {
         record.setName("Microsoft");
         Optional<EmployerRecord> employerRecord = Optional.of(record);
         Mockito.when(employerRecordRepository.findById(1L)).thenReturn(employerRecord);
+        //when
         Employer result = employerService.findEmployerById(1L);
+        //then
         assertNotNull(result);
         assertEquals(result.getPersonEmail(), record.getPersonEmail());
     }

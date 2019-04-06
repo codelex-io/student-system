@@ -24,11 +24,8 @@ public class EmployerService {
         employerRecord.setPersonPhone(request.getPersonPhone());
         employerRecord.setLogin(request.getLogin());
         employerRecord.setPassword(request.getPassword());
+        employerRecord = employerRepository.save(employerRecord);
         return mapEmployerRecordToEmployer.apply(employerRecord);
-    }
-
-    public void clear() {
-        employerRepository.deleteAll();
     }
 
     public Employer findEmployerById(long id) {
@@ -36,5 +33,9 @@ public class EmployerService {
                 .findById(id)
                 .map(mapEmployerRecordToEmployer)
                 .orElse(null);
+    }
+
+    public void deleteById(long id) {
+        employerRepository.deleteById(id);
     }
 }

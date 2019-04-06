@@ -28,14 +28,14 @@ public class InstructorService {
         return toInstructor.apply(instructorRecord);
     }
 
-    public void clear() {
-        recordRepository.deleteAll();
-    }
-
     public Instructor findInstructorById(long id) {
         return recordRepository
                 .findById(id)
                 .map(toInstructor)
                 .orElse(null);
+    }
+
+    public void deleteById(long id) {
+        recordRepository.deleteById(id);
     }
 }

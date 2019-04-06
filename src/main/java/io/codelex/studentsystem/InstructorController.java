@@ -16,13 +16,17 @@ public class InstructorController {
 
     @PutMapping("/internal-api/instructors")
     public Instructor addInstructor(@RequestBody AddInstructor request) {
-
         return service.addInstructor(request);
     }
 
-    @GetMapping("/api/instructors/{id}")
+    @GetMapping("/internal-api/instructors/{id}")
     public Instructor findInstructorByID(@PathVariable long id) {
-
         return service.findInstructorById(id);
     }
+
+    @DeleteMapping("/internal-api/groups/{instructorsId}")
+    public void deleteById(@PathVariable long instructorsId) {
+        service.deleteById(instructorsId);
+    }
+
 }
