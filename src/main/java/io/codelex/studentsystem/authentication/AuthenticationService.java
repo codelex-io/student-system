@@ -16,7 +16,7 @@ class AuthenticationService {
                         new UsernamePasswordAuthenticationToken(email,
                                 null,
                                 singleton(
-                                        new SimpleGrantedAuthority("ROLE_EMPLOYER"))));
+                                        new SimpleGrantedAuthority("EMPLOYER"))));
     }
 
     void clearAuthentication() {

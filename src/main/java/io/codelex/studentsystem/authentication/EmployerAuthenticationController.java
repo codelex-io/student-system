@@ -6,10 +6,10 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api")
-class EmployerController {
+class EmployerAuthenticationController {
     private final AuthenticationService authService;
 
-    EmployerController(AuthenticationService authService) {
+    EmployerAuthenticationController(AuthenticationService authService) {
         this.authService = authService;
     }
 
