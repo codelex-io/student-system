@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 
 import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -41,6 +42,7 @@ class TopicControllerTest {
     private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
+
     static {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
         JavaTimeModule javaTimeModule = new JavaTimeModule();
@@ -66,7 +68,7 @@ class TopicControllerTest {
     }
 
     @Test
-    void should_add_topic_and_give_200_response() throws Exception{
+    void should_add_topic_and_give_200_response() throws Exception {
         //given
         AddTopic request = new AddTopic("Java",
                 "done",
@@ -85,7 +87,7 @@ class TopicControllerTest {
     }
 
     @Test
-    void should_not_add_topic_and_give_400_response_if_fields_null() throws Exception{
+    void should_not_add_topic_and_give_400_response_if_fields_null() throws Exception {
         //given
         AddTopic request = new AddTopic("Java",
                 "done",
@@ -104,7 +106,7 @@ class TopicControllerTest {
     }
 
     @Test
-    void should_not_add_topic_and_give_400_response_if_contains_empty_field() throws Exception{
+    void should_not_add_topic_and_give_400_response_if_contains_empty_field() throws Exception {
         //given
         AddTopic request = new AddTopic("Java",
                 "",
@@ -114,6 +116,25 @@ class TopicControllerTest {
         //expected
         mockMvc.perform(
                 put("/internal-api/topics")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isBadRequest()
+                );
+    }
+
+    @Test
+    void should_find_topic_by_id_and_give_200_response() throws Exception {
+        //given
+        AddTopic request = new AddTopic("Java",
+                "done",
+                defaultDate
+        );
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
+                get("/internal-api/topics/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))

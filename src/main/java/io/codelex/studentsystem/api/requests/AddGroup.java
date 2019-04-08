@@ -18,7 +18,7 @@ public class AddGroup {
     private LocalDate plannedEndDate;
     @NotNull
     private double progress;
-    
+
 
     public AddGroup(@JsonProperty("name") String name,
                     @JsonProperty("startDate") LocalDate startDate,
