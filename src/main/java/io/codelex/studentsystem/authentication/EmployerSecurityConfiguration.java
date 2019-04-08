@@ -13,7 +13,8 @@ class EmployerSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.antMatcher("/api/**")
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/sign-in", "/api/register").permitAll()
-                .anyRequest().hasRole("Employer");
+                .antMatchers("/api/sign-in**", "/api/register**")
+                .permitAll()
+                .anyRequest().authenticated();
     }
 }

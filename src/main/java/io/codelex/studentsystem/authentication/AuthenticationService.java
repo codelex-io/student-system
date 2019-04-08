@@ -11,10 +11,11 @@ import static org.springframework.security.core.context.SecurityContextHolder.ge
 
 @Component
 class AuthenticationService {
-
     void authorise(String login) {
         Set<SimpleGrantedAuthority> authorities = singleton(new SimpleGrantedAuthority("Employer"));
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(login, null, authorities);
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(login,
+                null,
+                authorities);
         getContext().setAuthentication(token);
     }
 
