@@ -79,15 +79,6 @@ public class SecurityTests {
         assertEquals(login, accessAccount(sessionId).getBody());
     }
 
-    @Test
-    public void customer_should_not_be_able_to_access_admin_endpoints() {
-        ResponseEntity<Void> result = register();
-        assertEquals(OK, result.getStatusCode());
-
-        String sessionId = sessionId(result);
-        assertEquals(FORBIDDEN, accessAdminAccount(sessionId).getStatusCode());
-    }
-
     private ResponseEntity<Void> register() {
         URI uri = fromPath("/api/register")
                 .queryParam("login", login)
@@ -114,10 +105,6 @@ public class SecurityTests {
 
     private ResponseEntity<String> accessAccount(String sessionId) {
         return restTemplate.exchange("/api/account", GET, request(sessionId), String.class);
-    }
-
-    private ResponseEntity<String> accessAdminAccount(String sessionId) {
-        return restTemplate.exchange("/admin-api/account", GET, request(sessionId), String.class);
     }
 
     private String sessionId(ResponseEntity<?> result) {
