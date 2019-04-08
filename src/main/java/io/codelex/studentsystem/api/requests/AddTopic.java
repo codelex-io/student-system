@@ -3,11 +3,18 @@ package io.codelex.studentsystem.api.requests;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class AddTopic {
+    @NotNull
+    @NotEmpty
     private String name;
+    @NotNull
+    @NotEmpty
     private String state;
+    @NotNull
     private LocalDate creationDate;
 
     @JsonCreator

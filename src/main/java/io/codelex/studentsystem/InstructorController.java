@@ -5,6 +5,8 @@ import io.codelex.studentsystem.api.requests.AddInstructor;
 import io.codelex.studentsystem.repository.service.InstructorService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping
 public class InstructorController {
@@ -15,7 +17,7 @@ public class InstructorController {
     }
 
     @PutMapping("/internal-api/instructors")
-    public Instructor addInstructor(@RequestBody AddInstructor request) {
+    public Instructor addInstructor(@Valid @RequestBody AddInstructor request) {
         return service.addInstructor(request);
     }
 

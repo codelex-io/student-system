@@ -5,6 +5,7 @@ import io.codelex.studentsystem.api.requests.AddStudent;
 import io.codelex.studentsystem.repository.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class StudentController {
     }
 
     @PutMapping("/internal-api/students")
-    public Student addNewStudent(@RequestBody AddStudent request) {
+    public Student addNewStudent(@Valid @RequestBody AddStudent request) {
         return service.addStudent(request);
     }
 
