@@ -2,7 +2,6 @@ package io.codelex.studentsystem.repository.repositoryMapRecordsTests;
 
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.repository.mapRecord.MapTopicRecordToTopic;
-import io.codelex.studentsystem.repository.model.QuizRecord;
 import io.codelex.studentsystem.repository.model.TopicRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
