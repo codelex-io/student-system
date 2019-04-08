@@ -15,6 +15,9 @@ public class EmployerRecord {
     private String login;
     private String password;
 
+    public EmployerRecord() {
+    }
+
     public Long getId() {
         return id;
     }

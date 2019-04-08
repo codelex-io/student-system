@@ -5,6 +5,7 @@ import io.codelex.studentsystem.api.requests.AddTopic;
 import io.codelex.studentsystem.repository.service.TopicsService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class TopicController {
     }
 
     @PutMapping("/internal-api/topics")
-    public Topic addNewTopic(@RequestBody AddTopic request) {
+    public Topic addNewTopic(@Valid @RequestBody AddTopic request) {
         return service.addTopic(request);
     }
 
