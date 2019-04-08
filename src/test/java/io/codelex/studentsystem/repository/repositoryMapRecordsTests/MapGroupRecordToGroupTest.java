@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository;
+package io.codelex.studentsystem.repository.repositoryMapRecordsTests;
 
 import io.codelex.studentsystem.api.Group;
 import io.codelex.studentsystem.repository.mapRecord.MapGroupRecordToGroup;

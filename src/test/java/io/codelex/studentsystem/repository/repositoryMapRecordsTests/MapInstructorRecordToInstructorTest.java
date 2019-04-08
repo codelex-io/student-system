@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository;
+package io.codelex.studentsystem.repository.repositoryMapRecordsTests;
 
 import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.repository.mapRecord.MapInstructorRecordToInstructor;
@@ -22,7 +22,6 @@ class MapInstructorRecordToInstructorTest {
         record.setEmail("e-mail");
         //when
         Instructor testInstructor = toInstructor.apply(record);
-
         //then
         Assertions.assertEquals(testInstructor.getId(), 1L);
         Assertions.assertEquals(testInstructor.getName(), "Janis");
@@ -30,6 +29,5 @@ class MapInstructorRecordToInstructorTest {
         Assertions.assertEquals(testInstructor.getLinkedinLink(), "link");
         Assertions.assertEquals(testInstructor.getGithubLink(), "git");
         Assertions.assertEquals(testInstructor.getEmail(), "e-mail");
-
     }
 }
