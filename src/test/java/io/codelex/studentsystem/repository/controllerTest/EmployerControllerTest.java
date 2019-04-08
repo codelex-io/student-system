@@ -25,6 +25,7 @@ import java.time.format.DateTimeFormatter;
 
 import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,14 +33,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(EmployerController.class)
 class EmployerControllerTest {
-    
+
     @Autowired
     private MockMvc mockMvc;
-    
+
     @MockBean
     private EmployerService service;
-    
+
     private static final ObjectMapper MAPPER = new ObjectMapper();
+
     static {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
         JavaTimeModule javaTimeModule = new JavaTimeModule();
@@ -63,9 +65,9 @@ class EmployerControllerTest {
         builder.featuresToDisable(WRITE_DATES_AS_TIMESTAMPS);
         MAPPER.registerModule(javaTimeModule);
     }
-    
+
     @Test
-    void should_add_employer_and_give_200_response() throws Exception{
+    void should_add_employer_and_give_200_response() throws Exception {
         //given
         AddEmployer request = new AddEmployer("Big Company",
                 "Bobs",
@@ -78,16 +80,16 @@ class EmployerControllerTest {
         //expected
         mockMvc.perform(
                 put("/internal-api/employers")
-                .content(json)
-                .contentType(APPLICATION_JSON)
-                .accept(APPLICATION_JSON))
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk()
-        );
+                );
     }
-    
+
     @Test
-    void should_not_add_employer_and_give_400_if_contains_null() throws Exception{
+    void should_not_add_employer_and_give_400_if_contains_null() throws Exception {
         //given
         AddEmployer request = new AddEmployer("Big Company",
                 null,
@@ -109,7 +111,7 @@ class EmployerControllerTest {
     }
 
     @Test
-    void should_not_add_employer_and_give_400_if_contains_empty_field() throws Exception{
+    void should_not_add_employer_and_give_400_if_contains_empty_field() throws Exception {
         //given
         AddEmployer request = new AddEmployer("Big Company",
                 "",
@@ -129,24 +131,41 @@ class EmployerControllerTest {
                 .andExpect(status().isBadRequest()
                 );
     }
-    
+
     @Test
-    void should_find_employer_by_id_and_give_200_response() throws Exception{
-       
+    void should_find_employer_by_id_and_give_200_response() throws Exception {
+        //given
+        AddEmployer request = new AddEmployer("Big Company",
+                "BOB",
+                "292929229",
+                "janis@janis.eu",
+                "parole23",
+                "login"
+        );
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
+                get("/internal-api/employers/222")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isBadRequest()
+                );
     }
 
     @Test
-    void should_not_find_employer_by_id_if_no_such_id_and_give_400_response(){
+    void should_not_find_employer_by_id_if_no_such_id_and_give_400_response() {
 
-    }
-    
-    @Test
-    void should_delete_employer_by_id_and_give_200_response(){
-        
     }
 
     @Test
-    void should_give_400_response_if_id_does_not_exist(){
+    void should_delete_employer_by_id_and_give_200_response() {
+
+    }
+
+    @Test
+    void should_give_400_response_if_id_does_not_exist() {
 
     }
 }
