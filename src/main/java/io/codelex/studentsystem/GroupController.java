@@ -1,10 +1,12 @@
 package io.codelex.studentsystem;
 
 import io.codelex.studentsystem.api.Group;
+import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddGroup;
 import io.codelex.studentsystem.repository.service.GroupService;
+import io.codelex.studentsystem.repository.service.InstructorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +15,11 @@ import java.util.List;
 @RequestMapping
 public class GroupController {
     private final GroupService service;
+    private final InstructorService instructorService;
 
-    public GroupController(GroupService service) {
+    public GroupController(GroupService service, InstructorService instructorService) {
         this.service = service;
+        this.instructorService = instructorService;
     }
 
     @PutMapping("/internal-api/groups")
@@ -36,6 +40,11 @@ public class GroupController {
     @GetMapping("/internal-api/groups")
     public List<Group> showAllGroups() {
         return service.findAllGroups();
+    }
+
+    @GetMapping("/internal-api/groups/{groupsId}/instructors")
+    public List<Instructor> showInstructorsInGroup(@PathVariable long groupsId) {
+        return instructorService.findInstructorsByGroupId(groupsId);
     }
 
     @GetMapping("/internal-api/groups/{groupsId}/students")

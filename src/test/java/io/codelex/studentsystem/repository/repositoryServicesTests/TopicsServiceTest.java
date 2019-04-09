@@ -20,6 +20,7 @@ class TopicsServiceTest {
     private TopicRecordRepository repository = Mockito.mock(TopicRecordRepository.class);
     private TopicsService service = new TopicsService(repository);
     private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
+
     @Test
     void should_add_topic() {
         //given
