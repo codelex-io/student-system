@@ -7,6 +7,9 @@ import io.codelex.studentsystem.repository.mapRecord.MapInstructorRecordToInstru
 import io.codelex.studentsystem.repository.model.InstructorRecord;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class InstructorService {
     private final InstructorRecordRepository recordRepository;
@@ -33,6 +36,13 @@ public class InstructorService {
                 .findById(id)
                 .map(toInstructor)
                 .orElse(null);
+    }
+
+    public List<Instructor> findInstructorsByGroupId(long groupId) {
+        return recordRepository.findAllInstructorsInThisGroup(groupId)
+                .stream()
+                .map(toInstructor)
+                .collect(Collectors.toList());
     }
 
     public void deleteById(long id) {
