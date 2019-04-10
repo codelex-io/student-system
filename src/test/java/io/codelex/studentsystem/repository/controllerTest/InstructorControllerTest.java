@@ -143,6 +143,27 @@ class InstructorControllerTest {
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
+                get("/internal-api/instructors/1")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+    }
+    @Test
+    void should_not_find_instructor_by_id_if_no_such_id_and_give_400_response() throws Exception {
+        //given
+        AddInstructor request = new AddInstructor("Instructor",
+                "linkedin.com",
+                "github.com",
+                "123123123",
+                "janis@janis.eu",
+                false
+        );
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
                 get("/internal-api/instructors/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
