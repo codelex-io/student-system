@@ -6,19 +6,14 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class AddInstructor {
-    @NotNull
     @NotEmpty
     private String name;
-    @NotNull
     @NotEmpty
     private String linkedinLink;
-    @NotNull
     @NotEmpty
     private String githubLink;
-    @NotNull
     @NotEmpty
     private String phone;
-    @NotNull
     @NotEmpty
     private String email;
     @NotNull

@@ -8,10 +8,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class AddTopic {
-    @NotNull
     @NotEmpty
     private String name;
-    @NotNull
     @NotEmpty
     private String state;
     @NotNull
