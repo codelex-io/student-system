@@ -134,6 +134,25 @@ class TopicControllerTest {
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
+                get("/internal-api/topics/1")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+    }
+    
+    @Test
+    void should_not_find_topic_by_id_if_no_such_id_and_give_400_response() throws Exception {
+        //given
+        AddTopic request = new AddTopic("Java",
+                "done",
+                defaultDate
+        );
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
                 get("/internal-api/topics/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)

@@ -145,6 +145,28 @@ class EmployerControllerTest {
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
+                get("/internal-api/employers/1")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+    }
+
+    @Test
+    void should_not_find_employer_by_id_if_no_such_id_and_give_400_response() throws Exception {
+        //given
+        AddEmployer request = new AddEmployer("Big Company",
+                "BOB",
+                "292929229",
+                "janis@janis.eu",
+                "parole23",
+                "login"
+        );
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
                 get("/internal-api/employers/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
@@ -154,18 +176,4 @@ class EmployerControllerTest {
                 );
     }
 
-    @Test
-    void should_not_find_employer_by_id_if_no_such_id_and_give_400_response() {
-
-    }
-
-    @Test
-    void should_delete_employer_by_id_and_give_200_response() {
-
-    }
-
-    @Test
-    void should_give_400_response_if_id_does_not_exist() {
-
-    }
 }

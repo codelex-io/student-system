@@ -152,6 +152,30 @@ class StudentControllerTest {
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
+                get("/internal-api/students/1")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+    }
+
+    @Test
+    void should_not_find_student_by_id_if_no_such_id_and_give_400_response() throws Exception {
+        //given
+        AddStudent request = new AddStudent("Bob",
+                "ImgURL.COM",
+                "linkedin.com",
+                "github.com",
+                "123123123",
+                "janis@janis.lv",
+                "really long description",
+                "failed"
+        );
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
                 get("/internal-api/students/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)

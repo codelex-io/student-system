@@ -142,6 +142,27 @@ class GroupControllerTest {
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
+                get("/internal-api/groups/1")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+    }
+    
+    @Test
+    void should_not_find_group_by_id_if_no_such_id_and_give_400_response() throws Exception {
+        //given
+        AddGroup request = new AddGroup("group",
+                defaultDate,
+                defaultDate.plusDays(1),
+                defaultDate.plusDays(2),
+                35.9
+        );
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
                 get("/internal-api/groups/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
