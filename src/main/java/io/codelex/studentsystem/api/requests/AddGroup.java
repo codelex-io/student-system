@@ -7,12 +7,10 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class AddGroup {
-    @NotNull
     @NotEmpty
     private String name;
     @NotNull
     private LocalDate startDate;
-    @NotNull
     private LocalDate endDate;
     @NotNull
     private LocalDate plannedEndDate;
