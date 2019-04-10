@@ -2,12 +2,21 @@ package io.codelex.studentsystem.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class AddInstructor {
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String linkedinLink;
+    @NotEmpty
     private String githubLink;
+    @NotEmpty
     private String phone;
+    @NotEmpty
     private String email;
+    @NotNull
     private boolean status;
 
     public AddInstructor(@JsonProperty("name") String name,

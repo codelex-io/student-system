@@ -6,6 +6,8 @@ import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.repository.service.EmployerService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping
 public class EmployerController {
@@ -16,7 +18,7 @@ public class EmployerController {
     }
 
     @PutMapping("/internal-api/employers")
-    public Employer addEmployer(@RequestBody AddEmployer request) {
+    public Employer addEmployer(@Valid @RequestBody AddEmployer request) {
         return employerService.addEmployer(request);
     }
 
