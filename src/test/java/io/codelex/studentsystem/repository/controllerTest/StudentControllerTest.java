@@ -9,6 +9,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.codelex.studentsystem.StudentController;
 import io.codelex.studentsystem.api.requests.AddStudent;
 import io.codelex.studentsystem.repository.service.StudentService;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,15 +69,7 @@ class StudentControllerTest {
     @Test
     void should_add_student_and_give_200_response() throws Exception {
         //given
-        AddStudent request = new AddStudent("Bob",
-                "ImgURL.COM",
-                "linkedin.com",
-                "github.com",
-                "123123123",
-                "janis@janis.lv",
-                "really long description",
-                "failed"
-        );
+        AddStudent request = addStudentRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -140,15 +133,7 @@ class StudentControllerTest {
     @Test
     void should_find_student_by_id_and_give_200_response() throws Exception {
         //given
-        AddStudent request = new AddStudent("Bob",
-                "ImgURL.COM",
-                "linkedin.com",
-                "github.com",
-                "123123123",
-                "janis@janis.lv",
-                "really long description",
-                "failed"
-        );
+        AddStudent request = addStudentRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -164,15 +149,7 @@ class StudentControllerTest {
     @Test
     void should_not_find_student_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
-        AddStudent request = new AddStudent("Bob",
-                "ImgURL.COM",
-                "linkedin.com",
-                "github.com",
-                "123123123",
-                "janis@janis.lv",
-                "really long description",
-                "failed"
-        );
+        AddStudent request = addStudentRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -188,15 +165,7 @@ class StudentControllerTest {
     @Test
     void should_delete_by_id_and_return_200_response() throws Exception {
         //given
-        AddStudent request = new AddStudent("Bob",
-                "ImgURL.COM",
-                "linkedin.com",
-                "github.com",
-                "123123123",
-                "janis@janis.lv",
-                "really long description",
-                "failed"
-        );
+        AddStudent request = addStudentRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -212,15 +181,7 @@ class StudentControllerTest {
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
-        AddStudent request = new AddStudent("Bob",
-                "ImgURL.COM",
-                "linkedin.com",
-                "github.com",
-                "123123123",
-                "janis@janis.lv",
-                "really long description",
-                "failed"
-        );
+        AddStudent request = addStudentRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -231,5 +192,18 @@ class StudentControllerTest {
                 .andDo(print())
                 .andExpect(status().isBadRequest()
                 );
+    }
+
+    @NotNull
+    private AddStudent addStudentRequest() {
+        return new AddStudent("Bob",
+                "ImgURL.COM",
+                "linkedin.com",
+                "github.com",
+                "123123123",
+                "janis@janis.lv",
+                "really long description",
+                "failed"
+        );
     }
 }

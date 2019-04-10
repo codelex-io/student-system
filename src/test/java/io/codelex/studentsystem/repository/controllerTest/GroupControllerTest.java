@@ -9,6 +9,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.codelex.studentsystem.GroupController;
 import io.codelex.studentsystem.api.requests.AddGroup;
 import io.codelex.studentsystem.repository.service.GroupService;
+import io.codelex.studentsystem.repository.service.InstructorService;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,9 @@ class GroupControllerTest {
 
     @MockBean
     private GroupService service;
+    
+    @MockBean
+    private InstructorService instructorService;
 
     private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
 
@@ -133,12 +138,7 @@ class GroupControllerTest {
     @Test
     void should_find_group_by_id_and_give_200_response() throws Exception {
         //given
-        AddGroup request = new AddGroup("group",
-                defaultDate,
-                defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
-        );
+        AddGroup request = addGroupRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -154,12 +154,7 @@ class GroupControllerTest {
     @Test
     void should_not_find_group_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
-        AddGroup request = new AddGroup("group",
-                defaultDate,
-                defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
-        );
+        AddGroup request = addGroupRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -175,12 +170,7 @@ class GroupControllerTest {
     @Test
     void should_delete_by_id_and_return_200_response() throws Exception {
         //given
-        AddGroup request = new AddGroup("group",
-                defaultDate,
-                defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
-        );
+        AddGroup request = addGroupRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -196,12 +186,7 @@ class GroupControllerTest {
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
-        AddGroup request = new AddGroup("group",
-                defaultDate,
-                defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
-        );
+        AddGroup request = addGroupRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -212,5 +197,15 @@ class GroupControllerTest {
                 .andDo(print())
                 .andExpect(status().isBadRequest()
                 );
+    }
+
+    @NotNull
+    private AddGroup addGroupRequest() {
+        return new AddGroup("group",
+                defaultDate,
+                defaultDate.plusDays(1),
+                defaultDate.plusDays(2),
+                35.9
+        );
     }
 }
