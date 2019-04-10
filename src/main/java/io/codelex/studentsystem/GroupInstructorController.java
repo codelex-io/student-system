@@ -18,5 +18,4 @@ public class GroupInstructorController {
     public void linkInstructorsAndGroups(long instructorId, long groupId) {
         groupInstructorService.linkGroupWithInstructors(instructorId, groupId);
     }
-
 }

@@ -10,6 +10,7 @@ import io.codelex.studentsystem.EmployerController;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
 import io.codelex.studentsystem.repository.service.EmployerService;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,13 +70,7 @@ class EmployerControllerTest {
     @Test
     void should_add_employer_and_give_200_response() throws Exception {
         //given
-        AddEmployer request = new AddEmployer("Big Company",
-                "Bobs",
-                "292929229",
-                "janis@janis.eu",
-                "parole23",
-                "login"
-        );
+        AddEmployer request = addEmployerMethod();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -135,13 +130,7 @@ class EmployerControllerTest {
     @Test
     void should_find_employer_by_id_and_give_200_response() throws Exception {
         //given
-        AddEmployer request = new AddEmployer("Big Company",
-                "BOB",
-                "292929229",
-                "janis@janis.eu",
-                "parole23",
-                "login"
-        );
+        AddEmployer request = addEmployerMethod();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -157,13 +146,7 @@ class EmployerControllerTest {
     @Test
     void should_not_find_employer_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
-        AddEmployer request = new AddEmployer("Big Company",
-                "BOB",
-                "292929229",
-                "janis@janis.eu",
-                "parole23",
-                "login"
-        );
+        AddEmployer request = addEmployerMethod();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -180,13 +163,7 @@ class EmployerControllerTest {
     @Test
     void should_delete_by_id_and_return_200_response() throws Exception {
         //given
-        AddEmployer request = new AddEmployer("Big Company",
-                "BOB",
-                "292929229",
-                "janis@janis.eu",
-                "parole23",
-                "login"
-        );
+        AddEmployer request = addEmployerMethod();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -202,13 +179,7 @@ class EmployerControllerTest {
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
-        AddEmployer request = new AddEmployer("Big Company",
-                "BOB",
-                "292929229",
-                "janis@janis.eu",
-                "parole23",
-                "login"
-        );
+        AddEmployer request = addEmployerMethod();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -219,5 +190,16 @@ class EmployerControllerTest {
                 .andDo(print())
                 .andExpect(status().isBadRequest()
                 );
+    }
+
+    @NotNull
+    private AddEmployer addEmployerMethod() {
+        return new AddEmployer("Big Company",
+                    "BOB",
+                    "292929229",
+                    "janis@janis.eu",
+                    "parole23",
+                    "login"
+            );
     }
 }

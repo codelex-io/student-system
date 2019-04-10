@@ -9,6 +9,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.codelex.studentsystem.TopicController;
 import io.codelex.studentsystem.api.requests.AddTopic;
 import io.codelex.studentsystem.repository.service.TopicsService;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,10 +70,7 @@ class TopicControllerTest {
     @Test
     void should_add_topic_and_give_200_response() throws Exception {
         //given
-        AddTopic request = new AddTopic("Java",
-                "done",
-                defaultDate
-        );
+        AddTopic request = addTopicRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -126,10 +124,7 @@ class TopicControllerTest {
     @Test
     void should_find_topic_by_id_and_give_200_response() throws Exception {
         //given
-        AddTopic request = new AddTopic("Java",
-                "done",
-                defaultDate
-        );
+        AddTopic request = addTopicRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -145,10 +140,7 @@ class TopicControllerTest {
     @Test
     void should_not_find_topic_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
-        AddTopic request = new AddTopic("Java",
-                "done",
-                defaultDate
-        );
+        AddTopic request = addTopicRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -164,10 +156,7 @@ class TopicControllerTest {
     @Test
     void should_delete_by_id_and_return_200_response() throws Exception {
         //given
-        AddTopic request = new AddTopic("Java",
-                "done",
-                defaultDate
-        );
+        AddTopic request = addTopicRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -183,10 +172,7 @@ class TopicControllerTest {
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
-        AddTopic request = new AddTopic("Java",
-                "done",
-                defaultDate
-        );
+        AddTopic request = addTopicRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -198,5 +184,13 @@ class TopicControllerTest {
                 .andExpect(status().isBadRequest()
                 );
     }
-    
+
+    @NotNull
+    private AddTopic addTopicRequest() {
+        return new AddTopic("Java",
+                    "done",
+                    defaultDate
+            );
+    }
+
 }
