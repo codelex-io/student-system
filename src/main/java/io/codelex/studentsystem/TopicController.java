@@ -22,7 +22,7 @@ public class TopicController {
         return service.addTopic(request);
     }
 
-    @GetMapping("/api/topics/{id}")
+    @GetMapping("/internal-api/topics/{id}")
     public Topic findTopicById(@PathVariable("id") Long id) {
         return service.findTopicById(id);
     }
