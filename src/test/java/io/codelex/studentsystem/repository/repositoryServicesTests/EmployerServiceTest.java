@@ -8,6 +8,7 @@ import io.codelex.studentsystem.repository.service.EmployerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.Optional;
 
@@ -30,7 +31,7 @@ class EmployerServiceTest {
         assertEquals(request.getPersonName(), actual.getPersonName());
         assertEquals(request.getPersonEmail(), actual.getPersonEmail());
         assertEquals(request.getPersonPhone(), actual.getPersonPhone());
-        assertEquals(request.getPassword(), actual.getPassword());
+        assertTrue(BCrypt.checkpw(request.getPassword(), actual.getPassword()));
         assertEquals(request.getLogin(), actual.getLogin());
     }
 
@@ -44,7 +45,7 @@ class EmployerServiceTest {
         //then
         assertEquals(setEmployer().getLogin(), employer.getLogin());
         assertEquals(setEmployer().getName(), employer.getName());
-        assertEquals(setEmployer().getPassword(), employer.getPassword());
+        assertTrue(BCrypt.checkpw(setEmployer().getPassword(), employer.getPassword()));
         assertEquals(setEmployer().getPersonEmail(), employer.getPersonEmail());
         assertEquals(setEmployer().getPersonName(), employer.getPersonName());
         assertEquals(setEmployer().getPersonPhone(), employer.getPersonPhone());
