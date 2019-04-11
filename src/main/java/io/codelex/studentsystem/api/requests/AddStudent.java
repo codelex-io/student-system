@@ -2,14 +2,24 @@ package io.codelex.studentsystem.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotEmpty;
+
 public class AddStudent {
+    @NotEmpty
     private final String name;
+    @NotEmpty
     private final String image;
+    @NotEmpty
     private final String linkedIn;
+    @NotEmpty
     private final String gitHub;
+    @NotEmpty
     private final String telephone;
+    @NotEmpty
     private final String email;
+    @NotEmpty
     private final String description;
+    @NotEmpty
     private final String status;
 
     public AddStudent(@JsonProperty("name") String name,
