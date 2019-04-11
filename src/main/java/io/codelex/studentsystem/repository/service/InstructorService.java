@@ -54,10 +54,10 @@ public class InstructorService {
 
     private boolean isInstructorPresent(AddInstructor request) {
         return recordRepository.isInstructorPresent(request.getName(),
-                request.getEmail(),
-                request.getGithubLink(),
                 request.getLinkedinLink(),
+                request.getGithubLink(),
                 request.getPhone(),
+                request.getEmail(),
                 request.isStatus()
         );
     }
