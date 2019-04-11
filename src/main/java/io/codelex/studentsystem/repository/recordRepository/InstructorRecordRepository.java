@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface InstructorRecordRepository extends JpaRepository<InstructorRecord, Long> {
 
-    @Query("select instructor from Instructors instructor")
-    List<InstructorRecord> findAllInstructorsInThisGroup(@Param("group_id") long givenGroupId);
+    @Query("select i from Instructors i Join i.groups g Where g.groupId = :givenGroupId ")
+    List<InstructorRecord> findAllInstructorsInThisGroup(@Param("givenGroupId") long givenGroupId);
 
 }

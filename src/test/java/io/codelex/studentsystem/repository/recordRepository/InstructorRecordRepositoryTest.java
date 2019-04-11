@@ -56,6 +56,29 @@ class InstructorRecordRepositoryTest {
         Set<GroupRecord> groupRecordSet = resultInstructorRecord.getGroups();
         groupRecordSet.add(resultGroupRecord);
 
+        GroupRecord groupRecord2 = new GroupRecord();
+        groupRecord2.setName("The Group2");
+        groupRecord2.setStartDate(LocalDate.now());
+        groupRecord2.setEndDate(LocalDate.now().plusMonths(5));
+        groupRecord2.setPlannedEndDate(LocalDate.now().plusMonths(4));
+        groupRecord2.setProgress(0.0);
+        groupRecordRepository.save(groupRecord2);
+
+        InstructorRecord record2 = new InstructorRecord();
+        record2.setGroups(new HashSet<>());
+        record2.setName("Janis2");
+        record2.setStatus(true);
+        record2.setPhone("1232");
+        record2.setLinkedinLink("link2");
+        record2.setGithubLink("git2");
+        record2.setEmail("e-mail2");
+        instructorRecordRepository.save(record2);
+
+        GroupRecord resultGroupRecord2 = groupRecordRepository.findById(2L).orElse(null);
+        InstructorRecord resultInstructorRecord2 = instructorRecordRepository.findById(2L).orElse(null);
+        Set<GroupRecord> groupRecordSet2 = resultInstructorRecord2.getGroups();
+        groupRecordSet2.add(resultGroupRecord2);
+
         //when
         List<InstructorRecord> testList = new ArrayList<>();
         testList.add(record);
