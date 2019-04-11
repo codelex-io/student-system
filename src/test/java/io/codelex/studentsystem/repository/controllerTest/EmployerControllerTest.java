@@ -8,7 +8,6 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.codelex.studentsystem.EmployerController;
 import io.codelex.studentsystem.api.requests.AddEmployer;
-import io.codelex.studentsystem.repository.model.EmployerRecord;
 import io.codelex.studentsystem.repository.service.EmployerService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
@@ -195,11 +194,11 @@ class EmployerControllerTest {
     @NotNull
     private AddEmployer addEmployerMethod() {
         return new AddEmployer("Big Company",
-                    "BOB",
-                    "292929229",
-                    "janis@janis.eu",
-                    "parole23",
-                    "login"
-            );
+                "BOB",
+                "292929229",
+                "janis@janis.eu",
+                "parole23",
+                "login"
+        );
     }
 }

@@ -1,5 +1,9 @@
 package io.codelex.studentsystem.authentication;
 
+import io.codelex.studentsystem.api.requests.AddEmployer;
+import io.codelex.studentsystem.repository.service.EmployerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -8,19 +12,11 @@ import java.security.Principal;
 @RequestMapping("/api")
 class EmployerAuthenticationController {
     private final AuthenticationService authService;
+    private final EmployerService employerService;
 
-    EmployerAuthenticationController(AuthenticationService authService) {
+    public EmployerAuthenticationController(AuthenticationService authService, EmployerService employerService) {
         this.authService = authService;
-    }
-
-    @PostMapping("/sign-in")
-    public void signIn(@RequestParam("login") String login) {
-        authService.authorise(login);
-    }
-
-    @PostMapping("/register")
-    public void register(@RequestParam("login") String login) {
-        authService.authorise(login);
+        this.employerService = employerService;
     }
 
     @PostMapping("/sign-out")
@@ -32,4 +28,17 @@ class EmployerAuthenticationController {
     public String account(Principal principal) {
         return principal.getName();
     }
+
+    @PutMapping("/register")
+    public ResponseEntity<String> register(@RequestBody AddEmployer request) {
+        try {
+            employerService.addEmployer(request);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<>("Unable to register", HttpStatus.CONFLICT);
+        }
+        authService.authorise(request.getLogin());
+        return new ResponseEntity<>(request.getLogin() + " is registered", HttpStatus.CREATED);
+    }
+
+
 }

@@ -9,10 +9,8 @@ public class InstructorRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long instructorId;
-    
     @ManyToMany
     private Set<GroupRecord> groups;
-    
     private String name;
     private String linkedinLink;
     private String githubLink;

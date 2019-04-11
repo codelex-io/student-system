@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity(name = "Students")
+@Entity
 @Table(name = "students")
 public class StudentRecord {
     @Id

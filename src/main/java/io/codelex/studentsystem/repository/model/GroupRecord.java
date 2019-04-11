@@ -8,17 +8,13 @@ import java.util.Set;
 @Entity(name = "Groups")
 @Table(name = "groups")
 public class GroupRecord {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long groupId;
-    
     @OneToMany
     private Set<StudentRecord> students;
-
     @ManyToMany
     private Set<TopicRecord> topics;
-    
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;

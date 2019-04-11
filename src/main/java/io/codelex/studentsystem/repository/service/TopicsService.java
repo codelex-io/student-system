@@ -2,9 +2,9 @@ package io.codelex.studentsystem.repository.service;
 
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddTopic;
-import io.codelex.studentsystem.repository.mapRecord.MapTopicRecordToTopic;
+import io.codelex.studentsystem.repository.model.maprecord.MapTopicRecordToTopic;
 import io.codelex.studentsystem.repository.model.TopicRecord;
-import io.codelex.studentsystem.repository.recordRepository.TopicRecordRepository;
+import io.codelex.studentsystem.repository.recordrepository.TopicRecordRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

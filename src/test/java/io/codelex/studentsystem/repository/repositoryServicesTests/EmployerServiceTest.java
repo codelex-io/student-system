@@ -3,7 +3,7 @@ package io.codelex.studentsystem.repository.repositoryServicesTests;
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
-import io.codelex.studentsystem.repository.recordRepository.EmployerRecordRepository;
+import io.codelex.studentsystem.repository.recordrepository.EmployerRecordRepository;
 import io.codelex.studentsystem.repository.service.EmployerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

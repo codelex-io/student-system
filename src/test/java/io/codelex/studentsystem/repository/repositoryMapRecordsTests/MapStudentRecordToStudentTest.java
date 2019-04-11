@@ -3,7 +3,7 @@ package io.codelex.studentsystem.repository.repositoryMapRecordsTests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import io.codelex.studentsystem.api.Student;
-import io.codelex.studentsystem.repository.mapRecord.MapStudentRecordToStudent;
+import io.codelex.studentsystem.repository.model.maprecord.MapStudentRecordToStudent;
 import io.codelex.studentsystem.repository.model.StudentRecord;
 
 public class MapStudentRecordToStudentTest {

@@ -2,9 +2,8 @@ package io.codelex.studentsystem.repository.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
-@Entity(name = "Topics")
+@Entity
 @Table(name = "topics")
 public class TopicRecord {
     @Id
@@ -13,20 +12,9 @@ public class TopicRecord {
     private String name;
     private String state;
     private LocalDate creationDate;
-    
-    @OneToMany
-    private Set<QuizRecord> quizes;
 
     public Long getTopicId() {
         return topicId;
-    }
-
-    public Set<QuizRecord> getQuizes() {
-        return quizes;
-    }
-
-    public void setQuizes(Set<QuizRecord> quizes) {
-        this.quizes = quizes;
     }
 
     public void setTopicId(Long topicId) {

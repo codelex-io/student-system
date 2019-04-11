@@ -1,7 +1,7 @@
 package io.codelex.studentsystem.repository.repositoryMapRecordsTests;
 
 import io.codelex.studentsystem.api.Instructor;
-import io.codelex.studentsystem.repository.mapRecord.MapInstructorRecordToInstructor;
+import io.codelex.studentsystem.repository.model.maprecord.MapInstructorRecordToInstructor;
 import io.codelex.studentsystem.repository.model.InstructorRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
