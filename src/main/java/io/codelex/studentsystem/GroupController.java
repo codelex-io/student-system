@@ -5,10 +5,12 @@ import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddGroup;
+import io.codelex.studentsystem.repository.recordrepository.GroupRecordRepository;
 import io.codelex.studentsystem.repository.service.GroupService;
 import io.codelex.studentsystem.repository.service.InstructorService;
 import io.codelex.studentsystem.repository.service.StudentService;
 import io.codelex.studentsystem.repository.service.TopicsService;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +23,7 @@ public class GroupController {
     private final InstructorService instructorService;
     private final TopicsService topicsService;
     private final StudentService studentService;
+    private GroupRecordRepository repository;
 
     public GroupController(GroupService service, InstructorService instructorService, TopicsService topicsService, StudentService studentService) {
         this.service = service;
@@ -30,18 +33,32 @@ public class GroupController {
     }
 
     @PutMapping("/internal-api/groups")
-    public Group addGroup(@Valid @RequestBody AddGroup request) {
-        return service.addGroup(request);
+    public ResponseEntity<Group> addGroup(@Valid @RequestBody AddGroup request) {
+        try {
+            service.addGroup(request);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/internal-api/groups/{groupsId}")
-    public Group findGroupById(@PathVariable long groupsId) {
-        return service.findGroupById(groupsId);
+    public ResponseEntity<Group> findGroupById(@PathVariable long groupsId) {
+        if(service.findGroupById(groupsId) != null){
+            return new ResponseEntity<>(service.findGroupById(groupsId), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/internal-api/groups/{groupsId}")
-    public void deleteById(@PathVariable long groupsId) {
-        service.deleteById(groupsId);
+    public ResponseEntity<String> deleteById(@PathVariable long groupsId) {
+        if(service.findGroupById(groupsId) != null){
+            service.deleteById(groupsId);
+            return new ResponseEntity<>("Group deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(groupsId + " id already does not exist!", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/internal-api/groups")
