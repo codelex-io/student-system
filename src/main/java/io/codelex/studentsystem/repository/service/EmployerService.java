@@ -43,17 +43,6 @@ public class EmployerService implements EmployerServiceInterface {
     }
 
     @Override
-    public boolean isEmployerPresent(AddEmployer request) {
-        return employerRepository.isEmployerPresent(
-                request.getPersonEmail(),
-                request.getLogin(),
-                request.getName(),
-                request.getPersonName(),
-                request.getPassword(),
-                request.getPersonPhone());
-    }
-
-    @Override
     public Employer findEmployerById(long id) {
         return employerRepository
                 .findById(id)
@@ -74,5 +63,16 @@ public class EmployerService implements EmployerServiceInterface {
         return employerRepository.getPassword(
                 request.getLogin()
         );
+    }
+
+    @Override
+    public boolean isEmployerPresent(AddEmployer request) {
+        return employerRepository.isEmployerPresent(
+                request.getPersonEmail(),
+                request.getLogin(),
+                request.getName(),
+                request.getPersonName(),
+                request.getPassword(),
+                request.getPersonPhone());
     }
 }

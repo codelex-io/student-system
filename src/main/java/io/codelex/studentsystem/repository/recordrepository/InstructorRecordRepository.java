@@ -15,15 +15,15 @@ public interface InstructorRecordRepository extends JpaRepository<InstructorReco
 
     @Query("select count(instructors) > 0 from Instructors instructors"
             + " where instructors.name = :name"
-            + " and instructors.email = :email"
-            + " and instructors.githubLink = :githubLink"
             + " and instructors.linkedinLink = :linkedinLink"
+            + " and instructors.githubLink = :githubLink"
             + " and instructors.phone = :phone"
+            + " and instructors.email = :email"
             + " and instructors.status = :status")
     boolean isInstructorPresent(@Param("name") String name,
-                           @Param("email") String email,
-                           @Param("githubLink") String githubLink,
-                           @Param("linkedinLink") String linkedinLink,
-                           @Param("phone") String phone,
-                           @Param("status") String status);
+                                @Param("linkedinLink") String linkedinLink,
+                                @Param("githubLink") String githubLink,
+                                @Param("phone") String phone,
+                                @Param("email") String email,
+                                @Param("status") boolean status);
 }
