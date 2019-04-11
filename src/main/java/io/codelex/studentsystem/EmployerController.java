@@ -27,8 +27,12 @@ public class EmployerController {
     }
 
     @GetMapping("/internal-api/employers/{employerId}")
-    public Employer findEmployerById(@PathVariable long employerId) {
-        return employerService.findEmployerById(employerId);
+    public ResponseEntity<Employer> findEmployerById(@PathVariable long employerId) {
+        if(employerService.findEmployerById(employerId) != null){
+            return new ResponseEntity<>(employerService.findEmployerById(employerId), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/internal-api/employers/{employerId}")
