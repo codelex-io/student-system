@@ -47,22 +47,6 @@ class EmployerAuthenticationTests {
                 );
     }
 
-    @Test
-    void should_not_register_employer_with_missing_phone_number() throws Exception {
-        //given
-        AddEmployer request = setEmployerWithNull();
-        String json = MAPPER.writeValueAsString(request);
-        //expected
-        mockMvc.perform(
-                put("/api/register")
-                        .content(json)
-                        .contentType(APPLICATION_JSON)
-                        .accept(APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk()
-                );
-    }
-
     private AddEmployer setEmployer() {
         return new AddEmployer("Big Company",
                 "BOB",
