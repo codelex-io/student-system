@@ -3,7 +3,6 @@ package io.codelex.studentsystem;
 
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.requests.AddEmployer;
-import io.codelex.studentsystem.repository.recordrepository.EmployerRecordRepository;
 import io.codelex.studentsystem.repository.service.EmployerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,6 @@ import javax.validation.Valid;
 @RequestMapping
 public class EmployerController {
     private final EmployerService employerService;
-    private EmployerRecordRepository employerRecordRepository;
 
     public EmployerController(EmployerService employerService) {
         this.employerService = employerService;
@@ -28,7 +26,7 @@ public class EmployerController {
 
     @GetMapping("/internal-api/employers/{employerId}")
     public ResponseEntity<Employer> findEmployerById(@PathVariable long employerId) {
-        if(employerService.findEmployerById(employerId) != null){
+        if (employerService.findEmployerById(employerId) != null) {
             return new ResponseEntity<>(employerService.findEmployerById(employerId), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -37,7 +35,7 @@ public class EmployerController {
 
     @DeleteMapping("/internal-api/employers/{employerId}")
     public ResponseEntity<String> deleteById(@PathVariable long employerId) {
-        if(employerService.findEmployerById(employerId) != null){
+        if (employerService.findEmployerById(employerId) != null) {
             employerService.deleteById(employerId);
             return new ResponseEntity<>(employerId + " Id was deleted", HttpStatus.OK);
         } else {
