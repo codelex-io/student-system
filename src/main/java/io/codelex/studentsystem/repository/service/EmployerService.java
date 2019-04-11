@@ -3,6 +3,7 @@ package io.codelex.studentsystem.repository.service;
 import io.codelex.studentsystem.EmployerServiceInterface;
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.requests.AddEmployer;
+import io.codelex.studentsystem.api.requests.SignIn;
 import io.codelex.studentsystem.repository.recordrepository.EmployerRecordRepository;
 import io.codelex.studentsystem.repository.model.maprecord.MapEmployerRecordToEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
@@ -21,7 +22,7 @@ public class EmployerService implements EmployerServiceInterface {
 
     @Override
     public Employer addEmployer(AddEmployer request) {
-        if (isEmployerPresent(request)) {
+        if (isEmployerPresent(request) || isLoginPresent(request)) {
             throw new IllegalStateException();
         }
         EmployerRecord employerRecord = new EmployerRecord();
@@ -34,6 +35,12 @@ public class EmployerService implements EmployerServiceInterface {
         employerRecord = employerRepository.save(employerRecord);
         return mapEmployerRecordToEmployer.apply(employerRecord);
     }
+
+    private boolean isLoginPresent(AddEmployer request) {
+        return employerRepository.isLoginPresent(
+                request.getLogin());
+    }
+
     @Override
     public boolean isEmployerPresent(AddEmployer request) {
         return employerRepository.isEmployerPresent(
@@ -56,5 +63,11 @@ public class EmployerService implements EmployerServiceInterface {
     @Override
     public void deleteById(long id) {
         employerRepository.deleteById(id);
+    }
+
+    public boolean isSignInIsValid(SignIn request) {
+        return employerRepository.isSignInIsValid(
+                request.getLogin(),
+                request.getPassword());
     }
 }
