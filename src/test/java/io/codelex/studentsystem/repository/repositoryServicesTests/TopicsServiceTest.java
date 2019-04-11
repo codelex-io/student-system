@@ -3,6 +3,7 @@ package io.codelex.studentsystem.repository.repositoryServicesTests;
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddTopic;
 import io.codelex.studentsystem.repository.model.TopicRecord;
+import io.codelex.studentsystem.repository.recordrepository.GroupRecordRepository;
 import io.codelex.studentsystem.repository.recordrepository.TopicRecordRepository;
 import io.codelex.studentsystem.repository.service.TopicsService;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +19,8 @@ import static org.mockito.ArgumentMatchers.any;
 
 class TopicsServiceTest {
     private TopicRecordRepository repository = Mockito.mock(TopicRecordRepository.class);
-    private TopicsService service = new TopicsService(repository);
+    private GroupRecordRepository recordRepository = Mockito.mock(GroupRecordRepository.class);
+    private TopicsService service = new TopicsService(repository, recordRepository);
     private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
 
     @Test

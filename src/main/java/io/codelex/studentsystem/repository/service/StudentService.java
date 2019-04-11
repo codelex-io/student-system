@@ -29,6 +29,7 @@ public class StudentService {
         studentRecord.setName(request.getName());
         studentRecord.setStatus(request.getStatus());
         studentRecord.setTelephone(request.getTelephone());
+        studentRecord.setGroupId(request.getGroupId());
         studentRecord = studentRecordRepository.save(studentRecord);
         return map.apply(studentRecord);
     }
@@ -48,7 +49,11 @@ public class StudentService {
     }
 
     public void deleteById(long id) {
-        
+
         studentRecordRepository.deleteById(id);
+    }
+
+    public List<Student> findStudentsInGroup(long groupsId) {
+        return studentRecordRepository.findStudentsByGroupId(groupsId).stream().map(map).collect(Collectors.toList());
     }
 }

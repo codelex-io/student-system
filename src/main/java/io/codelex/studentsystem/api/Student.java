@@ -13,6 +13,7 @@ public class Student {
     private String email;
     private String description;
     private String status;
+    private long groupId;
 
     @JsonCreator
     public Student(@JsonProperty("id") Long id,
@@ -23,8 +24,8 @@ public class Student {
                    @JsonProperty("telephone") String telephone,
                    @JsonProperty("email") String email,
                    @JsonProperty("description") String description,
-                   @JsonProperty("status") String status) {
-        this.id = id;
+                   @JsonProperty("status") String status,
+                   @JsonProperty("groupId") long groupId) {
         this.name = name;
         this.image = image;
         this.linkedIn = linkedIn;
@@ -33,6 +34,7 @@ public class Student {
         this.email = email;
         this.description = description;
         this.status = status;
+        this.groupId = groupId;
     }
 
     public Long getId() {
@@ -69,5 +71,13 @@ public class Student {
 
     public String getStatus() {
         return status;
+    }
+
+    public long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(long groupId) {
+        this.groupId = groupId;
     }
 }

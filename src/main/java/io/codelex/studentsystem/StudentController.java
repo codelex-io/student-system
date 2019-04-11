@@ -31,10 +31,6 @@ public class StudentController {
     public void deleteById(@PathVariable long studentsId) {
         service.deleteById(studentsId);
     }
-
-    @GetMapping("/internal-api/students")
-    public List<Student> showAllGroups() {
-        return service.findAllStudents();
-    }
+    
 }
     
