@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface InstructorRecordRepository extends JpaRepository<InstructorRecord, Long> {
 
-    @Query("select instructor from Instructors instructor")
-    List<InstructorRecord> findAllInstructorsInThisGroup(@Param("group_id") long givenGroupId);
+    @Query("select i from Instructors i Join i.groups g Where g.groupId = :givenGroupId ")
+    List<InstructorRecord> findAllInstructorsInThisGroup(@Param("givenGroupId") long givenGroupId);
 
     @Query("select count(instructors) > 0 from Instructors instructors"
             + " where instructors.name = :name"
