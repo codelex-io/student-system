@@ -2,13 +2,20 @@ package io.codelex.studentsystem.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class AddGroup {
+    @NotEmpty
     private final String name;
+    @NotNull
     private final LocalDate startDate;
+    @NotNull
     private final LocalDate endDate;
+    @NotNull
     private final LocalDate plannedEndDate;
+    @NotNull
     private final double progress;
     
 

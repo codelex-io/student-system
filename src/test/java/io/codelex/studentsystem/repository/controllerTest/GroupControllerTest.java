@@ -136,22 +136,6 @@ class GroupControllerTest {
     }
 
     @Test
-    void should_find_group_by_id_and_give_200_response() throws Exception {
-        //given
-        AddGroup request = addGroupRequest();
-        String json = MAPPER.writeValueAsString(request);
-        //expected
-        mockMvc.perform(
-                get("/internal-api/groups/1")
-                        .content(json)
-                        .contentType(APPLICATION_JSON)
-                        .accept(APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk()
-                );
-    }
-    
-    @Test
     void should_not_find_group_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
         AddGroup request = addGroupRequest();
@@ -167,22 +151,7 @@ class GroupControllerTest {
                 );
     }
 
-    @Test
-    void should_delete_by_id_and_return_200_response() throws Exception {
-        //given
-        AddGroup request = addGroupRequest();
-        String json = MAPPER.writeValueAsString(request);
-        //expected
-        mockMvc.perform(
-                delete("/internal-api/groups/1")
-                        .content(json)
-                        .contentType(APPLICATION_JSON)
-                        .accept(APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk()
-                );
-    }
-
+    
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given

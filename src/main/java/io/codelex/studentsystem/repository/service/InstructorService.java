@@ -20,6 +20,9 @@ public class InstructorService {
     }
 
     public Instructor addInstructor(AddInstructor request) {
+        if (isInstructorPresent(request)) {
+            throw new IllegalStateException();
+        }
         InstructorRecord instructorRecord = new InstructorRecord();
         instructorRecord.setEmail(request.getEmail());
         instructorRecord.setGithubLink(request.getGithubLink());
@@ -47,5 +50,15 @@ public class InstructorService {
 
     public void deleteById(long id) {
         recordRepository.deleteById(id);
+    }
+
+    private boolean isInstructorPresent(AddInstructor request) {
+        return recordRepository.isInstructorPresent(request.getName(),
+                request.getEmail(),
+                request.getGithubLink(),
+                request.getLinkedinLink(),
+                request.getPhone(),
+                request.isStatus()
+        );
     }
 }
