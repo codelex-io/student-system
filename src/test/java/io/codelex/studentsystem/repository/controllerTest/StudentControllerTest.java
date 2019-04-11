@@ -92,8 +92,8 @@ class StudentControllerTest {
                 null,
                 "janis@janis.lv",
                 "really long description",
-                "failed"
-        );
+                "failed",
+                1L);
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -116,8 +116,8 @@ class StudentControllerTest {
                 "123123123",
                 "janis@janis.lv",
                 "really long description",
-                "failed"
-        );
+                "failed",
+                1L);
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
@@ -203,7 +203,7 @@ class StudentControllerTest {
                 "123123123",
                 "janis@janis.lv",
                 "really long description",
-                "failed"
-        );
+                "failed",
+                1L);
     }
 }

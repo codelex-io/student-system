@@ -19,6 +19,7 @@ public class StudentRecord {
     private String email;
     private String description;
     private String status;
+    private long groupId;
 
     public Long getStudentId() {
         return studentId;
@@ -90,5 +91,13 @@ public class StudentRecord {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(long groupId) {
+        this.groupId = groupId;
     }
 }

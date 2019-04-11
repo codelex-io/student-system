@@ -16,7 +16,8 @@ public class MapStudentRecordToStudent implements Function<StudentRecord, Studen
                 studentRecord.getTelephone(),
                 studentRecord.getEmail(),
                 studentRecord.getDescription(),
-                studentRecord.getStatus()
+                studentRecord.getStatus(),
+                studentRecord.getGroupId()
         );
     }
 }
