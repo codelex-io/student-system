@@ -20,6 +20,9 @@ public class GroupService {
     }
 
     public Group addGroup(AddGroup request) {
+        if (isGroupPresentRequest(request)) {
+            throw new IllegalStateException();
+        }
         GroupRecord groupRecord = new GroupRecord();
         groupRecord.setProgress(request.getProgress());
         groupRecord.setName(request.getName());
@@ -43,5 +46,13 @@ public class GroupService {
 
     public void deleteById(long groupsId) {
         recordRepository.deleteById(groupsId);
+    }
+
+    private boolean isGroupPresentRequest(AddGroup request) {
+        return recordRepository.isGroupPresent(request.getName(),
+                request.getStartDate(),
+                request.getEndDate(),
+                request.getPlannedEndDate(),
+                request.getProgress());
     }
 }
