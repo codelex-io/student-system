@@ -7,10 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController
 @RequestMapping("/api")
+public
 class EmployerAuthenticationController {
     private final AuthenticationService authService;
     private final EmployerService employerService;
@@ -43,14 +45,13 @@ class EmployerAuthenticationController {
 
     @PutMapping("/sign-in")
     public ResponseEntity<String> signIn(@RequestBody SignIn request) {
-        if(employerService.isSignInIsValid(request)){
+        if (employerService.isSignInIsValid(request)) {
             authService.authorise(request.getLogin());
             return new ResponseEntity<>(request.getLogin() + " signed in", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Unable to sign in", HttpStatus.OK);
         }
     }
-
 
 
 }

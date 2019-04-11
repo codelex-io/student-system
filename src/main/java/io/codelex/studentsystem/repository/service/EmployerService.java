@@ -8,6 +8,7 @@ import io.codelex.studentsystem.repository.recordrepository.EmployerRecordReposi
 import io.codelex.studentsystem.repository.model.maprecord.MapEmployerRecordToEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -31,7 +32,7 @@ public class EmployerService implements EmployerServiceInterface {
         employerRecord.setPersonEmail(request.getPersonEmail());
         employerRecord.setPersonPhone(request.getPersonPhone());
         employerRecord.setLogin(request.getLogin());
-        employerRecord.setPassword(request.getPassword());
+        employerRecord.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
         employerRecord = employerRepository.save(employerRecord);
         return mapEmployerRecordToEmployer.apply(employerRecord);
     }
@@ -66,8 +67,12 @@ public class EmployerService implements EmployerServiceInterface {
     }
 
     public boolean isSignInIsValid(SignIn request) {
-        return employerRepository.isSignInIsValid(
-                request.getLogin(),
-                request.getPassword());
+        return BCrypt.checkpw(request.getPassword(), getPassword(request));
+    }
+
+    private String getPassword(SignIn request) {
+        return employerRepository.getPassword(
+                request.getLogin()
+        );
     }
 }

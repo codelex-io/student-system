@@ -25,9 +25,7 @@ public interface EmployerRecordRepository extends JpaRepository<EmployerRecord, 
             + " where employer.login = :login")
     boolean isLoginPresent(@Param("login") String login);
 
-    @Query("select count(employer) > 0 from EmployerRecord employer"
-            + " where employer.login = :login"
-            + " and employer.password = :password")
-    boolean isSignInIsValid(@Param("login") String login,
-                            @Param("password") String password);
+    @Query("select employer.password from EmployerRecord employer"
+            + " where employer.login = :login")
+    String getPassword(@Param("login") String login);
 }
