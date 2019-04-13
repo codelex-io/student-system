@@ -12,8 +12,7 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api")
-public //todo
-class EmployerAuthenticationController {
+public class EmployerAuthenticationController {
     private final AuthenticationService authService;
     private final EmployerService employerService;
 

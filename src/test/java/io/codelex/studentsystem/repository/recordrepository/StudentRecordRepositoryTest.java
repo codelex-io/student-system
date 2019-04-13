@@ -1,5 +1,6 @@
 package io.codelex.studentsystem.repository.recordrepository;
 
+import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.repository.GroupRecordRepository;
 import io.codelex.studentsystem.repository.StudentRecordRepository;
 import io.codelex.studentsystem.repository.model.GroupRecord;
@@ -14,6 +15,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static io.codelex.studentsystem.api.Student.StudentStatus.AVAILABLE;
+import static io.codelex.studentsystem.api.Student.StudentStatus.SOLD;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -49,13 +53,13 @@ class StudentRecordRepositoryTest {
         studentRecord.setGithub("github");
         studentRecord.setLinkedin("linkedin");
         studentRecord.setImage("image");
-        studentRecord.setStatus("available");
+        studentRecord.setStatus(AVAILABLE);
         studentRecordRepository.save(studentRecord);
 
         StudentRecord studentRecord2 = new StudentRecord();
         studentRecord2.setName("Anna");
         studentRecord2.setTelephone("1234562");
-        studentRecord2.setStatus("available");
+        studentRecord2.setStatus(SOLD);
         studentRecord2.setGroupId(2L);
         studentRecord2.setDescription("Student2");
         studentRecord2.setEmail("e@mail.com2");

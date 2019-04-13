@@ -4,6 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Student {
+
+    public enum StudentStatus {
+        AVAILABLE,
+        SOLD,
+        DISMISSED
+    }
+
     private Long id;
     private String name;
     private String image;
@@ -12,7 +19,7 @@ public class Student {
     private String telephone;
     private String email;
     private String description;
-    private String status; //todo enum
+    private StudentStatus status;
     private long groupId;
 
     @JsonCreator
@@ -24,7 +31,7 @@ public class Student {
                    @JsonProperty("telephone") String telephone,
                    @JsonProperty("email") String email,
                    @JsonProperty("description") String description,
-                   @JsonProperty("status") String status,
+                   @JsonProperty("status") StudentStatus status,
                    @JsonProperty("groupId") long groupId) {
         this.id = id;
         this.name = name;
@@ -37,6 +44,15 @@ public class Student {
         this.status = status;
         this.groupId = groupId;
     }
+
+    public StudentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(StudentStatus status) {
+        this.status = status;
+    }
+
 
     public Long getId() {
         return id;
@@ -68,10 +84,6 @@ public class Student {
 
     public String getDescription() {
         return description;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public long getGroupId() {

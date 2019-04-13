@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.repositoryServicesTests;
+package io.codelex.studentsystem.repository.repositoryservicestests;
 
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.requests.AddStudent;
@@ -11,6 +11,7 @@ import org.mockito.stubbing.Answer;
 
 import java.util.Optional;
 
+import static io.codelex.studentsystem.api.Student.StudentStatus.SOLD;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -63,7 +64,7 @@ class StudentServiceTest {
         record.setDescription("very active");
         record.setGithub("somegit");
         record.setImage("linktoimage");
-        record.setStatus("sold");
+        record.setStatus(SOLD);
         record.setTelephone("+2141124124");
         record.setLinkedin("linkedlink");
         Optional<StudentRecord> studentRecord = Optional.of(record);
@@ -91,6 +92,6 @@ class StudentServiceTest {
                 "213131231",
                 "janis@janis.lv",
                 "bob is noob",
-                "failed", 1L);
+                SOLD, 1L);
     }
 }

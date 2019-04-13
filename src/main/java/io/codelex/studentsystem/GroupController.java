@@ -18,6 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/internal-api/groups")
 public class GroupController {
     private final GroupService service;
     private final InstructorService instructorService;
@@ -31,7 +32,7 @@ public class GroupController {
         this.studentService = studentService;
     }
 
-    @PutMapping("/internal-api/groups")
+    @PutMapping
     public ResponseEntity<?> addGroup(@Valid @RequestBody AddGroup request) {
         try {
             return new ResponseEntity<>(service.addGroup(request), HttpStatus.OK);
@@ -40,7 +41,7 @@ public class GroupController {
         }
     }
 
-    @GetMapping("/internal-api/groups/{groupsId}")
+    @GetMapping("/{groupsId}")
     public ResponseEntity<?> findGroupById(@PathVariable long groupsId) {
         if (service.findGroupById(groupsId) != null) {
             return new ResponseEntity<>(service.findGroupById(groupsId), HttpStatus.OK);
@@ -49,7 +50,7 @@ public class GroupController {
         }
     }
 
-    @DeleteMapping("/internal-api/groups/{groupsId}")
+    @DeleteMapping("/{groupsId}")
     public ResponseEntity<String> deleteById(@PathVariable long groupsId) {
         if (service.findGroupById(groupsId) != null) {
             service.deleteById(groupsId);
@@ -59,22 +60,22 @@ public class GroupController {
         }
     }
 
-    @GetMapping("/internal-api/groups")
+    @GetMapping
     public List<Group> showAllGroups() {
         return service.findAllGroups();
     }
 
-    @GetMapping("/internal-api/groups/{groupsId}/instructors")
+    @GetMapping("/{groupsId}/instructors")
     public List<Instructor> showInstructorsInGroup(@PathVariable long groupsId) {
         return instructorService.findInstructorsByGroupId(groupsId);
     }
 
-    @GetMapping("/internal-api/groups/{groupsId}/students")
+    @GetMapping("/{groupsId}/students")
     public List<Student> showStudentsInGroup(@PathVariable long groupsId) {
         return studentService.findStudentsInGroup(groupsId);
     }
 
-    @GetMapping("/internal-api/groups/{groupsId}/topics")
+    @GetMapping("/{groupsId}/topics")
     public List<Topic> showTopicsInGroup(@PathVariable long groupsId) {
         return topicsService.showTopicInGroup(groupsId);
     }

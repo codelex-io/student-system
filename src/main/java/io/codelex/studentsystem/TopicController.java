@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/internal-api/topics")
 public class TopicController {
     private final TopicsService service;
 
@@ -18,7 +19,7 @@ public class TopicController {
         this.service = service;
     }
 
-    @PutMapping("/internal-api/topics")
+    @PutMapping
     public ResponseEntity<?> addNewTopic(@Valid @RequestBody AddTopic request) {
         try {
             return new ResponseEntity<>(service.addTopic(request), HttpStatus.OK);
@@ -27,7 +28,7 @@ public class TopicController {
         }
     }
 
-    @GetMapping("/internal-api/topics/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findTopicById(@PathVariable("id") Long id) {
         if (service.findTopicById(id) != null) {
             return new ResponseEntity<>(service.findTopicById(id), HttpStatus.OK);
@@ -36,7 +37,7 @@ public class TopicController {
         }
     }
 
-    @DeleteMapping("/internal-api/topics/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable long id) {
         if (service.findTopicById(id) != null) {
             service.deleteById(id);
@@ -46,7 +47,7 @@ public class TopicController {
         }
     }
 
-    @GetMapping("/api/topics")
+    @GetMapping
     public List<Topic> findAllTopic() {
         return service.findAllTopics();
     }

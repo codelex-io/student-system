@@ -1,5 +1,7 @@
 package io.codelex.studentsystem.repository.model;
 
+import io.codelex.studentsystem.api.Student;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +17,8 @@ public class StudentRecord {
     private String telephone;
     private String email;
     private String description;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Student.StudentStatus status;
     private long groupId;
 
     public Long getStudentId() {
@@ -82,19 +85,19 @@ public class StudentRecord {
         this.description = description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public long getGroupId() {
         return groupId;
     }
 
     public void setGroupId(long groupId) {
         this.groupId = groupId;
+    }
+
+    public Student.StudentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(Student.StudentStatus status) {
+        this.status = status;
     }
 }

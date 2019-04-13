@@ -1,6 +1,7 @@
 package io.codelex.studentsystem.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.codelex.studentsystem.api.Student;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -21,8 +22,7 @@ public class AddStudent {
     private final String email;
     @NotEmpty
     private final String description;
-    @NotEmpty
-    private final String status;
+    private final Student.StudentStatus status;
     private final long groupId;
 
     public AddStudent(@JsonProperty("name") String name,
@@ -32,7 +32,7 @@ public class AddStudent {
                       @JsonProperty("telephone") String telephone,
                       @JsonProperty("email") String email,
                       @JsonProperty("description") String description,
-                      @JsonProperty("status") String status,
+                      @JsonProperty("status") Student.StudentStatus status,
                       @JsonProperty("groupId") long groupId) {
         this.name = name;
         this.image = image;
@@ -73,11 +73,11 @@ public class AddStudent {
         return description;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
     public long getGroupId() {
         return groupId;
+    }
+
+    public Student.StudentStatus getStatus() {
+        return status;
     }
 }
