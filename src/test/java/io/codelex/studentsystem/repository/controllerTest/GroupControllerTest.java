@@ -10,6 +10,8 @@ import io.codelex.studentsystem.GroupController;
 import io.codelex.studentsystem.api.requests.AddGroup;
 import io.codelex.studentsystem.repository.service.GroupService;
 import io.codelex.studentsystem.repository.service.InstructorService;
+import io.codelex.studentsystem.repository.service.StudentService;
+import io.codelex.studentsystem.repository.service.TopicsService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +44,13 @@ class GroupControllerTest {
     private GroupService service;
 
     @MockBean
+    private TopicsService topicsService;
+    
+    @MockBean
     private InstructorService instructorService;
+    
+    @MockBean
+    private StudentService studentService;
 
     private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
 

@@ -131,23 +131,23 @@ class StudentControllerTest {
     }
 
     @Test
-    void should_find_student_by_id_and_give_200_response() throws Exception {
+    void should_not_find_student_if_no_such_id_and_give_400_response() throws Exception {
         //given
         AddStudent request = addStudentRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                get("/internal-api/students/1")
+                get("/internal-api/students/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk()
+                .andExpect(status().isBadRequest()
                 );
     }
 
     @Test
-    void should_delete_by_id_and_return_200_response() throws Exception {
+    void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
         AddStudent request = addStudentRequest();
         String json = MAPPER.writeValueAsString(request);
@@ -158,7 +158,7 @@ class StudentControllerTest {
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk()
+                .andExpect(status().isBadRequest()
                 );
     }
 

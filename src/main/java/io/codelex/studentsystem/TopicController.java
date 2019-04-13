@@ -3,6 +3,8 @@ package io.codelex.studentsystem;
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddTopic;
 import io.codelex.studentsystem.repository.service.TopicsService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -23,13 +25,22 @@ public class TopicController {
     }
 
     @GetMapping("/internal-api/topics/{id}")
-    public Topic findTopicById(@PathVariable("id") Long id) {
-        return service.findTopicById(id);
+    public ResponseEntity<Topic> findTopicById(@PathVariable("id") Long id) {
+        if (service.findTopicById(id) != null) {
+            return new ResponseEntity<>(service.findTopicById(id), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/internal-api/topics/{id}")
-    public void deleteById(@PathVariable long id) {
-        service.deleteById(id);
+    public ResponseEntity<String> deleteById(@PathVariable long id) {
+        if (service.findTopicById(id) != null) {
+            service.deleteById(id);
+            return new ResponseEntity<>("Topic deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(id + " id already does not exist!", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/api/topics")
