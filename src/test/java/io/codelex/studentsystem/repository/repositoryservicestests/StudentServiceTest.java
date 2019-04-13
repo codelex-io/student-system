@@ -61,11 +61,11 @@ class StudentServiceTest {
         record.setName("Deniss");
         record.setEmail("deniss@codelex.io");
         record.setDescription("very active");
-        record.setGitHub("somegit");
+        record.setGithub("somegit");
         record.setImage("linktoimage");
         record.setStatus("sold");
         record.setTelephone("+2141124124");
-        record.setLinkedIn("linkedlink");
+        record.setLinkedin("linkedlink");
         Optional<StudentRecord> studentRecord = Optional.of(record);
         Mockito.when(repository.findById(1L)).thenReturn(studentRecord);
         //when
@@ -75,9 +75,9 @@ class StudentServiceTest {
         assertEquals(result.getEmail(), record.getEmail());
         assertEquals(result.getName(), record.getName());
         assertEquals(result.getDescription(), record.getDescription());
-        assertEquals(result.getGitHub(), record.getGitHub());
+        assertEquals(result.getGitHub(), record.getGithub());
         assertEquals(result.getImage(), record.getImage());
-        assertEquals(result.getLinkedIn(), record.getLinkedIn());
+        assertEquals(result.getLinkedIn(), record.getLinkedin());
         assertEquals(result.getTelephone(), record.getTelephone());
         assertEquals(result.getStatus(), record.getStatus());
     }

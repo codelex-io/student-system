@@ -41,10 +41,6 @@
             <column name="planned_end_date" type="date">
                 <constraints nullable="false"/>
             </column>
-            <column name="progress" type="FLOAT8">
-                <!--todo remove-->
-                <constraints nullable="false"/>
-            </column>
             <column name="start_date" type="date">
                 <constraints nullable="false"/>
             </column>
@@ -80,9 +76,6 @@
             <column name="phone" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="status" type="BOOLEAN">
-                <constraints nullable="false"/>
-            </column>
         </createTable>
     </changeSet>
     <changeSet author="janis" id="ADD_TABLE_instructors_group">
@@ -91,26 +84,6 @@
                 <constraints nullable="false"/>
             </column>
             <column name="groups_group_id" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="janis" id="ADD_TABLE_quiz">
-        <createTable tableName="quiz">
-            <!--todo-->
-            <column autoIncrement="true" name="quiz_id" type="BIGSERIAL">
-                <constraints primaryKey="true" primaryKeyName="quiz_pkey"/>
-            </column>
-            <column name="creation_date" type="date">
-                <constraints nullable="false"/>
-            </column>
-            <column name="name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="score" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="state" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -126,15 +99,13 @@
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <!--todo github-->
-            <column name="git_hub" type="VARCHAR(255)">
+            <column name="github" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="image" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <!--todo-->
-            <column name="linked_in" type="VARCHAR(255)">
+            <column name="linkedin" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(255)">
@@ -166,23 +137,10 @@
             <column autoIncrement="true" name="topic_id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="topics_pkey"/>
             </column>
-            <column name="creation_date" type="date">
-                <constraints nullable="false"/>
-            </column>
             <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="state" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="janis" id="ADD_TABLE_topics_quizes">
-        <createTable tableName="topics_quizes">
-            <column name="topics_topic_id" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="quizes_quiz_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -202,16 +160,6 @@
                        constraintName="groups_topics_pkey"
                        tableName="groups_topics"/>
     </changeSet>
-    <changeSet author="janis" id="PK_topics_topic_id_quizes_quiz_id">
-        <addPrimaryKey columnNames="topics_topic_id, quizes_quiz_id"
-                       constraintName="topics_quizes_pkey"
-                       tableName="topics_quizes"/>
-    </changeSet>
-    <changeSet author="janis" id="UK_quizes_quiz_id">
-        <addUniqueConstraint columnNames="quizes_quiz_id"
-                             constraintName="quizes_quiz_id_topics_quizes"
-                             tableName="topics_quizes"/>
-    </changeSet>
     <changeSet author="janis" id="UK_students_student_id">
         <addUniqueConstraint columnNames="students_student_id"
                              constraintName="students_student_id_groups_students"
@@ -230,13 +178,6 @@
                                  constraintName="instructor_instructor_id_instructors_instructor_id"
                                  referencedColumnNames="instructor_id"
                                  referencedTableName="instructors"/>
-    </changeSet>
-    <changeSet author="janis" id="FK_constraint_quizes_quiz_id">
-        <addForeignKeyConstraint baseColumnNames="quizes_quiz_id"
-                                 baseTableName="topics_quizes"
-                                 constraintName="quizes_quiz_id_quiz_quiz_id"
-                                 referencedColumnNames="quiz_id"
-                                 referencedTableName="quiz"/>
     </changeSet>
     <changeSet author="janis" id="FK_constraint_groups_topic_id">
         <addForeignKeyConstraint baseColumnNames="groups_group_id"
@@ -258,19 +199,15 @@
     </changeSet>
     <changeSet id="create_unique_restraint_group" author="janis">
         <addUniqueConstraint tableName="groups"
-                             columnNames="end_date,name,planned_end_date,progress,start_date"/>
+                             columnNames="end_date,name,planned_end_date,start_date"/>
     </changeSet>
     <changeSet id="create_unique_restraint_student" author="janis">
         <addUniqueConstraint tableName="students"
-                             columnNames="description,email,git_hub,image,linked_in,name,status,telephone"/>
+                             columnNames="description,email,github,image,linkedin,name,status,telephone"/>
     </changeSet>
     <changeSet id="create_unique_restraint_topics" author="janis">
         <addUniqueConstraint tableName="topics"
-                             columnNames="creation_date,name,state"/>
-    </changeSet>
-    <changeSet id="create_unique_restraint_quiz" author="janis">
-        <addUniqueConstraint tableName="quiz"
-                             columnNames="creation_date,name,score,state"/>
+                             columnNames="name,state"/>
     </changeSet>
     <changeSet id="create_unique_restraint_employers" author="janis">
         <addUniqueConstraint tableName="employers"

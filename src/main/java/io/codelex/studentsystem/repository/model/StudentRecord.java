@@ -2,8 +2,6 @@ package io.codelex.studentsystem.repository.model;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 @Entity
 @Table(name = "students")
 public class StudentRecord {
@@ -12,8 +10,8 @@ public class StudentRecord {
     private Long studentId;
     private String name;
     private String image;
-    private String linkedIn;
-    private String gitHub;
+    private String linkedin;
+    private String github;
     private String telephone;
     private String email;
     private String description;
@@ -44,20 +42,20 @@ public class StudentRecord {
         this.image = image;
     }
 
-    public String getLinkedIn() {
-        return linkedIn;
+    public String getLinkedin() {
+        return linkedin;
     }
 
-    public void setLinkedIn(String linkedIn) {
-        this.linkedIn = linkedIn;
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
     }
 
-    public String getGitHub() {
-        return gitHub;
+    public String getGithub() {
+        return github;
     }
 
-    public void setGitHub(String gitHub) {
-        this.gitHub = gitHub;
+    public void setGithub(String github) {
+        this.github = github;
     }
 
     public String getTelephone() {

@@ -26,9 +26,9 @@ public class StudentService {
         StudentRecord studentRecord = new StudentRecord();
         studentRecord.setDescription(request.getDescription());
         studentRecord.setEmail(request.getEmail());
-        studentRecord.setGitHub(request.getGitHub());
+        studentRecord.setGithub(request.getGitHub());
         studentRecord.setImage(request.getImage());
-        studentRecord.setLinkedIn(request.getLinkedIn());
+        studentRecord.setLinkedin(request.getLinkedIn());
         studentRecord.setName(request.getName());
         studentRecord.setStatus(request.getStatus());
         studentRecord.setTelephone(request.getTelephone());

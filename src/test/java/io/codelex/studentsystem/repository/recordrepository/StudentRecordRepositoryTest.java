@@ -46,8 +46,8 @@ class StudentRecordRepositoryTest {
         studentRecord.setTelephone("123456");
         studentRecord.setDescription("Student");
         studentRecord.setEmail("e@mail.com");
-        studentRecord.setGitHub("github");
-        studentRecord.setLinkedIn("linkedin");
+        studentRecord.setGithub("github");
+        studentRecord.setLinkedin("linkedin");
         studentRecord.setImage("image");
         studentRecord.setStatus("available");
         studentRecordRepository.save(studentRecord);
@@ -59,8 +59,8 @@ class StudentRecordRepositoryTest {
         studentRecord2.setGroupId(2L);
         studentRecord2.setDescription("Student2");
         studentRecord2.setEmail("e@mail.com2");
-        studentRecord2.setGitHub("github2");
-        studentRecord2.setLinkedIn("linkedin2");
+        studentRecord2.setGithub("github2");
+        studentRecord2.setLinkedin("linkedin2");
         studentRecord2.setImage("image2");
         studentRecordRepository.save(studentRecord2);
 
