@@ -6,7 +6,6 @@ import io.codelex.studentsystem.api.requests.SignIn;
 import io.codelex.studentsystem.repository.EmployerRecordRepository;
 import io.codelex.studentsystem.repository.model.maprecord.MapEmployerRecordToEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 

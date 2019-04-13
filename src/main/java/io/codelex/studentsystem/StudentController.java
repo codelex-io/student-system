@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/internal-api/students")
 public class StudentController {
     private final StudentService service;
 
@@ -16,7 +17,7 @@ public class StudentController {
         this.service = service;
     }
 
-    @PutMapping("/internal-api/students")
+    @PutMapping
     public ResponseEntity<?> addNewStudent(@Valid @RequestBody AddStudent request) {
         try {
             return new ResponseEntity<>(service.addStudent(request), HttpStatus.OK);
@@ -25,7 +26,7 @@ public class StudentController {
         }
     }
 
-    @GetMapping("/internal-api/students/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findStudent(@PathVariable("id") Long id) {
         if (service.findStudentById(id) != null) {
             return new ResponseEntity<>(service.findStudentById(id), HttpStatus.OK);
@@ -34,7 +35,7 @@ public class StudentController {
         }
     }
 
-    @DeleteMapping("/internal-api/students/{studentsId}")
+    @DeleteMapping("/{studentsId}")
     public ResponseEntity<String> deleteById(@PathVariable long studentsId) {
         if (service.findStudentById(studentsId) != null) {
             service.deleteById(studentsId);

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/internal-api/employers")
 public class EmployerController {
     private final EmployerService employerService;
 
@@ -16,7 +17,7 @@ public class EmployerController {
         this.employerService = employerService;
     }
 
-    @PutMapping("/internal-api/employers")
+    @PutMapping
     public ResponseEntity<?> addEmployer(@Valid @RequestBody AddEmployer request) {
         try {
             return new ResponseEntity<>(employerService.addEmployer(request), HttpStatus.OK);
@@ -25,7 +26,7 @@ public class EmployerController {
         }
     }
 
-    @GetMapping("/internal-api/employers/{employerId}")
+    @GetMapping("/{employerId}")
     public ResponseEntity<?> findEmployerById(@PathVariable long employerId) {
         if (employerService.findEmployerById(employerId) != null) {
             return new ResponseEntity<>(employerService.findEmployerById(employerId), HttpStatus.OK);
@@ -34,7 +35,7 @@ public class EmployerController {
         }
     }
 
-    @DeleteMapping("/internal-api/employers/{employerId}")
+    @DeleteMapping("/{employerId}")
     public ResponseEntity<String> deleteById(@PathVariable long employerId) {
         if (employerService.findEmployerById(employerId) != null) {
             employerService.deleteById(employerId);

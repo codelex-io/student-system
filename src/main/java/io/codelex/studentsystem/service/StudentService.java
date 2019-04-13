@@ -37,13 +37,6 @@ public class StudentService {
         return map.apply(studentRecord);
     }
 
-    public List<Student> findAllStudents() {
-        return studentRecordRepository.findAll()
-                .stream()
-                .map(map)
-                .collect(Collectors.toList());
-    }
-
     public Student findStudentById(Long id) {
         return studentRecordRepository
                 .findById(id)
