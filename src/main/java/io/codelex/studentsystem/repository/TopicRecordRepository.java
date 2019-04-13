@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.recordrepository;
+package io.codelex.studentsystem.repository;
 
 import io.codelex.studentsystem.repository.model.TopicRecord;
 import org.springframework.data.jpa.repository.JpaRepository;

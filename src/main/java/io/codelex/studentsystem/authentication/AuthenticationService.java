@@ -10,7 +10,7 @@ import static java.util.Collections.singleton;
 import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
 @Component
-public
+public //todo style
 class AuthenticationService {
     void authorise(String login) {
         Set<SimpleGrantedAuthority> authorities = singleton(new SimpleGrantedAuthority("EMPLOYER"));

@@ -21,6 +21,7 @@ public class LinkInstructorAndGroup {
         return groupId;
     }
 
+    //todo setters needed?
     public void setGroupId(long groupId) {
         this.groupId = groupId;
     }

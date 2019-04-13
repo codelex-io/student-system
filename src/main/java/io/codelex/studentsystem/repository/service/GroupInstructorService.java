@@ -3,8 +3,8 @@ package io.codelex.studentsystem.repository.service;
 import io.codelex.studentsystem.api.requests.LinkInstructorAndGroup;
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import io.codelex.studentsystem.repository.model.InstructorRecord;
-import io.codelex.studentsystem.repository.recordrepository.GroupRecordRepository;
-import io.codelex.studentsystem.repository.recordrepository.InstructorRecordRepository;
+import io.codelex.studentsystem.repository.GroupRecordRepository;
+import io.codelex.studentsystem.repository.InstructorRecordRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;

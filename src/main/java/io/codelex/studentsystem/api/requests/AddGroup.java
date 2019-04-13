@@ -22,7 +22,7 @@ public class AddGroup {
                     @JsonProperty("startDate") LocalDate startDate,
                     @JsonProperty("endDate") LocalDate endDate,
                     @JsonProperty("plannedEndDate") LocalDate plannedEndDate,
-                    @JsonProperty("progress") double progress) {
+                    @JsonProperty("progress") double progress) { //todo remove
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;

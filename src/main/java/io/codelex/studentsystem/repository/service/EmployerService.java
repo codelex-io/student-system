@@ -3,7 +3,7 @@ package io.codelex.studentsystem.repository.service;
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.api.requests.SignIn;
-import io.codelex.studentsystem.repository.recordrepository.EmployerRecordRepository;
+import io.codelex.studentsystem.repository.EmployerRecordRepository;
 import io.codelex.studentsystem.repository.model.maprecord.MapEmployerRecordToEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(prefix = "student-system", name = "store-type", havingValue = "database")
+@ConditionalOnProperty(prefix = "student-system", name = "store-type", havingValue = "database") //todo remove
 public class EmployerService {
     private final EmployerRecordRepository employerRepository;
     private MapEmployerRecordToEmployer mapEmployerRecordToEmployer = new MapEmployerRecordToEmployer();
@@ -31,6 +31,7 @@ public class EmployerService {
         employerRecord.setPersonPhone(request.getPersonPhone());
         employerRecord.setLogin(request.getLogin());
         employerRecord.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
+        //todo BCryptPasswordEncoder
         employerRecord = employerRepository.save(employerRecord);
         return mapEmployerRecordToEmployer.apply(employerRecord);
     }

@@ -26,7 +26,7 @@ public class AddInstructor {
                          @JsonProperty("githubLink") String githubLink,
                          @JsonProperty("phone") String phone,
                          @JsonProperty("email") String email,
-                         @JsonProperty("status") boolean status) {
+                         @JsonProperty("status") boolean status) { //todo what is status?
         this.name = name;
         this.githubLink = githubLink;
         this.linkedinLink = linkedinLink;

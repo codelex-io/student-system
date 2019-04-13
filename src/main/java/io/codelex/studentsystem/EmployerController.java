@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping
-public class EmployerController {
+@RequestMapping//todo
+public class EmployerController {//todo is public needed?
     private final EmployerService employerService;
 
     public EmployerController(EmployerService employerService) {
@@ -21,11 +21,11 @@ public class EmployerController {
     @PutMapping("/internal-api/employers")
     public ResponseEntity<Employer> addEmployer(@Valid @RequestBody AddEmployer request) {
         try {
-            employerService.addEmployer(request);
+            return new ResponseEntity<>(employerService.addEmployer(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
+            //todo return error
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/internal-api/employers/{employerId}")

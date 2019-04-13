@@ -2,7 +2,7 @@ package io.codelex.studentsystem.repository.service;
 
 import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.requests.AddInstructor;
-import io.codelex.studentsystem.repository.recordrepository.InstructorRecordRepository;
+import io.codelex.studentsystem.repository.InstructorRecordRepository;
 import io.codelex.studentsystem.repository.model.maprecord.MapInstructorRecordToInstructor;
 import io.codelex.studentsystem.repository.model.InstructorRecord;
 import org.springframework.stereotype.Component;

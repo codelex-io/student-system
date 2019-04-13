@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.recordrepository;
+package io.codelex.studentsystem.repository;
 
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 public interface GroupRecordRepository extends JpaRepository<GroupRecord, Long> {
 
+    //todo
     @Query("select count(groups) > 0 from Groups groups"
             + " where groups.name = :name"
             + " and groups.startDate = :startDate"

@@ -9,7 +9,7 @@ public class Instructor {
     private String githubLink;
     private String phone;
     private String email;
-    private boolean status;
+    private boolean status; //todo
 
     public Instructor(@JsonProperty("id") Long id,
                       @JsonProperty("name") String name,

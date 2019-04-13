@@ -7,11 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController
 @RequestMapping("/api")
-public
+public //todo
 class EmployerAuthenticationController {
     private final AuthenticationService authService;
     private final EmployerService employerService;
@@ -32,7 +33,7 @@ class EmployerAuthenticationController {
     }
 
     @PutMapping("/register")
-    public ResponseEntity<String> register(@RequestBody AddEmployer request) {
+    public ResponseEntity<String> register(@Valid @RequestBody AddEmployer request) {
         try {
             employerService.addEmployer(request);
         } catch (IllegalStateException e) {
@@ -41,9 +42,9 @@ class EmployerAuthenticationController {
         authService.authorise(request.getLogin());
         return new ResponseEntity<>(request.getLogin() + " is registered", HttpStatus.CREATED);
     }
-
+//todo json responses, add error messages
     @PutMapping("/sign-in")
-    public ResponseEntity<String> signIn(@RequestBody SignIn request) {
+    public ResponseEntity<String> signIn(@Valid @RequestBody SignIn request) {
         if (employerService.isSignInIsValid(request)) {
             authService.authorise(request.getLogin());
             return new ResponseEntity<>(request.getLogin() + " signed in", HttpStatus.OK);

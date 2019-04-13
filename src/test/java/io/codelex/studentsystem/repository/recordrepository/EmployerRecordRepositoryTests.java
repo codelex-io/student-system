@@ -1,5 +1,6 @@
 package io.codelex.studentsystem.repository.recordrepository;
 
+import io.codelex.studentsystem.repository.EmployerRecordRepository;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

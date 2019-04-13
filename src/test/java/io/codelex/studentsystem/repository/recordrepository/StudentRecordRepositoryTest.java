@@ -1,5 +1,7 @@
 package io.codelex.studentsystem.repository.recordrepository;
 
+import io.codelex.studentsystem.repository.GroupRecordRepository;
+import io.codelex.studentsystem.repository.StudentRecordRepository;
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import io.codelex.studentsystem.repository.model.StudentRecord;
 import org.junit.jupiter.api.Assertions;

@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.controllerTest;
+package io.codelex.studentsystem.repository.controllerTest; //todo package names
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.codelex.studentsystem.api.requests.AddEmployer;
@@ -46,6 +46,23 @@ class EmployerAuthenticationTests {
                 .andExpect(status().isCreated()
                 );
     }
+
+    @Test
+    void should_not_be_able_to_register_employer_with_empty_fields() throws Exception {
+        //given
+        AddEmployer request = setEmployer();
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
+                put("/api/register")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isCreated()
+                );
+    }
+
 
     private AddEmployer setEmployer() {
         return new AddEmployer("Big Company",
