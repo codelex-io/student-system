@@ -21,7 +21,7 @@ public class InstructorController {
         try {
             return new ResponseEntity<>(service.addInstructor(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>("Can't add instructor that already exists", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Instructor with this email already exists!", HttpStatus.BAD_REQUEST);
         }
     }
 

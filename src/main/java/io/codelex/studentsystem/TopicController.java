@@ -23,7 +23,7 @@ public class TopicController {
         try {
             return new ResponseEntity<>(service.addTopic(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>("Can't add topic that already exists", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("This topic already exists!", HttpStatus.BAD_REQUEST);
         }
     }
 

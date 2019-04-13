@@ -21,7 +21,7 @@ public class EmployerController {
         try {
             return new ResponseEntity<>(employerService.addEmployer(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>("Can't add employer that already exists", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Employer with this email already exists!", HttpStatus.BAD_REQUEST);
         }
     }
 

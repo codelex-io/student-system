@@ -21,7 +21,7 @@ public class StudentController {
         try {
             return new ResponseEntity<>(service.addStudent(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>("Can't add student that already exists", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Student with this email already exists!", HttpStatus.BAD_REQUEST);
         }
     }
 

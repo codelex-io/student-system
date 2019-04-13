@@ -36,7 +36,7 @@ public class GroupController {
         try {
             return new ResponseEntity<>(service.addGroup(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>("Can't add group that already exists", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Group with this name already exists!", HttpStatus.BAD_REQUEST);
         }
     }
 
