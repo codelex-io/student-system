@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.repositoryMapRecordsTests;
+package io.codelex.studentsystem.repository.repositorymaprecordstests;
 
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.repository.model.maprecord.MapEmployerRecordToEmployer;

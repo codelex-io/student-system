@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.controllerTest;
+package io.codelex.studentsystem.repository.controllertest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -6,9 +6,12 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import io.codelex.studentsystem.InstructorController;
-import io.codelex.studentsystem.api.requests.AddInstructor;
+import io.codelex.studentsystem.GroupController;
+import io.codelex.studentsystem.api.requests.AddGroup;
+import io.codelex.studentsystem.service.GroupService;
 import io.codelex.studentsystem.service.InstructorService;
+import io.codelex.studentsystem.service.StudentService;
+import io.codelex.studentsystem.service.TopicsService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -31,14 +34,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(InstructorController.class)
-class InstructorControllerTest {
+@WebMvcTest(GroupController.class)
+class GroupControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private InstructorService service;
+    private GroupService service;
+
+    @MockBean
+    private TopicsService topicsService;
+    
+    @MockBean
+    private InstructorService instructorService;
+    
+    @MockBean
+    private StudentService studentService;
+
+    private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -67,13 +81,17 @@ class InstructorControllerTest {
     }
 
     @Test
-    void should_add_instructor_and_give_200_response() throws Exception {
+    void should_add_group_and_give_200_response() throws Exception {
         //given
-        AddInstructor request = addInstructorRequest();
+        AddGroup request = new AddGroup("Group",
+                defaultDate,
+                defaultDate.plusDays(1),
+                defaultDate.plusDays(2)
+        );
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/instructors")
+                put("/internal-api/groups")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -83,18 +101,17 @@ class InstructorControllerTest {
     }
 
     @Test
-    void should_not_add_instructor_and_give_400_response_if_fields_null() throws Exception {
+    void should_not_add_group_and_give_400_response_if_fields_null() throws Exception {
         //given
-        AddInstructor request = new AddInstructor("Instructor",
+        AddGroup request = new AddGroup("Group",
                 null,
-                "github.com",
-                "123123123",
-                "janis@janis.eu"
+                defaultDate.plusDays(1),
+                defaultDate.plusDays(2)
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/instructors")
+                put("/internal-api/groups")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -104,18 +121,17 @@ class InstructorControllerTest {
     }
 
     @Test
-    void should_not_add_instructor_and_give_400_response_if_contains_empty_field() throws Exception {
+    void should_not_add_group_and_give_400_response_if_contains_empty_field() throws Exception {
         //given
-        AddInstructor request = new AddInstructor("Instructor",
-                "linkedin.com",
-                "github.com",
-                "",
-                "janis@janis.eu"
+        AddGroup request = new AddGroup("",
+                defaultDate,
+                defaultDate.plusDays(1),
+                defaultDate.plusDays(2)
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/instructors")
+                put("/internal-api/groups")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -125,13 +141,13 @@ class InstructorControllerTest {
     }
 
     @Test
-    void should_not_find_instructor_by_id_if_no_such_id_and_give_400_response() throws Exception {
+    void should_not_find_group_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
-        AddInstructor request = addInstructorRequest();
+        AddGroup request = addGroupRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                get("/internal-api/instructors/222")
+                get("/internal-api/groups/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -139,15 +155,16 @@ class InstructorControllerTest {
                 .andExpect(status().isBadRequest()
                 );
     }
+
 
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
-        AddInstructor request = addInstructorRequest();
+        AddGroup request = addGroupRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                delete("/internal-api/instructors/111")
+                delete("/internal-api/groups/1")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -157,12 +174,11 @@ class InstructorControllerTest {
     }
 
     @NotNull
-    private AddInstructor addInstructorRequest() {
-        return new AddInstructor("Instructor",
-                "linkedin.com",
-                "github.com",
-                "123123123",
-                "janis@janis.eu"
+    private AddGroup addGroupRequest() {
+        return new AddGroup("group",
+                defaultDate,
+                defaultDate.plusDays(1),
+                defaultDate.plusDays(2)
         );
     }
 }

@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.controllerTest;
+package io.codelex.studentsystem.repository.controllertest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.codelex.studentsystem.TopicController;

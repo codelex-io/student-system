@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.controllerTest;
+package io.codelex.studentsystem.repository.controllertest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -6,9 +6,9 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import io.codelex.studentsystem.StudentController;
-import io.codelex.studentsystem.api.requests.AddStudent;
-import io.codelex.studentsystem.service.StudentService;
+import io.codelex.studentsystem.InstructorController;
+import io.codelex.studentsystem.api.requests.AddInstructor;
+import io.codelex.studentsystem.service.InstructorService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -31,14 +31,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(StudentController.class)
-class StudentControllerTest {
+@WebMvcTest(InstructorController.class)
+class InstructorControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private StudentService service;
+    private InstructorService service;
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -67,13 +67,13 @@ class StudentControllerTest {
     }
 
     @Test
-    void should_add_student_and_give_200_response() throws Exception {
+    void should_add_instructor_and_give_200_response() throws Exception {
         //given
-        AddStudent request = addStudentRequest();
+        AddInstructor request = addInstructorRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/students")
+                put("/internal-api/instructors")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -83,45 +83,18 @@ class StudentControllerTest {
     }
 
     @Test
-    void should_not_add_student_and_give_400_response_if_fields_null() throws Exception {
+    void should_not_add_instructor_and_give_400_response_if_fields_null() throws Exception {
         //given
-        AddStudent request = new AddStudent("Bob",
-                "ImgURL.COM",
-                "linkedin.com",
-                "github.com",
+        AddInstructor request = new AddInstructor("Instructor",
                 null,
-                "janis@janis.lv",
-                "really long description",
-                "failed",
-                1L);
-        String json = MAPPER.writeValueAsString(request);
-        //expected
-        mockMvc.perform(
-                put("/internal-api/students")
-                        .content(json)
-                        .contentType(APPLICATION_JSON)
-                        .accept(APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isBadRequest()
-                );
-    }
-
-    @Test
-    void should_not_add_student_and_give_400_response_if_contains_empty_field() throws Exception {
-        //given
-        AddStudent request = new AddStudent("Bob",
-                "ImgURL.COM",
-                "",
                 "github.com",
                 "123123123",
-                "janis@janis.lv",
-                "really long description",
-                "failed",
-                1L);
+                "janis@janis.eu"
+        );
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/students")
+                put("/internal-api/instructors")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -131,13 +104,34 @@ class StudentControllerTest {
     }
 
     @Test
-    void should_not_find_student_if_no_such_id_and_give_400_response() throws Exception {
+    void should_not_add_instructor_and_give_400_response_if_contains_empty_field() throws Exception {
         //given
-        AddStudent request = addStudentRequest();
+        AddInstructor request = new AddInstructor("Instructor",
+                "linkedin.com",
+                "github.com",
+                "",
+                "janis@janis.eu"
+        );
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                get("/internal-api/students/222")
+                put("/internal-api/instructors")
+                        .content(json)
+                        .contentType(APPLICATION_JSON)
+                        .accept(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isBadRequest()
+                );
+    }
+
+    @Test
+    void should_not_find_instructor_by_id_if_no_such_id_and_give_400_response() throws Exception {
+        //given
+        AddInstructor request = addInstructorRequest();
+        String json = MAPPER.writeValueAsString(request);
+        //expected
+        mockMvc.perform(
+                get("/internal-api/instructors/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -149,11 +143,11 @@ class StudentControllerTest {
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
-        AddStudent request = addStudentRequest();
+        AddInstructor request = addInstructorRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                delete("/internal-api/students/1")
+                delete("/internal-api/instructors/111")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -163,15 +157,12 @@ class StudentControllerTest {
     }
 
     @NotNull
-    private AddStudent addStudentRequest() {
-        return new AddStudent("Bob",
-                "ImgURL.COM",
+    private AddInstructor addInstructorRequest() {
+        return new AddInstructor("Instructor",
                 "linkedin.com",
                 "github.com",
                 "123123123",
-                "janis@janis.lv",
-                "really long description",
-                "failed",
-                1L);
+                "janis@janis.eu"
+        );
     }
 }
