@@ -1,6 +1,5 @@
 package io.codelex.studentsystem;
 
-import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.requests.AddInstructor;
 import io.codelex.studentsystem.service.InstructorService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping
 public class InstructorController {
     private final InstructorService service;
 
@@ -19,21 +17,20 @@ public class InstructorController {
     }
 
     @PutMapping("/internal-api/instructors")
-    public ResponseEntity<Instructor> addInstructor(@Valid @RequestBody AddInstructor request) {
+    public ResponseEntity<?> addInstructor(@Valid @RequestBody AddInstructor request) {
         try {
             return new ResponseEntity<>(service.addInstructor(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Can't add instructor that already exists", HttpStatus.BAD_REQUEST);
         }
-
     }
 
     @GetMapping("/internal-api/instructors/{id}")
-    public ResponseEntity<Instructor> findInstructorByID(@PathVariable long id) {
+    public ResponseEntity<?> findInstructorByID(@PathVariable long id) {
         if (service.findInstructorById(id) != null) {
             return new ResponseEntity<>(service.findInstructorById(id), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Such id does not exist", HttpStatus.BAD_REQUEST);
         }
     }
 

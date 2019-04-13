@@ -18,7 +18,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping
 public class GroupController {
     private final GroupService service;
     private final InstructorService instructorService;
@@ -33,20 +32,20 @@ public class GroupController {
     }
 
     @PutMapping("/internal-api/groups")
-    public ResponseEntity<Group> addGroup(@Valid @RequestBody AddGroup request) {
+    public ResponseEntity<?> addGroup(@Valid @RequestBody AddGroup request) {
         try {
             return new ResponseEntity<>(service.addGroup(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Can't add group that already exists", HttpStatus.BAD_REQUEST);
         }
     }
 
     @GetMapping("/internal-api/groups/{groupsId}")
-    public ResponseEntity<Group> findGroupById(@PathVariable long groupsId) {
+    public ResponseEntity<?> findGroupById(@PathVariable long groupsId) {
         if (service.findGroupById(groupsId) != null) {
             return new ResponseEntity<>(service.findGroupById(groupsId), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Such id does not exist", HttpStatus.BAD_REQUEST);
         }
     }
 

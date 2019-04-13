@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping
 public class TopicController {
     private final TopicsService service;
 
@@ -20,16 +19,20 @@ public class TopicController {
     }
 
     @PutMapping("/internal-api/topics")
-    public Topic addNewTopic(@Valid @RequestBody AddTopic request) {
-        return service.addTopic(request);
+    public ResponseEntity<?> addNewTopic(@Valid @RequestBody AddTopic request) {
+        try {
+            return new ResponseEntity<>(service.addTopic(request), HttpStatus.OK);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<>("Can't add topic that already exists", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/internal-api/topics/{id}")
-    public ResponseEntity<Topic> findTopicById(@PathVariable("id") Long id) {
+    public ResponseEntity<?> findTopicById(@PathVariable("id") Long id) {
         if (service.findTopicById(id) != null) {
             return new ResponseEntity<>(service.findTopicById(id), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Such id does not exist", HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -20,6 +20,9 @@ public class StudentService {
     }
 
     public Student addStudent(AddStudent request) {
+        if (isStudentPresent(request)) {
+            throw new IllegalStateException();
+        }
         StudentRecord studentRecord = new StudentRecord();
         studentRecord.setDescription(request.getDescription());
         studentRecord.setEmail(request.getEmail());
@@ -55,5 +58,9 @@ public class StudentService {
 
     public List<Student> findStudentsInGroup(long groupsId) {
         return studentRecordRepository.findStudentsByGroupId(groupsId).stream().map(map).collect(Collectors.toList());
+    }
+
+    private boolean isStudentPresent(AddStudent request) {
+        return studentRecordRepository.isStudentPresent(request.getEmail());
     }
 }

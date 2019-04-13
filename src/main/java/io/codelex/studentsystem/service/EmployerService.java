@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(prefix = "student-system", name = "store-type", havingValue = "database") //todo remove
 public class EmployerService {
     private final EmployerRecordRepository employerRepository;
     private MapEmployerRecordToEmployer mapEmployerRecordToEmployer = new MapEmployerRecordToEmployer();
@@ -53,7 +52,7 @@ public class EmployerService {
     }
 
     public boolean isSignInIsValid(SignIn request) {
-        if (getPassword(request)!=null){
+        if (getPassword(request) != null) {
             return BCrypt.checkpw(request.getPassword(), getPassword(request));
         }
         return false;
@@ -67,10 +66,6 @@ public class EmployerService {
 
     private boolean isEmployerPresent(AddEmployer request) {
         return employerRepository.isEmployerPresent(
-                request.getPersonEmail(),
-                request.getLogin(),
-                request.getName(),
-                request.getPersonName(),
-                request.getPersonPhone());
+                request.getPersonEmail());
     }
 }
