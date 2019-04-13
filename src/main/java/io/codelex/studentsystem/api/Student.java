@@ -26,6 +26,7 @@ public class Student {
                    @JsonProperty("description") String description,
                    @JsonProperty("status") String status,
                    @JsonProperty("groupId") long groupId) {
+        this.id = id;
         this.name = name;
         this.image = image;
         this.linkedIn = linkedIn;
