@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.service;
+package io.codelex.studentsystem.service;
 
 import io.codelex.studentsystem.api.Group;
 import io.codelex.studentsystem.api.requests.AddGroup;
@@ -24,7 +24,6 @@ public class GroupService {
             throw new IllegalStateException();
         }
         GroupRecord groupRecord = new GroupRecord();
-        groupRecord.setProgress(request.getProgress());
         groupRecord.setName(request.getName());
         groupRecord.setStartDate(request.getStartDate());
         groupRecord.setEndDate(request.getEndDate());
@@ -52,7 +51,6 @@ public class GroupService {
         return recordRepository.isGroupPresent(request.getName(),
                 request.getStartDate(),
                 request.getEndDate(),
-                request.getPlannedEndDate(),
-                request.getProgress());
+                request.getPlannedEndDate());
     }
 }

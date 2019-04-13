@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.authentication.AuthenticationService;
 import io.codelex.studentsystem.authentication.EmployerAuthenticationController;
-import io.codelex.studentsystem.repository.service.EmployerService;
+import io.codelex.studentsystem.service.EmployerService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

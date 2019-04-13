@@ -5,7 +5,7 @@ import io.codelex.studentsystem.api.requests.AddTopic;
 import io.codelex.studentsystem.repository.model.TopicRecord;
 import io.codelex.studentsystem.repository.GroupRecordRepository;
 import io.codelex.studentsystem.repository.TopicRecordRepository;
-import io.codelex.studentsystem.repository.service.TopicsService;
+import io.codelex.studentsystem.service.TopicsService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

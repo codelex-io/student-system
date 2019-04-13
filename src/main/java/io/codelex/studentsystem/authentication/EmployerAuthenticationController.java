@@ -2,7 +2,7 @@ package io.codelex.studentsystem.authentication;
 
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.api.requests.SignIn;
-import io.codelex.studentsystem.repository.service.EmployerService;
+import io.codelex.studentsystem.service.EmployerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -2,7 +2,7 @@ package io.codelex.studentsystem;
 
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.requests.AddStudent;
-import io.codelex.studentsystem.repository.service.StudentService;
+import io.codelex.studentsystem.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

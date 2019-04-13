@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.service;
+package io.codelex.studentsystem.service;
 
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddTopic;

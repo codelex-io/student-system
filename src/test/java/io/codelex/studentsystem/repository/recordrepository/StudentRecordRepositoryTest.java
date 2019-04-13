@@ -38,7 +38,6 @@ class StudentRecordRepositoryTest {
         groupRecord.setStartDate(LocalDate.now());
         groupRecord.setEndDate(LocalDate.now().plusMonths(4));
         groupRecord.setPlannedEndDate(LocalDate.now().plusMonths(3));
-        groupRecord.setProgress(0.0);
         groupRecordRepository.save(groupRecord);
 
         StudentRecord studentRecord = new StudentRecord();

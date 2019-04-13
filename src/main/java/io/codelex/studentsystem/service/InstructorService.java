@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.service;
+package io.codelex.studentsystem.service;
 
 import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.requests.AddInstructor;
