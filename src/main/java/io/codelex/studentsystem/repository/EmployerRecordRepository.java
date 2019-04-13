@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.recordrepository;
+package io.codelex.studentsystem.repository; //todo package
 
 import io.codelex.studentsystem.repository.model.EmployerRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface EmployerRecordRepository extends JpaRepository<EmployerRecord, Long> {
 
+    //todo
     @Query("select count(employer) > 0 from EmployerRecord employer"
             + " where employer.login = :login"
             + " and employer.name = :name"

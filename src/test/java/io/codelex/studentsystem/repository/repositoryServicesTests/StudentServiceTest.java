@@ -3,7 +3,7 @@ package io.codelex.studentsystem.repository.repositoryServicesTests;
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.requests.AddStudent;
 import io.codelex.studentsystem.repository.model.StudentRecord;
-import io.codelex.studentsystem.repository.recordrepository.StudentRecordRepository;
+import io.codelex.studentsystem.repository.StudentRecordRepository;
 import io.codelex.studentsystem.repository.service.StudentService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -19,7 +19,7 @@ public class AddEmployer {
     private final String login;
 
     public AddEmployer(@JsonProperty("name") String name,
-                       @JsonProperty("personName") String personName,
+                       @JsonProperty("personName") String personName, //todo split in person
                        @JsonProperty("personPhone") String personPhone,
                        @JsonProperty("personEmail") String personEmail,
                        @JsonProperty("password") String password,

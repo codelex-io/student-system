@@ -11,4 +11,5 @@ spring:
     enabled: true
 student_system:
   store-type: database
+  #todo remove
 

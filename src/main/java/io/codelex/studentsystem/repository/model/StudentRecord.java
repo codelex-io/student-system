@@ -8,7 +8,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "students")
 public class StudentRecord {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentId;
     private String name;
     private String image;

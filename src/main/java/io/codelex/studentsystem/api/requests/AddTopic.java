@@ -18,7 +18,7 @@ public class AddTopic {
     @JsonCreator
     public AddTopic(@JsonProperty("name") String name,
                     @JsonProperty("state") String state,
-                    @JsonProperty("creationDate") LocalDate creationDate) {
+                    @JsonProperty("creationDate") LocalDate creationDate) { //todo why?
         this.name = name;
         this.state = state;
         this.creationDate = creationDate;

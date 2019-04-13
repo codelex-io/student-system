@@ -12,7 +12,7 @@ public class Student {
     private String telephone;
     private String email;
     private String description;
-    private String status;
+    private String status; //todo enum
     private long groupId;
 
     @JsonCreator

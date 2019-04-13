@@ -3,8 +3,12 @@ package io.codelex.studentsystem.api.requests;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotEmpty;
+
 public class SignIn {
+    @NotEmpty
     private final String login;
+    @NotEmpty
     private final String password;
 
     @JsonCreator

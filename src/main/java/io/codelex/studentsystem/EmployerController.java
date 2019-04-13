@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping
-public class EmployerController {
+@RequestMapping//todo
+public class EmployerController {//todo is public needed?
     private final EmployerService employerService;
 
     public EmployerController(EmployerService employerService) {
@@ -23,6 +23,7 @@ public class EmployerController {
         try {
             employerService.addEmployer(request);
         } catch (IllegalStateException e) {
+            //todo return error
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.OK);

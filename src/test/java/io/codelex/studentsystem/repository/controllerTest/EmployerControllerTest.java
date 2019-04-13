@@ -42,7 +42,7 @@ class EmployerControllerTest {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    static {
+    static { //todo duplicated code
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
         JavaTimeModule javaTimeModule = new JavaTimeModule();
         javaTimeModule.addDeserializer(

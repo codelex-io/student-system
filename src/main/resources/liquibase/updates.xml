@@ -42,6 +42,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="progress" type="FLOAT8">
+                <!--todo remove-->
                 <constraints nullable="false"/>
             </column>
             <column name="start_date" type="date">
@@ -96,6 +97,7 @@
     </changeSet>
     <changeSet author="janis" id="ADD_TABLE_quiz">
         <createTable tableName="quiz">
+            <!--todo-->
             <column autoIncrement="true" name="quiz_id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="quiz_pkey"/>
             </column>
@@ -124,12 +126,14 @@
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
+            <!--todo github-->
             <column name="git_hub" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="image" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
+            <!--todo-->
             <column name="linked_in" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>

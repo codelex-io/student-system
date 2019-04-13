@@ -22,7 +22,7 @@ public class StudentSystemApplication {
         SpringApplication.run(StudentSystemApplication.class, args);
     }
 
-    @Bean
+    @Bean //todo move to separate configuration
     Jackson2ObjectMapperBuilder objectMapperBuilder() {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
 

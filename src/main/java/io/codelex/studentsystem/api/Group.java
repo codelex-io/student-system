@@ -11,7 +11,7 @@ public class Group {
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate plannedEndDate;
-    private double progress;
+    private double progress; //todo progress
 
     @JsonCreator
     public Group(@JsonProperty("id") Long id,

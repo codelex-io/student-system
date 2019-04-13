@@ -15,7 +15,7 @@ public class Employer {
     @JsonCreator
     public Employer(@JsonProperty("id") Long id,
                     @JsonProperty("name") String name,
-                    @JsonProperty("personName") String personName,
+                    @JsonProperty("personName") String personName, //todo persons
                     @JsonProperty("personPhone") String personPhone,
                     @JsonProperty("personEmail") String personEmail,
                     @JsonProperty("password") String password,
