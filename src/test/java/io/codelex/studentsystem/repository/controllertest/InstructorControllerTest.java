@@ -42,30 +42,6 @@ class InstructorControllerTest {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    static {
-        Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-        JavaTimeModule javaTimeModule = new JavaTimeModule();
-        javaTimeModule.addDeserializer(
-                LocalDateTime.class,
-                new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-        );
-        javaTimeModule.addDeserializer(
-                LocalDate.class,
-                new LocalDateDeserializer(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        );
-        javaTimeModule.addSerializer(
-                LocalDateTime.class,
-                new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-        );
-        javaTimeModule.addSerializer(
-                LocalDate.class,
-                new LocalDateSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        );
-        builder.modules(javaTimeModule);
-        builder.featuresToDisable(WRITE_DATES_AS_TIMESTAMPS);
-        MAPPER.registerModule(javaTimeModule);
-    }
-
     @Test
     void should_add_instructor_and_give_200_response() throws Exception {
         //given

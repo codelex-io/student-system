@@ -4,7 +4,6 @@ import io.codelex.studentsystem.api.requests.LinkInstructorAndGroup;
 import io.codelex.studentsystem.service.GroupInstructorService;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

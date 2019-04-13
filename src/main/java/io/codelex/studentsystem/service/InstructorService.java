@@ -52,6 +52,6 @@ public class InstructorService {
     }
 
     private boolean isInstructorPresent(AddInstructor request) {
-        return recordRepository.isInstructorPresent(request.getName());
+        return recordRepository.isInstructorPresent(request.getEmail());
     }
 }
