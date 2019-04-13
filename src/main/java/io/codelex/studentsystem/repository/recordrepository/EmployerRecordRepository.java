@@ -10,7 +10,6 @@ public interface EmployerRecordRepository extends JpaRepository<EmployerRecord, 
     @Query("select count(employer) > 0 from EmployerRecord employer"
             + " where employer.login = :login"
             + " and employer.name = :name"
-            + " and employer.password = :password"
             + " and employer.personEmail = :personEmail"
             + " and employer.personName = :personName"
             + " and employer.personPhone = :personPhone")
@@ -18,7 +17,6 @@ public interface EmployerRecordRepository extends JpaRepository<EmployerRecord, 
                               @Param("login") String login,
                               @Param("name") String name,
                               @Param("personName") String personName,
-                              @Param("password") String password,
                               @Param("personPhone") String personPhone);
 
     @Query("select count(employer) > 0 from EmployerRecord employer"
