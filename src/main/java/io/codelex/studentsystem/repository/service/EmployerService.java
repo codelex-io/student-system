@@ -1,6 +1,5 @@
 package io.codelex.studentsystem.repository.service;
 
-import io.codelex.studentsystem.EmployerServiceInterface;
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.api.requests.SignIn;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConditionalOnProperty(prefix = "student-system", name = "store-type", havingValue = "database")
-public class EmployerService implements EmployerServiceInterface {
+public class EmployerService {
     private final EmployerRecordRepository employerRepository;
     private MapEmployerRecordToEmployer mapEmployerRecordToEmployer = new MapEmployerRecordToEmployer();
 
@@ -21,7 +20,6 @@ public class EmployerService implements EmployerServiceInterface {
         this.employerRepository = employerRepository;
     }
 
-    @Override
     public Employer addEmployer(AddEmployer request) {
         if (isEmployerPresent(request) || isLoginPresent(request)) {
             throw new IllegalStateException();
@@ -42,7 +40,6 @@ public class EmployerService implements EmployerServiceInterface {
                 request.getLogin());
     }
 
-    @Override
     public Employer findEmployerById(long id) {
         return employerRepository
                 .findById(id)
@@ -50,7 +47,6 @@ public class EmployerService implements EmployerServiceInterface {
                 .orElse(null);
     }
 
-    @Override
     public void deleteById(long id) {
         employerRepository.deleteById(id);
     }
@@ -65,14 +61,12 @@ public class EmployerService implements EmployerServiceInterface {
         );
     }
 
-    @Override
-    public boolean isEmployerPresent(AddEmployer request) {
+    private boolean isEmployerPresent(AddEmployer request) {
         return employerRepository.isEmployerPresent(
                 request.getPersonEmail(),
                 request.getLogin(),
                 request.getName(),
                 request.getPersonName(),
-                request.getPassword(),
                 request.getPersonPhone());
     }
 }
