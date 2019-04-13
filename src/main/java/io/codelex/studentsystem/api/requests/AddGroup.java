@@ -11,23 +11,19 @@ public class AddGroup {
     private final String name;
     @NotNull
     private final LocalDate startDate;
-    @NotNull
+    
     private final LocalDate endDate;
     @NotNull
     private final LocalDate plannedEndDate;
-    @NotNull
-    private final double progress;
     
     public AddGroup(@JsonProperty("name") String name,
                     @JsonProperty("startDate") LocalDate startDate,
                     @JsonProperty("endDate") LocalDate endDate,
-                    @JsonProperty("plannedEndDate") LocalDate plannedEndDate,
-                    @JsonProperty("progress") double progress) { //todo remove
+                    @JsonProperty("plannedEndDate") LocalDate plannedEndDate) { 
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.plannedEndDate = plannedEndDate;
-        this.progress = progress;
 
     }
 
@@ -45,10 +41,6 @@ public class AddGroup {
 
     public LocalDate getPlannedEndDate() {
         return plannedEndDate;
-    }
-
-    public double getProgress() {
-        return progress;
     }
 
 }

@@ -14,11 +14,9 @@ public interface GroupRecordRepository extends JpaRepository<GroupRecord, Long> 
             + " where groups.name = :name"
             + " and groups.startDate = :startDate"
             + " and groups.endDate = :endDate"
-            + " and groups.plannedEndDate = :plannedEndDate"
-            + " and groups.progress = :progress")
+            + " and groups.plannedEndDate = :plannedEndDate")
     boolean isGroupPresent(@Param("name") String name,
                            @Param("startDate") LocalDate startDate,
                            @Param("endDate") LocalDate endDate,
-                           @Param("plannedEndDate") LocalDate plannedEndDate,
-                           @Param("progress") double progress);
+                           @Param("plannedEndDate") LocalDate plannedEndDate);
 }

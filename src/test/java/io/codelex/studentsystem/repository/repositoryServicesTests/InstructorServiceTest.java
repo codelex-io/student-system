@@ -4,7 +4,7 @@ import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.requests.AddInstructor;
 import io.codelex.studentsystem.repository.model.InstructorRecord;
 import io.codelex.studentsystem.repository.InstructorRecordRepository;
-import io.codelex.studentsystem.repository.service.InstructorService;
+import io.codelex.studentsystem.service.InstructorService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;

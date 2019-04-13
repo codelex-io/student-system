@@ -40,7 +40,6 @@ class InstructorRecordRepositoryTest {
         groupRecord.setStartDate(LocalDate.now());
         groupRecord.setEndDate(LocalDate.now().plusMonths(4));
         groupRecord.setPlannedEndDate(LocalDate.now().plusMonths(3));
-        groupRecord.setProgress(0.0);
         groupRecordRepository.save(groupRecord);
 
         InstructorRecord record = new InstructorRecord();
@@ -63,7 +62,6 @@ class InstructorRecordRepositoryTest {
         groupRecord2.setStartDate(LocalDate.now());
         groupRecord2.setEndDate(LocalDate.now().plusMonths(5));
         groupRecord2.setPlannedEndDate(LocalDate.now().plusMonths(4));
-        groupRecord2.setProgress(0.0);
         groupRecordRepository.save(groupRecord2);
 
         InstructorRecord record2 = new InstructorRecord();

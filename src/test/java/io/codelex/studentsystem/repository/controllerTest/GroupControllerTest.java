@@ -8,10 +8,10 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.codelex.studentsystem.GroupController;
 import io.codelex.studentsystem.api.requests.AddGroup;
-import io.codelex.studentsystem.repository.service.GroupService;
-import io.codelex.studentsystem.repository.service.InstructorService;
-import io.codelex.studentsystem.repository.service.StudentService;
-import io.codelex.studentsystem.repository.service.TopicsService;
+import io.codelex.studentsystem.service.GroupService;
+import io.codelex.studentsystem.service.InstructorService;
+import io.codelex.studentsystem.service.StudentService;
+import io.codelex.studentsystem.service.TopicsService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -86,8 +86,7 @@ class GroupControllerTest {
         AddGroup request = new AddGroup("Group",
                 defaultDate,
                 defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
+                defaultDate.plusDays(2)
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
@@ -107,8 +106,7 @@ class GroupControllerTest {
         AddGroup request = new AddGroup("Group",
                 null,
                 defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
+                defaultDate.plusDays(2)
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
@@ -128,8 +126,7 @@ class GroupControllerTest {
         AddGroup request = new AddGroup("",
                 defaultDate,
                 defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
+                defaultDate.plusDays(2)
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
@@ -181,8 +178,7 @@ class GroupControllerTest {
         return new AddGroup("group",
                 defaultDate,
                 defaultDate.plusDays(1),
-                defaultDate.plusDays(2),
-                35.9
+                defaultDate.plusDays(2)
         );
     }
 }

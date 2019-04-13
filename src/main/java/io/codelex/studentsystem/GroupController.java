@@ -5,10 +5,10 @@ import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddGroup;
-import io.codelex.studentsystem.repository.service.GroupService;
-import io.codelex.studentsystem.repository.service.InstructorService;
-import io.codelex.studentsystem.repository.service.StudentService;
-import io.codelex.studentsystem.repository.service.TopicsService;
+import io.codelex.studentsystem.service.GroupService;
+import io.codelex.studentsystem.service.InstructorService;
+import io.codelex.studentsystem.service.StudentService;
+import io.codelex.studentsystem.service.TopicsService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

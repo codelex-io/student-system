@@ -13,8 +13,7 @@ public class MapGroupRecordToGroup implements Function<GroupRecord, Group> {
                 groupRecord.getName(),
                 groupRecord.getStartDate(),
                 groupRecord.getEndDate(),
-                groupRecord.getPlannedEndDate(),
-                groupRecord.getProgress()
+                groupRecord.getPlannedEndDate()
         );
     }
 }

@@ -18,7 +18,6 @@ public class GroupRecord {
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate plannedEndDate;
-    private double progress;
 
     public Set<TopicRecord> getTopics() {
         return topics;
@@ -76,11 +75,4 @@ public class GroupRecord {
         this.plannedEndDate = plannedEndDate;
     }
 
-    public double getProgress() {
-        return progress;
-    }
-
-    public void setProgress(double progress) {
-        this.progress = progress;
-    }
 }

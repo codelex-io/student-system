@@ -2,6 +2,7 @@ package io.codelex.studentsystem.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 public class AddStudent {
@@ -16,6 +17,7 @@ public class AddStudent {
     @NotEmpty
     private final String telephone;
     @NotEmpty
+    @Email
     private final String email;
     @NotEmpty
     private final String description;

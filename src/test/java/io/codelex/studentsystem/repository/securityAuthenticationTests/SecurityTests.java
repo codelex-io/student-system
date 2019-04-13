@@ -1,6 +1,6 @@
 package io.codelex.studentsystem.repository.securityAuthenticationTests;
 
-import io.codelex.studentsystem.repository.service.EmployerService;
+import io.codelex.studentsystem.service.EmployerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

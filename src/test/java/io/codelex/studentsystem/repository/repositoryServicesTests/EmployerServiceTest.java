@@ -4,7 +4,7 @@ import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.repository.model.EmployerRecord;
 import io.codelex.studentsystem.repository.EmployerRecordRepository;
-import io.codelex.studentsystem.repository.service.EmployerService;
+import io.codelex.studentsystem.service.EmployerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;

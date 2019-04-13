@@ -21,11 +21,9 @@ class MapGroupRecordToGroupTest {
         groupRecord.setStartDate(LocalDate.now());
         groupRecord.setEndDate(LocalDate.now().plusMonths(4));
         groupRecord.setPlannedEndDate(LocalDate.now().plusMonths(3));
-        groupRecord.setProgress(0.0);
         //when
         Group test = toGroup.apply(groupRecord);
         //then
-        assertEquals(test.getProgress(), 0.0);
         assertEquals(test.getPlannedEndDate(), LocalDate.now().plusMonths(3));
         assertEquals(test.getEndDate(), LocalDate.now().plusMonths(4));
         assertEquals(test.getStartDate(), LocalDate.now());

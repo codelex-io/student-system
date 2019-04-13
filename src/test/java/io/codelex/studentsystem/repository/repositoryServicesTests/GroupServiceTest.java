@@ -4,7 +4,7 @@ import io.codelex.studentsystem.api.Group;
 import io.codelex.studentsystem.api.requests.AddGroup;
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import io.codelex.studentsystem.repository.GroupRecordRepository;
-import io.codelex.studentsystem.repository.service.GroupService;
+import io.codelex.studentsystem.service.GroupService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
@@ -31,7 +31,6 @@ class GroupServiceTest {
         assertEquals(request.getStartDate(), actual.getStartDate());
         assertEquals(request.getEndDate(), actual.getEndDate());
         assertEquals(request.getPlannedEndDate(), actual.getPlannedEndDate());
-        assertEquals(request.getProgress(), actual.getProgress());
     }
 
     @Test
@@ -44,14 +43,12 @@ class GroupServiceTest {
         //then
         assertEquals(setGroup().getName(), group.getName());
         assertEquals(setGroup().getEndDate(), group.getEndDate());
-        assertEquals(setGroup().getProgress(), group.getProgress());
     }
 
     @Test
     void should_find_group_by_id() {
         //given
         GroupRecord record = new GroupRecord();
-        record.setProgress(15);
         record.setName("firstgroup");
         record.setEndDate(LocalDate.of(2019, 12, 21));
         Optional<GroupRecord> groupRecord = Optional.of(record);
@@ -60,7 +57,6 @@ class GroupServiceTest {
         Group result = service.findGroupById(1L);
         //then
         assertNotNull(result);
-        assertEquals(result.getProgress(), record.getProgress());
     }
 
     AddGroup setGroup() {
@@ -68,8 +64,7 @@ class GroupServiceTest {
                 "Software development",
                 LocalDate.of(2019, 1, 21),
                 null,
-                LocalDate.of(2019, 4, 30),
-                0
+                LocalDate.of(2019, 4, 30)
         );
     }
 }

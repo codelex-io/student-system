@@ -8,7 +8,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.codelex.studentsystem.InstructorController;
 import io.codelex.studentsystem.api.requests.AddInstructor;
-import io.codelex.studentsystem.repository.service.InstructorService;
+import io.codelex.studentsystem.service.InstructorService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

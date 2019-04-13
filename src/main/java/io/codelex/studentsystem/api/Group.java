@@ -11,21 +11,18 @@ public class Group {
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate plannedEndDate;
-    private double progress; //todo progress
 
     @JsonCreator
     public Group(@JsonProperty("id") Long id,
                  @JsonProperty("name") String name,
                  @JsonProperty("startDate") LocalDate startDate,
                  @JsonProperty("endDate") LocalDate endDate,
-                 @JsonProperty("plannedEndDate") LocalDate plannedEndDate,
-                 @JsonProperty("progress") double progress) {
+                 @JsonProperty("plannedEndDate") LocalDate plannedEndDate) {
         this.id = id;
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.plannedEndDate = plannedEndDate;
-        this.progress = progress;
     }
 
     public Long getId() {
@@ -46,10 +43,6 @@ public class Group {
 
     public LocalDate getPlannedEndDate() {
         return plannedEndDate;
-    }
-
-    public double getProgress() {
-        return progress;
     }
 
 }
