@@ -1,6 +1,5 @@
 package io.codelex.studentsystem.repository.model;
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;

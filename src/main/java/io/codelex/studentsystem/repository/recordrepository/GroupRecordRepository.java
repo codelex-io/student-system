@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDate;
 
 public interface GroupRecordRepository extends JpaRepository<GroupRecord, Long> {
-    
+
     @Query("select count(groups) > 0 from Groups groups"
             + " where groups.name = :name"
             + " and groups.startDate = :startDate"

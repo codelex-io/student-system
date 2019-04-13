@@ -1,6 +1,5 @@
 package io.codelex.studentsystem.repository.model;
 
-
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;

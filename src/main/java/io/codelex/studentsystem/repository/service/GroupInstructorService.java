@@ -1,5 +1,6 @@
 package io.codelex.studentsystem.repository.service;
 
+import io.codelex.studentsystem.api.requests.LinkInstructorAndGroup;
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import io.codelex.studentsystem.repository.model.InstructorRecord;
 import io.codelex.studentsystem.repository.recordrepository.GroupRecordRepository;
@@ -18,9 +19,9 @@ public class GroupInstructorService {
         this.instructorRecordRepository = instructorRecordRepository;
     }
 
-    public void linkGroupWithInstructors(long instructorId, long groupId) {
-        GroupRecord groupRecord = groupRecordRepository.findById(groupId).orElse(null);
-        InstructorRecord instructorRecord = instructorRecordRepository.findById(instructorId).orElse(null);
+    public void linkGroupWithInstructors(LinkInstructorAndGroup request) {
+        GroupRecord groupRecord = groupRecordRepository.findById(request.getGroupId()).orElse(null);
+        InstructorRecord instructorRecord = instructorRecordRepository.findById(request.getInstructorId()).orElse(null);
         Set<GroupRecord> groupRecordSet = instructorRecord.getGroups();
         groupRecordSet.add(groupRecord);
     }

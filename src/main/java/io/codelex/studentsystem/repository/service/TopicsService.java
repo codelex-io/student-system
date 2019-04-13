@@ -40,7 +40,7 @@ public class TopicsService {
     }
 
     public Topic findTopicById(Long id) {
-        
+
         return topicRecordRepository
                 .findById(id)
                 .map(map)
@@ -53,6 +53,6 @@ public class TopicsService {
 
     public List<Topic> showTopicInGroup(long groupsId) {
         Set<TopicRecord> topicRecord = groupRecordRepository.findById(groupsId).map(GroupRecord::getTopics).orElse(Collections.emptySet());
-       return topicRecord.stream().map(map).collect(Collectors.toList());
+        return topicRecord.stream().map(map).collect(Collectors.toList());
     }
 }

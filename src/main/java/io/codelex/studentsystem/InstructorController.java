@@ -30,7 +30,7 @@ public class InstructorController {
 
     @GetMapping("/internal-api/instructors/{id}")
     public ResponseEntity<Instructor> findInstructorByID(@PathVariable long id) {
-        if(service.findInstructorById(id) != null){
+        if (service.findInstructorById(id) != null) {
             return new ResponseEntity<>(service.findInstructorById(id), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -39,7 +39,7 @@ public class InstructorController {
 
     @DeleteMapping("/internal-api/instructors/{instructorsId}")
     public ResponseEntity<String> deleteById(@PathVariable long instructorsId) {
-        if(service.findInstructorById(instructorsId) != null){
+        if (service.findInstructorById(instructorsId) != null) {
             service.deleteById(instructorsId);
             return new ResponseEntity<>("Instructor deleted", HttpStatus.OK);
         } else {

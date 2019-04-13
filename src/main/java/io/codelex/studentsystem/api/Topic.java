@@ -12,9 +12,9 @@ public class Topic {
     private LocalDate creationDate;
 
     @JsonCreator
-    public Topic(@JsonProperty("id") Long id, 
-                 @JsonProperty("name") String name, 
-                 @JsonProperty("state") String state, 
+    public Topic(@JsonProperty("id") Long id,
+                 @JsonProperty("name") String name,
+                 @JsonProperty("state") String state,
                  @JsonProperty("creationDate") LocalDate creationDate) {
         this.id = id;
         this.name = name;
