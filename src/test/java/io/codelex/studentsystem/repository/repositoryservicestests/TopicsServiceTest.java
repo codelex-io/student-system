@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -21,7 +20,6 @@ class TopicsServiceTest {
     private TopicRecordRepository repository = Mockito.mock(TopicRecordRepository.class);
     private GroupRecordRepository recordRepository = Mockito.mock(GroupRecordRepository.class);
     private TopicsService service = new TopicsService(repository, recordRepository);
-    private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
 
     @Test
     void should_add_topic() {
@@ -31,7 +29,6 @@ class TopicsServiceTest {
         Mockito.when(repository.save(any())).thenAnswer((Answer) invocation -> invocation.getArguments()[0]);
         Topic result = service.addTopic(request);
         //then
-        Assertions.assertEquals(request.getCreationDate(), result.getCreationDate());
         Assertions.assertEquals(request.getName(), result.getName());
         Assertions.assertEquals(request.getState(), result.getState());
     }
@@ -41,7 +38,6 @@ class TopicsServiceTest {
         //given
         TopicRecord topic = new TopicRecord();
         topic.setName("Java");
-        topic.setCreationDate(defaultDate);
         topic.setState("Completed");
         Optional<TopicRecord> topicRecord = Optional.of(topic);
         Mockito.when(repository.findById(1L)).thenReturn(topicRecord);
@@ -50,7 +46,6 @@ class TopicsServiceTest {
         //then
         Assertions.assertNotNull(result);
         Assertions.assertEquals(topic.getName(), result.getName());
-        Assertions.assertEquals(topic.getCreationDate(), result.getCreationDate());
         Assertions.assertEquals(topic.getState(), result.getState());
     }
 
@@ -58,8 +53,7 @@ class TopicsServiceTest {
     private AddTopic addNewTopic() {
         return new AddTopic(
                 "Java",
-                "Completed",
-                defaultDate
+                "Completed"
         );
     }
 }

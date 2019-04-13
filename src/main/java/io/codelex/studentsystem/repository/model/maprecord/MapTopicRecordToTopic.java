@@ -10,8 +10,7 @@ public class MapTopicRecordToTopic implements Function<TopicRecord, Topic> {
     public Topic apply(TopicRecord topicRecord) {
         return new Topic(topicRecord.getTopicId(),
                 topicRecord.getName(),
-                topicRecord.getState(),
-                topicRecord.getCreationDate()
+                topicRecord.getState()
         );
     }
 }

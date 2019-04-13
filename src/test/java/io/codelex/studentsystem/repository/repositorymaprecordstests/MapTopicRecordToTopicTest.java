@@ -6,16 +6,13 @@ import io.codelex.studentsystem.repository.model.TopicRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-
-public class MapTopicRecordToTopicTest {
+class MapTopicRecordToTopicTest {
     private MapTopicRecordToTopic mapTopicRecordToTopic = new MapTopicRecordToTopic();
 
     @Test
     void apply() {
         //given
         TopicRecord record = new TopicRecord();
-        record.setCreationDate(LocalDate.now());
         record.setName("newgroup");
         record.setState("active");
         record.setTopicId(2L);
@@ -23,7 +20,6 @@ public class MapTopicRecordToTopicTest {
         Topic topic = mapTopicRecordToTopic.apply(record);
         //then
         Assertions.assertEquals(topic.getId(), 2L);
-        Assertions.assertEquals(topic.getCreationDate(), LocalDate.now());
         Assertions.assertEquals(topic.getName(), "newgroup");
         Assertions.assertEquals(topic.getState(), "active");
     }
