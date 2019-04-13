@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping
 public class EmployerController {
@@ -17,7 +19,7 @@ public class EmployerController {
     }
 
     @PutMapping("/internal-api/employers")
-    public ResponseEntity<Employer> addEmployer(@RequestBody AddEmployer request) {
+    public ResponseEntity<Employer> addEmployer(@Valid @RequestBody AddEmployer request) {
         try {
             employerService.addEmployer(request);
         } catch (IllegalStateException e) {
