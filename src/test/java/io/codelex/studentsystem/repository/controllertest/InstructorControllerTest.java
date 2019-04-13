@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.controllerTest;
+package io.codelex.studentsystem.repository.controllertest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -6,9 +6,9 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import io.codelex.studentsystem.TopicController;
-import io.codelex.studentsystem.api.requests.AddTopic;
-import io.codelex.studentsystem.service.TopicsService;
+import io.codelex.studentsystem.InstructorController;
+import io.codelex.studentsystem.api.requests.AddInstructor;
+import io.codelex.studentsystem.service.InstructorService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -26,20 +26,19 @@ import java.time.format.DateTimeFormatter;
 import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(TopicController.class)
-class TopicControllerTest {
+@WebMvcTest(InstructorController.class)
+class InstructorControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private TopicsService service;
-
-    private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
+    private InstructorService service;
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -68,13 +67,13 @@ class TopicControllerTest {
     }
 
     @Test
-    void should_add_topic_and_give_200_response() throws Exception {
+    void should_add_instructor_and_give_200_response() throws Exception {
         //given
-        AddTopic request = addTopicRequest();
+        AddInstructor request = addInstructorRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/topics")
+                put("/internal-api/instructors")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -84,16 +83,18 @@ class TopicControllerTest {
     }
 
     @Test
-    void should_not_add_topic_and_give_400_response_if_fields_null() throws Exception {
+    void should_not_add_instructor_and_give_400_response_if_fields_null() throws Exception {
         //given
-        AddTopic request = new AddTopic("Java",
-                "done",
-                null
+        AddInstructor request = new AddInstructor("Instructor",
+                null,
+                "github.com",
+                "123123123",
+                "janis@janis.eu"
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/topics")
+                put("/internal-api/instructors")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -103,16 +104,18 @@ class TopicControllerTest {
     }
 
     @Test
-    void should_not_add_topic_and_give_400_response_if_contains_empty_field() throws Exception {
+    void should_not_add_instructor_and_give_400_response_if_contains_empty_field() throws Exception {
         //given
-        AddTopic request = new AddTopic("Java",
+        AddInstructor request = new AddInstructor("Instructor",
+                "linkedin.com",
+                "github.com",
                 "",
-                defaultDate
+                "janis@janis.eu"
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                put("/internal-api/topics")
+                put("/internal-api/instructors")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -122,13 +125,13 @@ class TopicControllerTest {
     }
 
     @Test
-    void should_not_find_topic_by_id_if_no_such_id_and_give_400_response() throws Exception {
+    void should_not_find_instructor_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
-        AddTopic request = addTopicRequest();
+        AddInstructor request = addInstructorRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                get("/internal-api/topics/222")
+                get("/internal-api/instructors/222")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -136,16 +139,15 @@ class TopicControllerTest {
                 .andExpect(status().isBadRequest()
                 );
     }
-
 
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given
-        AddTopic request = addTopicRequest();
+        AddInstructor request = addInstructorRequest();
         String json = MAPPER.writeValueAsString(request);
         //expected
         mockMvc.perform(
-                delete("/internal-api/topics/1")
+                delete("/internal-api/instructors/111")
                         .content(json)
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
@@ -155,11 +157,12 @@ class TopicControllerTest {
     }
 
     @NotNull
-    private AddTopic addTopicRequest() {
-        return new AddTopic("Java",
-                    "done",
-                    defaultDate
-            );
+    private AddInstructor addInstructorRequest() {
+        return new AddInstructor("Instructor",
+                "linkedin.com",
+                "github.com",
+                "123123123",
+                "janis@janis.eu"
+        );
     }
-
 }

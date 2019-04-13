@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.repositoryServicesTests;
+package io.codelex.studentsystem.repository.repositoryservicestests;
 
 import io.codelex.studentsystem.repository.model.GroupRecord;
 import io.codelex.studentsystem.repository.GroupRecordRepository;

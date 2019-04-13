@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.repositoryMapRecordsTests;
+package io.codelex.studentsystem.repository.repositorymaprecordstests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
