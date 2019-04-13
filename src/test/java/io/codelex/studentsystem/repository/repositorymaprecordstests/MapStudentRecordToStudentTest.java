@@ -13,11 +13,11 @@ public class MapStudentRecordToStudentTest {
     void apply() {
         //given
         StudentRecord record = new StudentRecord();
-        record.setLinkedIn("linkedin");
+        record.setLinkedin("linkedin");
         record.setDescription("very active");
         record.setTelephone("+2345555223");
         record.setStatus("Sold");
-        record.setGitHub("github");
+        record.setGithub("github");
         record.setEmail("fefej@gmail.com");
         record.setImage("wqdjIMAGE");
         record.setStudentId(1L);
