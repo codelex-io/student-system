@@ -52,11 +52,6 @@ public class InstructorService {
     }
 
     private boolean isInstructorPresent(AddInstructor request) {
-        return recordRepository.isInstructorPresent(request.getName(),
-                request.getLinkedinLink(),
-                request.getGithubLink(),
-                request.getPhone(),
-                request.getEmail()
-        );
+        return recordRepository.isInstructorPresent(request.getName());
     }
 }

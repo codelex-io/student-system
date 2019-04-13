@@ -9,6 +9,10 @@ import java.util.List;
 
 public interface StudentRecordRepository extends JpaRepository<StudentRecord, Long> {
 
-    @Query("SELECT s FROM StudentRecord s WHERE s.groupId = :groupsId")
+    @Query("select s from StudentRecord s where s.groupId = :groupsId")
     List<StudentRecord> findStudentsByGroupId(@Param("groupsId") long groupsId);
+
+    @Query("select count (students) > 0 from StudentRecord students"
+            + " where students.email = :email")
+    boolean isStudentPresent(@Param("email") String email);
 }

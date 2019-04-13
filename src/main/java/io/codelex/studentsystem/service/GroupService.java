@@ -48,9 +48,6 @@ public class GroupService {
     }
 
     private boolean isGroupPresentRequest(AddGroup request) {
-        return recordRepository.isGroupPresent(request.getName(),
-                request.getStartDate(),
-                request.getEndDate(),
-                request.getPlannedEndDate());
+        return recordRepository.isGroupPresent(request.getName());
     }
 }

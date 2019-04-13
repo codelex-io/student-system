@@ -1,6 +1,5 @@
 package io.codelex.studentsystem;
 
-import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.requests.AddStudent;
 import io.codelex.studentsystem.service.StudentService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping
 public class StudentController {
     private final StudentService service;
 
@@ -19,16 +17,20 @@ public class StudentController {
     }
 
     @PutMapping("/internal-api/students")
-    public Student addNewStudent(@Valid @RequestBody AddStudent request) {
-        return service.addStudent(request);
+    public ResponseEntity<?> addNewStudent(@Valid @RequestBody AddStudent request) {
+        try {
+            return new ResponseEntity<>(service.addStudent(request), HttpStatus.OK);
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<>("Can't add student that already exists", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/internal-api/students/{id}")
-    public ResponseEntity<Student> findStudent(@PathVariable("id") Long id) {
+    public ResponseEntity<?> findStudent(@PathVariable("id") Long id) {
         if (service.findStudentById(id) != null) {
             return new ResponseEntity<>(service.findStudentById(id), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Such id does not exist", HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -7,18 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface EmployerRecordRepository extends JpaRepository<EmployerRecord, Long> {
 
-    //todo
     @Query("select count(employer) > 0 from EmployerRecord employer"
-            + " where employer.login = :login"
-            + " and employer.name = :name"
-            + " and employer.personEmail = :personEmail"
-            + " and employer.personName = :personName"
-            + " and employer.personPhone = :personPhone")
-    boolean isEmployerPresent(@Param("personEmail") String personEmail,
-                              @Param("login") String login,
-                              @Param("name") String name,
-                              @Param("personName") String personName,
-                              @Param("personPhone") String personPhone);
+            + " where employer.personEmail = :personEmail")
+    boolean isEmployerPresent(@Param("personEmail") String personEmail);
 
     @Query("select count(employer) > 0 from EmployerRecord employer"
             + " where employer.login = :login")

@@ -24,6 +24,9 @@ public class TopicsService {
     }
 
     public Topic addTopic(AddTopic request) {
+        if (isTopicPresent(request)) {
+            throw new IllegalStateException();
+        }
         TopicRecord topicRecord = new TopicRecord();
         topicRecord.setName(request.getName());
         topicRecord.setState(request.getState());
@@ -59,5 +62,9 @@ public class TopicsService {
                 .stream()
                 .map(map)
                 .collect(Collectors.toList());
+    }
+
+    private boolean isTopicPresent(AddTopic request) {
+        return topicRecordRepository.isTopicPresent(request.getName());
     }
 }
