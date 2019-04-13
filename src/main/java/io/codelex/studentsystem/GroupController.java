@@ -5,12 +5,13 @@ import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.api.Student;
 import io.codelex.studentsystem.api.Topic;
 import io.codelex.studentsystem.api.requests.AddGroup;
-import io.codelex.studentsystem.repository.recordrepository.GroupRecordRepository;
 import io.codelex.studentsystem.repository.service.GroupService;
 import io.codelex.studentsystem.repository.service.InstructorService;
 import io.codelex.studentsystem.repository.service.StudentService;
 import io.codelex.studentsystem.repository.service.TopicsService;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -23,7 +24,6 @@ public class GroupController {
     private final InstructorService instructorService;
     private final TopicsService topicsService;
     private final StudentService studentService;
-    private GroupRecordRepository repository;
 
     public GroupController(GroupService service, InstructorService instructorService, TopicsService topicsService, StudentService studentService) {
         this.service = service;
@@ -44,7 +44,7 @@ public class GroupController {
 
     @GetMapping("/internal-api/groups/{groupsId}")
     public ResponseEntity<Group> findGroupById(@PathVariable long groupsId) {
-        if(service.findGroupById(groupsId) != null){
+        if (service.findGroupById(groupsId) != null) {
             return new ResponseEntity<>(service.findGroupById(groupsId), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -53,7 +53,7 @@ public class GroupController {
 
     @DeleteMapping("/internal-api/groups/{groupsId}")
     public ResponseEntity<String> deleteById(@PathVariable long groupsId) {
-        if(service.findGroupById(groupsId) != null){
+        if (service.findGroupById(groupsId) != null) {
             service.deleteById(groupsId);
             return new ResponseEntity<>("Group deleted", HttpStatus.OK);
         } else {

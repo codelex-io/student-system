@@ -40,7 +40,7 @@ class GroupControllerTest {
 
     @MockBean
     private GroupService service;
-    
+
     @MockBean
     private InstructorService instructorService;
 
@@ -151,7 +151,7 @@ class GroupControllerTest {
                 );
     }
 
-    
+
     @Test
     void should_return_400_response_if_no_such_id_to_delete() throws Exception {
         //given

@@ -136,7 +136,7 @@ class TopicControllerTest {
                 .andExpect(status().isOk()
                 );
     }
-    
+
     @Test
     void should_delete_by_id_and_return_200_response() throws Exception {
         //given
@@ -156,9 +156,9 @@ class TopicControllerTest {
     @NotNull
     private AddTopic addTopicRequest() {
         return new AddTopic("Java",
-                    "done",
-                    defaultDate
-            );
+                "done",
+                defaultDate
+        );
     }
 
 }

@@ -71,5 +71,5 @@ class StudentRecordRepositoryTest {
         //then
         Assertions.assertEquals(resultList, testList);
     }
-    
+
 }

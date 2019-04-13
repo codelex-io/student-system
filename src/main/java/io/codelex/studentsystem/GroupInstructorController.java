@@ -1,7 +1,9 @@
 package io.codelex.studentsystem;
 
+import io.codelex.studentsystem.api.requests.LinkInstructorAndGroup;
 import io.codelex.studentsystem.repository.service.GroupInstructorService;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +17,7 @@ public class GroupInstructorController {
     }
 
     @PutMapping("internal-api/groups-instructors")
-    public void linkInstructorsAndGroups(long instructorId, long groupId) {
-        groupInstructorService.linkGroupWithInstructors(instructorId, groupId);
+    public void linkInstructorsAndGroups(@RequestBody LinkInstructorAndGroup request) {
+        groupInstructorService.linkGroupWithInstructors(request);
     }
 }

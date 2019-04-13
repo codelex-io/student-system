@@ -125,7 +125,7 @@ class InstructorControllerTest {
                 .andExpect(status().isBadRequest()
                 );
     }
-    
+
     @Test
     void should_not_find_instructor_by_id_if_no_such_id_and_give_400_response() throws Exception {
         //given
@@ -161,11 +161,11 @@ class InstructorControllerTest {
     @NotNull
     private AddInstructor addInstructorRequest() {
         return new AddInstructor("Instructor",
-                    "linkedin.com",
-                    "github.com",
-                    "123123123",
-                    "janis@janis.eu",
-                    false
-            );
+                "linkedin.com",
+                "github.com",
+                "123123123",
+                "janis@janis.eu",
+                false
+        );
     }
 }
