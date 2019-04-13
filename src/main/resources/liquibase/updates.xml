@@ -10,19 +10,35 @@
             <column name="login" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(255)">
+            <column name="company" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="password" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="person_email" type="VARCHAR(255)">
+            <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="person_name" type="VARCHAR(255)">
+            <column name="name" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="person_phone" type="VARCHAR(255)">
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="janis" id="ADD_TABLE_persons">
+        <createTable tableName="persons">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="persons_pkey"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -211,6 +227,10 @@
     </changeSet>
     <changeSet id="create_unique_restraint_employers" author="janis">
         <addUniqueConstraint tableName="employers"
-                             columnNames="login,name,password,person_email,person_name,person_phone"/>
+                             columnNames="login,company,password,email,name,phone"/>
+    </changeSet>
+    <changeSet id="create_unique_restraint_persons" author="janis">
+        <addUniqueConstraint tableName="persons"
+                             columnNames="email,name,phone"/>
     </changeSet>
 </databaseChangeLog>

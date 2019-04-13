@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.securityAuthenticationTests;
+package io.codelex.studentsystem.repository.securityauthenticationtests;
 
 import io.codelex.studentsystem.service.EmployerService;
 import org.junit.Test;

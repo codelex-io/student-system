@@ -1,7 +1,7 @@
 package io.codelex.studentsystem.repository.recordrepository;
 
 import io.codelex.studentsystem.repository.EmployerRecordRepository;
-import io.codelex.studentsystem.repository.model.EmployerRecord;
+import io.codelex.studentsystem.repository.model.employer.EmployerRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +26,19 @@ class EmployerRecordRepositoryTests {
         //given
         EmployerRecord repo = employerRecordRepository.save(createEmployer());
         //when
-        boolean result = employerRecordRepository.isEmployerPresent(repo.getPersonEmail());
+        boolean result = employerRecordRepository.isEmployerPresent(repo.getEmail());
         //then
         assertTrue(result);
     }
 
     EmployerRecord createEmployer() {
         EmployerRecord employerRecord = new EmployerRecord();
+        employerRecord.setCompany("microsoft");
+        employerRecord.setEmail("mike@gmail.com");
+        employerRecord.setName("Mike");
+        employerRecord.setPhone("+423235235");
         employerRecord.setPassword("password222");
-        employerRecord.setPersonPhone("1224112741282");
         employerRecord.setLogin("login123");
-        employerRecord.setPersonEmail("fwef@gmail.com");
-        employerRecord.setPersonName("Bob");
-        employerRecord.setName("Microsoft");
         return employerRecord;
     }
 

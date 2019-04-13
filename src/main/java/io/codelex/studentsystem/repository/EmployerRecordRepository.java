@@ -1,6 +1,6 @@
 package io.codelex.studentsystem.repository;
 
-import io.codelex.studentsystem.repository.model.EmployerRecord;
+import io.codelex.studentsystem.repository.model.employer.EmployerRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 public interface EmployerRecordRepository extends JpaRepository<EmployerRecord, Long> {
 
     @Query("select count(employer) > 0 from EmployerRecord employer"
-            + " where employer.personEmail = :personEmail")
-    boolean isEmployerPresent(@Param("personEmail") String personEmail);
+            + " where employer.email = :email")
+    boolean isEmployerPresent(@Param("email") String email);
 
     @Query("select count(employer) > 0 from EmployerRecord employer"
             + " where employer.login = :login")

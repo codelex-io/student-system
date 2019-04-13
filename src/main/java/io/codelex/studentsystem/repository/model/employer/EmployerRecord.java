@@ -1,4 +1,6 @@
-package io.codelex.studentsystem.repository.model;
+package io.codelex.studentsystem.repository.model.employer;
+
+import io.codelex.studentsystem.api.Person;
 
 import javax.persistence.*;
 
@@ -8,10 +10,10 @@ public class EmployerRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String company;
     private String name;
-    private String personName;
-    private String personPhone;
-    private String personEmail;
+    private String email;
+    private String phone;
     private String login;
     private String password;
 
@@ -26,6 +28,14 @@ public class EmployerRecord {
         this.id = id;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
     public String getName() {
         return name;
     }
@@ -34,28 +44,20 @@ public class EmployerRecord {
         this.name = name;
     }
 
-    public String getPersonName() {
-        return personName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPersonName(String personName) {
-        this.personName = personName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPersonPhone() {
-        return personPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPersonPhone(String personPhone) {
-        this.personPhone = personPhone;
-    }
-
-    public String getPersonEmail() {
-        return personEmail;
-    }
-
-    public void setPersonEmail(String personEmail) {
-        this.personEmail = personEmail;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getLogin() {

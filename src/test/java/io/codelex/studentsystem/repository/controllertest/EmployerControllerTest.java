@@ -2,6 +2,7 @@ package io.codelex.studentsystem.repository.controllertest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.codelex.studentsystem.EmployerController;
+import io.codelex.studentsystem.api.Person;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.service.EmployerService;
 import org.jetbrains.annotations.NotNull;
@@ -51,11 +52,11 @@ class EmployerControllerTest {
     void should_not_add_employer_and_give_400_if_contains_null() throws Exception {
         //given
         AddEmployer request = new AddEmployer("Big Company",
-                null,
-                "292929229",
-                "janis@janis.eu",
+                new Person(null,
+                        "bob@gmail.com",
+                        "+35122424"),
                 "parole23",
-                "login"
+                "login22"
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
@@ -73,11 +74,11 @@ class EmployerControllerTest {
     void should_not_add_employer_and_give_400_if_contains_empty_field() throws Exception {
         //given
         AddEmployer request = new AddEmployer("Big Company",
-                "",
-                "292929229",
-                "janis@janis.eu",
+                new Person("",
+                        "bob@gmail.com",
+                        "+35122424"),
                 "parole23",
-                "login"
+                "login22"
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
@@ -123,14 +124,13 @@ class EmployerControllerTest {
                 );
     }
 
-    @NotNull
     private AddEmployer addEmployerMethod() {
         return new AddEmployer("Big Company",
-                "BOB",
-                "292929229",
-                "janis@janis.eu",
+                new Person("Bobs",
+                        "bob@gmail.com",
+                        "+35122424"),
                 "parole23",
-                "login"
+                "login22"
         );
     }
 }

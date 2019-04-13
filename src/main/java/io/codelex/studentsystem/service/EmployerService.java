@@ -1,21 +1,27 @@
 package io.codelex.studentsystem.service;
 
 import io.codelex.studentsystem.api.Employer;
+import io.codelex.studentsystem.api.Person;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.api.requests.SignIn;
 import io.codelex.studentsystem.repository.EmployerRecordRepository;
+import io.codelex.studentsystem.repository.PersonRecordRepository;
+import io.codelex.studentsystem.repository.model.employer.PersonRecord;
 import io.codelex.studentsystem.repository.model.maprecord.MapEmployerRecordToEmployer;
-import io.codelex.studentsystem.repository.model.EmployerRecord;
+import io.codelex.studentsystem.repository.model.employer.EmployerRecord;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EmployerService {
     private final EmployerRecordRepository employerRepository;
+    private final PersonRecordRepository personRecordRepository;
     private MapEmployerRecordToEmployer mapEmployerRecordToEmployer = new MapEmployerRecordToEmployer();
 
-    public EmployerService(EmployerRecordRepository employerRepository) {
+    public EmployerService(EmployerRecordRepository employerRepository,
+                           PersonRecordRepository personRecordRepository) {
         this.employerRepository = employerRepository;
+        this.personRecordRepository = personRecordRepository;
     }
 
     public Employer addEmployer(AddEmployer request) {
@@ -23,10 +29,10 @@ public class EmployerService {
             throw new IllegalStateException();
         }
         EmployerRecord employerRecord = new EmployerRecord();
-        employerRecord.setName(request.getName());
-        employerRecord.setPersonName(request.getPersonName());
-        employerRecord.setPersonEmail(request.getPersonEmail());
-        employerRecord.setPersonPhone(request.getPersonPhone());
+        employerRecord.setCompany(request.getCompany());
+        employerRecord.setName(request.getPerson().getName());
+        employerRecord.setEmail(request.getPerson().getEmail());
+        employerRecord.setPhone(request.getPerson().getPhone());
         employerRecord.setLogin(request.getLogin());
         employerRecord.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
         //todo BCryptPasswordEncoder
@@ -65,6 +71,19 @@ public class EmployerService {
 
     private boolean isEmployerPresent(AddEmployer request) {
         return employerRepository.isEmployerPresent(
-                request.getPersonEmail());
+                request.getPerson().getEmail());
+    }
+
+    private PersonRecord createOrGetPerson(Person person) {
+        return personRecordRepository.findById(person.getEmail())
+                .orElseGet(() -> {
+                    PersonRecord created = new PersonRecord(
+                            person.getEmail(),
+                            person.getName(),
+                            person.getPhone()
+                    );
+
+                    return personRecordRepository.save(created);
+                });
     }
 }

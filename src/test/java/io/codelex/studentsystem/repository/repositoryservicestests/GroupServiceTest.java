@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.repositoryServicesTests;
+package io.codelex.studentsystem.repository.repositoryservicestests;
 
 import io.codelex.studentsystem.api.Group;
 import io.codelex.studentsystem.api.requests.AddGroup;
