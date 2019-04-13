@@ -89,8 +89,7 @@ class InstructorControllerTest {
                 null,
                 "github.com",
                 "123123123",
-                "janis@janis.eu",
-                false
+                "janis@janis.eu"
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
@@ -111,8 +110,7 @@ class InstructorControllerTest {
                 "linkedin.com",
                 "github.com",
                 "",
-                "janis@janis.eu",
-                false
+                "janis@janis.eu"
         );
         String json = MAPPER.writeValueAsString(request);
         //expected
@@ -164,8 +162,7 @@ class InstructorControllerTest {
                 "linkedin.com",
                 "github.com",
                 "123123123",
-                "janis@janis.eu",
-                false
+                "janis@janis.eu"
         );
     }
 }

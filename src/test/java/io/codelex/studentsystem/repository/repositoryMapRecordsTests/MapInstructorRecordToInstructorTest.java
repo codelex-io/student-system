@@ -15,7 +15,6 @@ class MapInstructorRecordToInstructorTest {
         InstructorRecord record = new InstructorRecord();
         record.setInstructorId(1L);
         record.setName("Janis");
-        record.setStatus(true);
         record.setPhone("123");
         record.setLinkedinLink("link");
         record.setGithubLink("git");

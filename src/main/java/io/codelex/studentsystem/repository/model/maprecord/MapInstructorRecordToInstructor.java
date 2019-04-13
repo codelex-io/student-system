@@ -15,8 +15,7 @@ public class MapInstructorRecordToInstructor implements Function<InstructorRecor
                 instructorRecord.getLinkedinLink(),
                 instructorRecord.getGithubLink(),
                 instructorRecord.getPhone(),
-                instructorRecord.getEmail(),
-                instructorRecord.isStatus()
+                instructorRecord.getEmail()
         );
     }
 }

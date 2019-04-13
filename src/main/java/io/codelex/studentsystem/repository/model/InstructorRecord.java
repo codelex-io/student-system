@@ -16,7 +16,6 @@ public class InstructorRecord {
     private String githubLink;
     private String phone;
     private String email;
-    private boolean status;
 
     public Set<GroupRecord> getGroups() {
         return groups;
@@ -74,11 +73,4 @@ public class InstructorRecord {
         this.email = email;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 }

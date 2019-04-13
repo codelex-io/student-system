@@ -18,12 +18,10 @@ public interface InstructorRecordRepository extends JpaRepository<InstructorReco
             + " and instructor.linkedinLink = :linkedinLink"
             + " and instructor.githubLink = :githubLink"
             + " and instructor.phone = :phone"
-            + " and instructor.email = :email"
-            + " and instructor.status = :status")
+            + " and instructor.email = :email")
     boolean isInstructorPresent(@Param("name") String name,
                                 @Param("linkedinLink") String linkedinLink,
                                 @Param("githubLink") String githubLink,
                                 @Param("phone") String phone,
-                                @Param("email") String email,
-                                @Param("status") boolean status);
+                                @Param("email") String email);
 }

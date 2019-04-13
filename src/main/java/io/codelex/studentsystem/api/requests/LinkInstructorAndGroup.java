@@ -12,7 +12,7 @@ public class LinkInstructorAndGroup {
     private long groupId;
 
     public LinkInstructorAndGroup(@JsonProperty("instructorId") long instructorId,
-                                  @JsonProperty("instructorId") long groupId) {
+                                  @JsonProperty("groupId") long groupId) {
         this.instructorId = instructorId;
         this.groupId = groupId;
     }
@@ -21,16 +21,8 @@ public class LinkInstructorAndGroup {
         return groupId;
     }
 
-    //todo setters needed?
-    public void setGroupId(long groupId) {
-        this.groupId = groupId;
-    }
-
     public long getInstructorId() {
         return instructorId;
     }
 
-    public void setInstructorId(long instructorId) {
-        this.instructorId = instructorId;
-    }
 }
