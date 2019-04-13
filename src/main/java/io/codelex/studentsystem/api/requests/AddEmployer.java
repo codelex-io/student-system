@@ -3,12 +3,13 @@ package io.codelex.studentsystem.api.requests;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.codelex.studentsystem.api.Person;
 
-import javax.validation.constraints.Email;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 public class AddEmployer {
     @NotEmpty
     private final String company;
+    @Valid
     private final Person person;
     @NotEmpty
     private final String password;

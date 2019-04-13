@@ -60,7 +60,7 @@ class EmployerAuthenticationTests {
                         .contentType(APPLICATION_JSON)
                         .accept(APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isCreated()
+                .andExpect(status().isBadRequest()
                 );
     }
 

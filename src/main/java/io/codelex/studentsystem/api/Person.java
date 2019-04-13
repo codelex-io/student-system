@@ -4,11 +4,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 public class Person {
+    @NotEmpty
     private String name;
     @Email
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String phone;
 
     @JsonCreator

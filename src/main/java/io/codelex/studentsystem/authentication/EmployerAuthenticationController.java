@@ -41,7 +41,8 @@ public class EmployerAuthenticationController {
         authService.authorise(request.getLogin());
         return new ResponseEntity<>(request.getLogin() + " is registered", HttpStatus.CREATED);
     }
-//todo json responses, add error messages
+
+    //todo json responses, add error messages
     @PutMapping("/sign-in")
     public ResponseEntity<String> signIn(@Valid @RequestBody SignIn request) {
         if (employerService.isSignInIsValid(request)) {

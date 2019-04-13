@@ -1,6 +1,5 @@
 package io.codelex.studentsystem.repository.model.employer;
 
-import io.codelex.studentsystem.api.Person;
 
 import javax.persistence.*;
 

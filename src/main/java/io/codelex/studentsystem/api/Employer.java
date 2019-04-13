@@ -3,6 +3,8 @@ package io.codelex.studentsystem.api;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.Valid;
+
 public class Employer {
     private Long id;
     private String company;
@@ -13,7 +15,7 @@ public class Employer {
     @JsonCreator
     public Employer(@JsonProperty("id") Long id,
                     @JsonProperty("company") String company,
-                    @JsonProperty("person") Person person,
+                    @Valid @JsonProperty("person") Person person,
                     @JsonProperty("password") String password,
                     @JsonProperty("login") String login) {
         this.id = id;

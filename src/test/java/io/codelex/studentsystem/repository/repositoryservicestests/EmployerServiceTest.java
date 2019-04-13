@@ -3,7 +3,6 @@ package io.codelex.studentsystem.repository.repositoryservicestests;
 import io.codelex.studentsystem.api.Employer;
 import io.codelex.studentsystem.api.Person;
 import io.codelex.studentsystem.api.requests.AddEmployer;
-import io.codelex.studentsystem.repository.PersonRecordRepository;
 import io.codelex.studentsystem.repository.model.employer.EmployerRecord;
 import io.codelex.studentsystem.repository.EmployerRecordRepository;
 import io.codelex.studentsystem.service.EmployerService;
@@ -19,9 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 class EmployerServiceTest {
     private EmployerRecordRepository employerRecordRepository = Mockito.mock(EmployerRecordRepository.class);
-    private PersonRecordRepository personRecordRepository = Mockito.mock(PersonRecordRepository.class);
-
-    private EmployerService employerService = new EmployerService(employerRecordRepository, personRecordRepository);
+    private EmployerService employerService = new EmployerService(employerRecordRepository);
 
     @Test
     void should_be_able_to_add_employer() {
