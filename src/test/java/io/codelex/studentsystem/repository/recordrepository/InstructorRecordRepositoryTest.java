@@ -45,7 +45,6 @@ class InstructorRecordRepositoryTest {
         InstructorRecord record = new InstructorRecord();
         record.setGroups(new HashSet<>());
         record.setName("Janis");
-        record.setStatus(true);
         record.setPhone("123");
         record.setLinkedinLink("link");
         record.setGithubLink("git");
@@ -67,7 +66,6 @@ class InstructorRecordRepositoryTest {
         InstructorRecord record2 = new InstructorRecord();
         record2.setGroups(new HashSet<>());
         record2.setName("Janis2");
-        record2.setStatus(true);
         record2.setPhone("1232");
         record2.setLinkedinLink("link2");
         record2.setGithubLink("git2");

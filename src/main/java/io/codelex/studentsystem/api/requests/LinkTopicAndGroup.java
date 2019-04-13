@@ -11,8 +11,8 @@ public class LinkTopicAndGroup {
     @NotEmpty
     private long groupId;
 
-    public LinkTopicAndGroup(@JsonProperty long topicId,
-                             @JsonProperty long groupId) {
+    public LinkTopicAndGroup(@JsonProperty("topicId") long topicId,
+                             @JsonProperty("groupId") long groupId) {
         this.topicId = topicId;
         this.groupId = groupId;
     }
@@ -21,15 +21,8 @@ public class LinkTopicAndGroup {
         return topicId;
     }
 
-    public void setTopicId(long topicId) {
-        this.topicId = topicId;
-    }
-
     public long getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(long groupId) {
-        this.groupId = groupId;
-    }
 }

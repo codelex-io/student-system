@@ -9,22 +9,19 @@ public class Instructor {
     private String githubLink;
     private String phone;
     private String email;
-    private boolean status; //todo
 
     public Instructor(@JsonProperty("id") Long id,
                       @JsonProperty("name") String name,
                       @JsonProperty("linkedinLink") String linkedinLink,
                       @JsonProperty("githubLink") String githubLink,
                       @JsonProperty("phone") String phone,
-                      @JsonProperty("email") String email,
-                      @JsonProperty("status") boolean status) {
+                      @JsonProperty("email") String email) {
         this.id = id;
         this.name = name;
         this.githubLink = githubLink;
         this.linkedinLink = linkedinLink;
         this.phone = phone;
         this.email = email;
-        this.status = status;
     }
 
     public Long getId() {
@@ -51,7 +48,4 @@ public class Instructor {
         return email;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
 }

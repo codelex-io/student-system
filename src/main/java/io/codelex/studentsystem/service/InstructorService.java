@@ -29,7 +29,6 @@ public class InstructorService {
         instructorRecord.setLinkedinLink(request.getLinkedinLink());
         instructorRecord.setName(request.getName());
         instructorRecord.setPhone(request.getPhone());
-        instructorRecord.setStatus(true);
         instructorRecord = recordRepository.save(instructorRecord);
         return toInstructor.apply(instructorRecord);
     }
@@ -57,8 +56,7 @@ public class InstructorService {
                 request.getLinkedinLink(),
                 request.getGithubLink(),
                 request.getPhone(),
-                request.getEmail(),
-                request.isStatus()
+                request.getEmail()
         );
     }
 }

@@ -31,7 +31,6 @@ class InstructorServiceTest {
         assertEquals(request.getGithubLink(), (actual.getGithubLink()));
         assertEquals(request.getLinkedinLink(), (actual.getLinkedinLink()));
         assertEquals(request.getPhone(), (actual.getPhone()));
-        assertTrue(request.isStatus());
     }
 
     @Test
@@ -78,7 +77,6 @@ class InstructorServiceTest {
                 "https://www.linkedin.com/in/sandr1s/",
                 "https://github.com/sandris-",
                 "12345678",
-                "sandris.artemjevs@codelex.io",
-                true);
+                "sandris.artemjevs@codelex.io");
     }
 }
