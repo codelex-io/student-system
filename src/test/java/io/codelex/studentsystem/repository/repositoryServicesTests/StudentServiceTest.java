@@ -91,6 +91,6 @@ class StudentServiceTest {
                 "213131231",
                 "janis@janis.lv",
                 "bob is noob",
-                "failed",1L );
+                "failed", 1L);
     }
 }

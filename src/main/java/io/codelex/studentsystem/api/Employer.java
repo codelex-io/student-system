@@ -12,7 +12,6 @@ public class Employer {
     private String password;
     private String login;
 
-
     @JsonCreator
     public Employer(@JsonProperty("id") Long id,
                     @JsonProperty("name") String name,

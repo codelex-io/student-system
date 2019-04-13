@@ -6,7 +6,6 @@ import io.codelex.studentsystem.repository.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping
@@ -31,6 +30,6 @@ public class StudentController {
     public void deleteById(@PathVariable long studentsId) {
         service.deleteById(studentsId);
     }
-    
+
 }
     

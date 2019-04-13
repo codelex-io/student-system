@@ -55,7 +55,7 @@ class InstructorRecordRepositoryTest {
         InstructorRecord resultInstructorRecord = instructorRecordRepository.findById(1L).orElse(null);
         Set<GroupRecord> groupRecordSet = resultInstructorRecord.getGroups();
         groupRecordSet.add(resultGroupRecord);
-        
+
         GroupRecord groupRecord2 = new GroupRecord();
         groupRecord2.setName("The Group2");
         groupRecord2.setStartDate(LocalDate.now());
