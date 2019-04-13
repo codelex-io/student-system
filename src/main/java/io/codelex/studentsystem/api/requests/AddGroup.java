@@ -11,7 +11,7 @@ public class AddGroup {
     private final String name;
     @NotNull
     private final LocalDate startDate;
-    @NotNull
+    
     private final LocalDate endDate;
     @NotNull
     private final LocalDate plannedEndDate;
