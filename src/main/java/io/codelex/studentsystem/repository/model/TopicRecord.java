@@ -1,7 +1,6 @@
 package io.codelex.studentsystem.repository.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "topics")
@@ -11,7 +10,6 @@ public class TopicRecord {
     private Long topicId;
     private String name;
     private String state;
-    private LocalDate creationDate;
 
     public Long getTopicId() {
         return topicId;
@@ -35,14 +33,6 @@ public class TopicRecord {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public LocalDate getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
     }
 
 }

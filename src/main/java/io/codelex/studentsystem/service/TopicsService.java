@@ -27,7 +27,6 @@ public class TopicsService {
         TopicRecord topicRecord = new TopicRecord();
         topicRecord.setName(request.getName());
         topicRecord.setState(request.getState());
-        topicRecord.setCreationDate(request.getCreationDate());
         topicRecord = topicRecordRepository.save(topicRecord);
         return map.apply(topicRecord);
     }
@@ -52,8 +51,13 @@ public class TopicsService {
     }
 
     public List<Topic> showTopicInGroup(long groupsId) {
-        //todo scrolling horizontal is bad
-        Set<TopicRecord> topicRecord = groupRecordRepository.findById(groupsId).map(GroupRecord::getTopics).orElse(Collections.emptySet());
-        return topicRecord.stream().map(map).collect(Collectors.toList());
+        Set<TopicRecord> topicRecord = groupRecordRepository
+                .findById(groupsId)
+                .map(GroupRecord::getTopics)
+                .orElse(Collections.emptySet());
+        return topicRecord
+                .stream()
+                .map(map)
+                .collect(Collectors.toList());
     }
 }
