@@ -21,11 +21,10 @@ public class EmployerController {
     @PutMapping("/internal-api/employers")
     public ResponseEntity<Employer> addEmployer(@Valid @RequestBody AddEmployer request) {
         try {
-            employerService.addEmployer(request);
+            return new ResponseEntity<>(employerService.addEmployer(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/internal-api/employers/{employerId}")

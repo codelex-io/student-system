@@ -35,11 +35,10 @@ public class GroupController {
     @PutMapping("/internal-api/groups")
     public ResponseEntity<Group> addGroup(@Valid @RequestBody AddGroup request) {
         try {
-            service.addGroup(request);
+            return new ResponseEntity<>(service.addGroup(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/internal-api/groups/{groupsId}")
