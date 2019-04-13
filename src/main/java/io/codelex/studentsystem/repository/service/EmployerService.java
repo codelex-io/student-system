@@ -52,7 +52,10 @@ public class EmployerService {
     }
 
     public boolean isSignInIsValid(SignIn request) {
-        return BCrypt.checkpw(request.getPassword(), getPassword(request));
+        if (getPassword(request)!=null){
+            return BCrypt.checkpw(request.getPassword(), getPassword(request));
+        }
+        return false;
     }
 
     private String getPassword(SignIn request) {
