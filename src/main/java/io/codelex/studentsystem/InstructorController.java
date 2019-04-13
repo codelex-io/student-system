@@ -21,11 +21,11 @@ public class InstructorController {
     @PutMapping("/internal-api/instructors")
     public ResponseEntity<Instructor> addInstructor(@Valid @RequestBody AddInstructor request) {
         try {
-            service.addInstructor(request);
+            return new ResponseEntity<>(service.addInstructor(request), HttpStatus.OK);
         } catch (IllegalStateException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
     @GetMapping("/internal-api/instructors/{id}")
