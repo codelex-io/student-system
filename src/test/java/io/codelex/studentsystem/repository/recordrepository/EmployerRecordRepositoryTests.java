@@ -26,7 +26,7 @@ class EmployerRecordRepositoryTests {
         //given
         EmployerRecord repo = employerRecordRepository.save(createEmployer());
         //when
-        boolean result = employerRecordRepository.isEmployerPresent(repo.getEmail());
+        boolean result = employerRecordRepository.isEmailPresent(repo.getEmail());
         //then
         assertTrue(result);
     }

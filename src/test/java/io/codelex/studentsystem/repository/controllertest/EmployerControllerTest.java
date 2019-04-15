@@ -5,7 +5,6 @@ import io.codelex.studentsystem.EmployerController;
 import io.codelex.studentsystem.api.Person;
 import io.codelex.studentsystem.api.requests.AddEmployer;
 import io.codelex.studentsystem.service.EmployerService;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

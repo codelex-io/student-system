@@ -2,12 +2,10 @@ package io.codelex.studentsystem.repository.controllertest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.codelex.studentsystem.GroupController;
-import io.codelex.studentsystem.api.requests.AddGroup;
 import io.codelex.studentsystem.service.GroupService;
 import io.codelex.studentsystem.service.InstructorService;
 import io.codelex.studentsystem.service.StudentService;
 import io.codelex.studentsystem.service.TopicsService;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package io.codelex.studentsystem.repository.controllertest; //todo package names
+package io.codelex.studentsystem.repository.controllertest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.codelex.studentsystem.api.Person;

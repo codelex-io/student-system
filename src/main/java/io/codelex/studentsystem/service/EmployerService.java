@@ -19,8 +19,11 @@ public class EmployerService {
     }
 
     public Employer addEmployer(AddEmployer request) {
-        if (isEmployerPresent(request) || isLoginPresent(request)) {
-            throw new IllegalStateException();
+        if (isEmailPresent(request)) {
+            throw new IllegalStateException("this email already exists");
+        }
+        if (isLoginPresent(request)) {
+            throw new IllegalStateException("this login already exists");
         }
         EmployerRecord employerRecord = new EmployerRecord();
         employerRecord.setCompany(request.getCompany());
@@ -63,8 +66,8 @@ public class EmployerService {
         );
     }
 
-    private boolean isEmployerPresent(AddEmployer request) {
-        return employerRepository.isEmployerPresent(
+    private boolean isEmailPresent(AddEmployer request) {
+        return employerRepository.isEmailPresent(
                 request.getPerson().getEmail());
     }
 }

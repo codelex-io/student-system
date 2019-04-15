@@ -9,7 +9,7 @@ public interface EmployerRecordRepository extends JpaRepository<EmployerRecord, 
 
     @Query("select count(employer) > 0 from EmployerRecord employer"
             + " where employer.email = :email")
-    boolean isEmployerPresent(@Param("email") String email);
+    boolean isEmailPresent(@Param("email") String email);
 
     @Query("select count(employer) > 0 from EmployerRecord employer"
             + " where employer.login = :login")
