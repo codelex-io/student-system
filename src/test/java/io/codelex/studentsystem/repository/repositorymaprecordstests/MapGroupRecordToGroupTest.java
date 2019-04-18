@@ -1,16 +1,22 @@
 package io.codelex.studentsystem.repository.repositorymaprecordstests;
 
 import io.codelex.studentsystem.api.Group;
+import io.codelex.studentsystem.repository.InstructorRecordRepository;
 import io.codelex.studentsystem.repository.model.maprecord.MapGroupRecordToGroup;
 import io.codelex.studentsystem.repository.model.GroupRecord;
+import io.codelex.studentsystem.repository.model.maprecord.MapInstructorRecordToInstructor;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MapGroupRecordToGroupTest {
-    private MapGroupRecordToGroup toGroup = new MapGroupRecordToGroup();
+
+    private MapInstructorRecordToInstructor toInstructor = new MapInstructorRecordToInstructor();
+    private InstructorRecordRepository recordRepository = Mockito.mock(InstructorRecordRepository.class);
+    private MapGroupRecordToGroup toGroup = new MapGroupRecordToGroup(toInstructor, recordRepository);
 
     @Test
     void apply() {

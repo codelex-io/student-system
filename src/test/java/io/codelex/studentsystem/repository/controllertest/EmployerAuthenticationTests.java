@@ -30,7 +30,7 @@ class EmployerAuthenticationTests {
     @MockBean
     private EmployerService employerService;
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    private ObjectMapper MAPPER = new ObjectMapper();
 
     @Test
     void should_register_employer_and_give_201_response() throws Exception {
@@ -63,7 +63,6 @@ class EmployerAuthenticationTests {
                 .andExpect(status().isBadRequest()
                 );
     }
-
 
     private AddEmployer setEmployer() {
         return new AddEmployer("Big Company",

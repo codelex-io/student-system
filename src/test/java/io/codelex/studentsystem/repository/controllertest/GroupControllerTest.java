@@ -19,7 +19,6 @@ import org.springframework.util.ResourceUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.time.LocalDate;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -45,8 +44,6 @@ class GroupControllerTest {
     
     @MockBean
     private StudentService studentService;
-
-    private LocalDate defaultDate = LocalDate.of(2019, 1, 1);
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 

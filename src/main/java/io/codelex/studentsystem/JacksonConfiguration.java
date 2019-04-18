@@ -12,8 +12,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class JacksonConfiguration {
-    Jackson2ObjectMapperBuilder invoke() {
+public class JacksonConfiguration {
+    public Jackson2ObjectMapperBuilder invoke() {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
 
         JavaTimeModule javaTimeModule = new JavaTimeModule();
