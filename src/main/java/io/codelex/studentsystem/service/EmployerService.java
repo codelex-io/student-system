@@ -32,7 +32,6 @@ public class EmployerService {
         employerRecord.setPhone(request.getPerson().getPhone());
         employerRecord.setLogin(request.getLogin());
         employerRecord.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
-        //todo BCryptPasswordEncoder
         employerRecord = employerRepository.save(employerRecord);
         return mapEmployerRecordToEmployer.apply(employerRecord);
     }

@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 @Component
 public class GroupService {
     private final GroupRecordRepository recordRepository;
-    private MapGroupRecordToGroup mapGroupRecordToGroup = new MapGroupRecordToGroup();
+    private final MapGroupRecordToGroup mapGroupRecordToGroup;
 
-    public GroupService(GroupRecordRepository recordRepository) {
+    public GroupService(GroupRecordRepository recordRepository, MapGroupRecordToGroup mapGroupRecordToGroup) {
         this.recordRepository = recordRepository;
+        this.mapGroupRecordToGroup = mapGroupRecordToGroup;
     }
 
     public Group addGroup(AddGroup request) {

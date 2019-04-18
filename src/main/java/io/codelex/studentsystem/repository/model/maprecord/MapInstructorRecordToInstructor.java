@@ -2,9 +2,11 @@ package io.codelex.studentsystem.repository.model.maprecord;
 
 import io.codelex.studentsystem.api.Instructor;
 import io.codelex.studentsystem.repository.model.InstructorRecord;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
+@Component
 public class MapInstructorRecordToInstructor implements Function<InstructorRecord, Instructor> {
 
     @Override
